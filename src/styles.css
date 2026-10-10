@@ -38,3 +38,163 @@
 
 .review-assumptions{margin-top:16px;padding:12px;border:1px solid #4d6142;border-radius:5px;background:#23302055}.review-assumptions strong,.node-result-scope>strong{display:block;font-size:.75rem;font-weight:500;color:#c9dfa9}.review-assumptions p{margin-top:7px;font-size:.8125rem;line-height:1.6;color:#b5c4af}
 footer>.footer-links{flex-wrap:wrap;justify-content:flex-end}.footer-repo{display:inline-flex;align-items:center;gap:6px;color:#adc4a0;white-space:nowrap}.footer-repo:hover{color:var(--lime)}
+
+/* One motion rhythm across selection, navigation and disclosure. */
+:root {
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --motion-fast: 150ms;
+  --motion-panel: 240ms;
+}
+html {scrollbar-gutter: stable;}
+body.modal-open {overflow: hidden;}
+[hidden] {display: none !important;}
+button, a, select, .search-box {
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--motion-fast), background-color var(--motion-fast),
+    border-color var(--motion-fast), box-shadow var(--motion-fast),
+    transform var(--motion-fast) var(--ease-out);
+}
+button:not(:disabled):active {transform: scale(.97);}
+.snapshot-status {min-width: 230px;}
+.refresh-button {min-height: 32px;}
+.stats-strip strong, .map-filterline b {font-variant-numeric: tabular-nums;}
+.search-box:focus-within {box-shadow: 0 0 0 3px #c4f58a0b;}
+.search-box .search-clear {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  justify-content: center;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-fast), background-color var(--motion-fast);
+}
+.search-box .search-clear.visible {opacity: 1; pointer-events: auto;}
+.search-clear:hover {background: #2b3931; color: var(--lime);}
+.panel-heading > div:first-child {min-width: 0;}
+.panel-heading p {line-height: 1.5;}
+.view-toggle {position: relative; isolation: isolate; flex-shrink: 0;}
+.view-toggle .view-indicator {
+  position: absolute;
+  inset: 3px auto 3px 3px;
+  width: calc((100% - 6px) / 2);
+  border-radius: 3px;
+  background: #2a3734;
+  transition: transform var(--motion-panel) var(--ease-out);
+}
+.view-indicator.cards {transform: translateX(100%);}
+.view-toggle button {position: relative; min-width: 32px; justify-content: center;}
+.view-toggle button.active {background: transparent;}
+.exploration-view:not([hidden]), .detail-transition, .node-results, .evidence-excerpt {
+  animation: content-arrive var(--motion-panel) var(--ease-out) both;
+}
+@keyframes content-arrive {
+  from {opacity: .86; transform: translateY(7px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.detail-panel {overscroll-behavior: contain; scrollbar-gutter: stable;}
+.atlas-cards {overscroll-behavior: contain; scrollbar-color: #3b4e43 transparent;}
+.atlas-camera {
+  transform-origin: 0 0;
+  transform-box: view-box;
+  transition: transform 320ms var(--ease-out);
+}
+.atlas-stage > svg {touch-action: pan-y pinch-zoom;}
+.problem-node, .community-node {transition: transform 260ms var(--ease-out);}
+.is-dragging .atlas-camera {transition: none;}
+.atlas-stage > svg.is-dragging {cursor: grabbing;}
+.atlas-stage > svg:focus-visible {outline: 2px solid #c4f58a88; outline-offset: -3px;}
+.atlas-edge {transition: stroke-opacity 180ms, stroke-width 180ms; pointer-events: none;}
+.problem-node circle, .community-node circle, .community-node rect {
+  transition: opacity 220ms, stroke-opacity 180ms, stroke-width 180ms,
+    fill 180ms, transform var(--motion-panel) var(--ease-out);
+}
+.node-aura, .node-ring {transform-origin: 0 0; transform-box: view-box;}
+.problem-node text, .community-node text {transition: fill 180ms;}
+.problem-node:focus-visible circle, .community-node:focus-visible rect {stroke-opacity: 1;}
+.community-node:hover .node-aura, .community-node:focus-visible .node-aura {opacity: .18;}
+.map-controls {box-shadow: 0 3px 14px #0003;}
+.map-controls button {width: 36px; height: 36px;}
+.project-card {
+  transition: border-color 180ms, background-color 180ms,
+    box-shadow var(--motion-panel), transform var(--motion-panel) var(--ease-out);
+}
+.project-card:focus-within {border-color: var(--field-color);}
+.project-card.selected {box-shadow: inset 0 0 0 1px #c4f58a12, 0 4px 16px #0002;}
+.card-main:focus-visible {outline-offset: -5px; border-radius: 6px;}
+.card-bottom a {padding: 7px; margin: -7px; border-radius: 4px;}
+.opportunity-card, .discovery-list > a {transition: border-color 180ms, background-color 180ms, transform var(--motion-panel) var(--ease-out);}
+.related-projects > button {border-radius: 4px;}
+.related-projects > button:hover {background: #1b292833;}
+.math-details summary svg, .assessment-block summary svg, .evidence-block > button svg {transition: transform 220ms var(--ease-out);}
+.assessment-block details[open] summary svg, .evidence-block > button[aria-expanded="true"] svg {transform: rotate(180deg);}
+.node-results h4 {margin: 0;}
+.node-results-heading h3:focus-visible {outline: 2px solid var(--lime); outline-offset: 5px; border-radius: 2px;}
+.node-result-source {min-height: 44px;}
+
+/* Native dialog transitions retain native focus handling and Escape support. */
+.source-dialog, .detail-dialog {
+  opacity: 0;
+  transform: translateY(16px) scale(.99);
+  overscroll-behavior: contain;
+  max-height: 90dvh;
+  transition: opacity 180ms, transform 260ms var(--ease-out),
+    display 260ms allow-discrete, overlay 260ms allow-discrete;
+}
+.source-dialog[open], .detail-dialog[open] {opacity: 1; transform: translateY(0) scale(1);}
+.source-dialog::backdrop, .detail-dialog::backdrop {
+  background-color: transparent;
+  transition: background-color 220ms, display 260ms allow-discrete, overlay 260ms allow-discrete;
+}
+.source-dialog[open]::backdrop, .detail-dialog[open]::backdrop {background-color: #020709b8;}
+@starting-style {
+  .source-dialog[open], .detail-dialog[open] {opacity: 0; transform: translateY(16px) scale(.99);}
+  .source-dialog[open]::backdrop, .detail-dialog[open]::backdrop {background-color: transparent;}
+}
+/* Progressive enhancement: unsupported browsers keep normal native disclosures. */
+@supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+  .math-details, .assessment-block details, .node-result-scope {interpolate-size: allow-keywords;}
+  .math-details::details-content, .assessment-block details::details-content, details.node-result-scope::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size 220ms var(--ease-out), content-visibility 220ms allow-discrete;
+  }
+  .math-details[open]::details-content, .assessment-block details[open]::details-content, details.node-result-scope[open]::details-content {block-size: auto;}
+}
+@media (hover: hover) {
+  .project-card:hover, .opportunity-card:hover {transform: translateY(-2px); box-shadow: 0 7px 20px #0003;}
+  .discovery-list > a:hover {border-color: #50634c; background: #14201d; transform: translateY(-1px);}
+  .problem-node:hover .node-aura {opacity: .09;}
+}
+@media (min-width: 951px) {
+  .detail-panel {position: sticky; top: 20px; max-height: calc(100dvh - 40px);}
+}
+@media (max-width: 650px) {
+  .snapshot-status {min-width: 0;}
+  .icon-button, .view-toggle button {min-width: 44px; min-height: 44px;}
+  .source-button {min-width: 44px; min-height: 44px; justify-content: center;}
+  .search-box .search-clear {width: 32px; height: 32px; margin: -5px 0;}
+  .panel-heading p {min-height: 2.5em;}
+  .map-controls button {width: 38px; height: 38px;}
+  .canvas-caption {max-width: calc(100% - 165px);}
+  .atlas-stage > svg {touch-action: pan-y pinch-zoom;}
+  .atlas-cards {max-height: none;}
+  .detail-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 92dvh;
+    margin: auto auto 0;
+    border-radius: 18px 18px 0 0;
+    border-bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mobile-detail-header {padding: 8px 17px;}
+  .detail-dialog {transform: translateY(28px);}
+  .detail-dialog[open] {transform: translateY(0);}
+  @starting-style {.detail-dialog[open] {transform: translateY(28px);}}
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {animation: none !important; transition: none !important; scroll-behavior: auto !important;}
+  details::details-content {transition: none !important;}
+  button:not(:disabled):active, .project-card:hover, .opportunity-card:hover, .discovery-list > a:hover {transform: none;}
+}
