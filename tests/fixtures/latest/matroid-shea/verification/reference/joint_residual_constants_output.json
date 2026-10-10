@@ -1,0 +1,28 @@
+{
+  "parameters": {
+    "kappa": 640,
+    "density_rate": "7/16",
+    "density_cap": "33/64",
+    "filter_rate": "3/4",
+    "guard_and_test_rate": "1/32768",
+    "mesh": "261/256",
+    "phases": 256,
+    "main_probability": "32767/32768"
+  },
+  "certified_bounds": {
+    "entropy_plus_one_upper": "41/2",
+    "decay_lower": "413/500",
+    "density_exception_upper": "1/2048",
+    "base_lower": 140
+  },
+  "error_upper": "335021/8458240",
+  "slack_lower": "23047361/3527086080",
+  "certified_coefficient_lower_bound": "14995972860899/244123247301151948800000",
+  "ratio_over_2^-34": "14995972860899/14209843200000",
+  "ratio_over_published_coefficient": "744826268892592355328/183591497981280648875",
+  "simplified_guarantee": "2^-34",
+  "stronger_simple_guarantee": "(21/20)*2^-34",
+  "seed_bits": "37n+24",
+  "base": "(261/256)^256 > 140",
+  "result": "PASS (exact scalar certificate, conditional on the written proof)"
+}

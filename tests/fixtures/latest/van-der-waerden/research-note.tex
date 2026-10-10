@@ -1,0 +1,375 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\title{Two refinements of the October 2026 OpenAI math release}
+\author{AI-generated research draft prepared with Codex}
+\date{October 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We derive a conditional quantitative refinement of the released van der
+Waerden construction, and an explicit obstruction to improving the matrix
+multiplication exponent using only its stated profile inequalities.
+The former admits the coefficient $c=1/200$ in the manuscript's own
+parameter region, and, after sharpening the balance demanded of the
+outer coloring and shortening the dilation, every $c<1/24$ with the
+explicit choice $c=1/25$, versus the manuscript's $10^{-5}$, subject to
+the upstream geometric and counting arguments.
+The latter is a limitation of the abstract inequalities, not a lower bound
+on the actual matrix multiplication exponent. These are research drafts:
+neither literature priority nor independent formal verification is claimed.
+\end{abstract}
+
+\section{Scope and sources}
+The source is \href{https://github.com/openai/math}{openai/math}, pinned at
+\texttt{fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb}.
+The relevant papers are \emph{Quantitative Superexponential Bounds for van
+der Waerden Numbers} (September 23, 2026) and \emph{An Upper Bound of
+$9/4$ for the Matrix Multiplication Exponent} (October 2, 2026).
+The inspected source revision and file SHA-256 hashes are recorded in
+\texttt{source-manifest.json}. We use their constructions and identified
+lemmas, not their headline theorems as black boxes for stronger conclusions.
+Direct original sources are the
+\href{https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quantitative-Superexponential-Bounds-for-van-der-Waerden-Numbers-September-23-2026}{van der Waerden manuscript}
+and the
+\href{https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026}{matrix multiplication manuscript}.
+This independent follow-up is not an official OpenAI publication.
+The parameter transfer below has been audited in source; it has not been
+formalized in Lean. Finite algebra checks are supplementary evidence.
+
+\section{A sharper norm-band multiplicity}
+The van der Waerden construction uses keys comprising a coordinate box
+and an integer squared-norm band. Its affinity and separation lemmas put
+the points of a fixed key on a real affine line, at mutual distance at
+least one. The released multiplicity lemma gives four occurrences.
+
+\begin{lemma}\label{lem:band}
+Let points on a real affine line be pairwise separated by distance at
+least one. At most two of them can have squared norms in a single
+half-open interval $[m,m+1)$.
+\end{lemma}
+\begin{proof}
+Use signed arclength $t$ from the nearest point of the line to the origin.
+The squared norm is $t^2+C$, for fixed $C\ge0$. If three points were
+in the band, two of their parameters would belong to the same one of
+$(-\infty,0)$ and $[0,\infty)$. Write their absolute values as
+$0\le u<v$. Their separation gives $v-u\ge1$, whence
+$v^2-u^2=(v-u)(v+u)\ge1$. Two numbers in $[m,m+1)$ have difference
+strictly less than one, a contradiction. This includes equality in the
+separation and bands meeting the closest point.
+\end{proof}
+
+\section{A sufficient parameter region}
+Retain the source's coordinate maps, primary-factor dilation, adaptive
+meshes, outer coloring, and digit product. Write
+\[
+ D=\lceil k^a\rceil,\quad M=\lceil k^m\rceil,\quad
+ p=k^{-b},\quad h_0=D^2,\quad H=k^{-2},\quad
+ \eta=(1000D)^{-1}.
+\]
+Let $q$ be the smallest power of the source prime $P\in(k,2k^2]$
+at least $k^{ck/D}$. The heavy/light threshold remains $k/M$.
+Here $m$ denotes an exponent, not a norm-band index or digit count.
+
+\begin{proposition}\label{prop:region}
+The parameter-dependent estimates in the released construction continue
+to hold, using Lemma~\ref{lem:band}, if
+\begin{gather*}
+ a,b,c>0,\quad 3a<m<1,\quad b<a,\quad 3a<1-b,\\
+ 0<\delta<1,\quad 0<\gamma\le\delta/4,\quad
+ \gamma<(1-\delta)/8,\quad 2c<\gamma b/2.
+\end{gather*}
+Consequently, conditional on the source's geometric and counting lemmas
+with the parameter transfer proved below, for all sufficiently large $k$
+and every integer $r\ge2$,
+\[
+ W_r(k)>k^{ck\lfloor\log_2r\rfloor}.
+\]
+The threshold may depend on the chosen parameters but not on $r$.
+\end{proposition}
+\begin{proof}
+We track every scale that changes in the source Sections 2--7.
+All parameters are fixed before $k$ grows.
+
+The dilation estimate is
+$\log\lambda\le D^2\log(2M)=O(k^{2a}\log k)$.
+The inequalities $h_0<2M<k$ hold eventually since $2a<m<1$.
+Thus $\lambda$ is coprime to $q$ as in the source, and each nonzero
+cyclic progression has $k$ distinct terms. The prime-power rounding gives
+\[
+ ck\log k\le D\log q\le ck\log k+D\log(2k^2),
+ \qquad \log q=O(k^{1-a}\log k).
+\]
+In particular the mesh proof still has
+$R\le(D+1)\log q=O(k\log k)$ and $|V|=O(k^3\log k)$.
+The width, neighborhood, and truncated-breakpoint bounds are unchanged.
+
+The global-label count becomes
+\[
+ \log T_{\rm glob}=O(D(\log k+\log\lambda))
+ =O(k^{3a}\log k)=o(M).
+\]
+This makes the first family of local-lemma weights
+$kT_{\rm glob}\exp[-(\delta M-1)/32]=o(1)$.
+The second family retains the bound
+\[
+ \sum_{h>D^2}(CDh)^{6D}e^{-h/64}=o(1),
+\]
+because $D\to\infty$ and
+$6D\log(CDh)/h=O(\log D/D)=o(1)$ uniformly for $h>D^2$.
+The source's absolute incident-weight and local-lemma criterion therefore
+remain valid. The outer coloring still gives one quarter of each tested
+set to each color.
+
+For the drift and rational-path arguments it suffices that $M/k\to0$,
+$MH\to0$, $MH/k\to0$, and $MH/(k\eta)\to0$.
+Their exponents are respectively $m-1$, $m-2$, $m-3$, and $m+a-3$,
+all negative in the stated region. The affinity condition $2kH<1$
+is unchanged. In a long-period block the nonregular fraction is still
+at most $4/1000+1/D<1/2$. Thus a block with a heavy index has at least
+$h/8$ positions of each color. Such blocks cover at least
+$(1-\delta)k-h$ positions, where $h\le2M=o(k)$.
+They yield at least $((1-\delta)/8-o(1))k$ of each color.
+The light case gives $\delta k/4$ of each color. Our conditions on
+$\gamma$ imply the dichotomy with this new value of $\gamma$.
+The source's short-period affine alternative is unchanged.
+
+By Lemma~\ref{lem:band}, any rich progression requires at least
+$\gamma k/2$ distinct flips to become one prescribed color. Hence
+\[
+ R_k\le2q^{2D}p^{\gamma k/2}
+ \le\exp\bigl[(2c-\gamma b/2)k\log k
+                  +2D\log(2k^2)+\log2\bigr]=o(1).
+\]
+Conflicting prescriptions have probability zero and cause no issue.
+For affine progressions, the source's three-parameter arrangement count
+gives
+\[
+ \log\max(1,T_{\rm aff})
+ =O(k^{3a}\log k)+6\log q+O(\log k)
+ =O((k^{3a}+k^{1-a})\log k)=o(k^{1-b}).
+\]
+Here the strict inequalities $3a<1-b$ and $b<a$ are essential.
+Each consistent affine signature prescribes at least $k/2$ independent
+bits, so
+\[
+ A_k\le2T_{\rm aff}(1-p)^{k/2}
+ \le\exp[-pk/2+o(pk)]=o(1).
+\]
+Thus $R_k+A_k<1$ eventually. A cyclic coloring exists on
+$N=q^D\ge k^{ck}$, and the source's unchanged digit-product argument
+gives the claimed bound uniformly in $r$.
+\end{proof}
+
+\subsection{Explicit choices and scope of the improvement}
+Three choices in Proposition~\ref{prop:region} are:
+\begin{center}\small
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+$a$&$m$&$b$&$\delta$&$\gamma$&$c$&Ratio to $10^{-5}$\\
+\midrule
+$1/10$&$1/2$&$1/20$&$1/10$&$1/40$&$1/4000$&$25$\\
+$1/5$&$3/4$&$1/6$&$1/10$&$1/40$&$1/1000$&$100$\\
+$1/4$&$4/5$&$247/1000$&$1/3$&$41/500$&$1/200$&$500$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For the last row, the rich-event coefficient is exactly
+$2c-\gamma b/2=-127/1000000$.
+Both affine entropy power gaps equal $3/1000$; the light and long-block
+color margins both equal $1/750$.
+These small gaps can lead to a very large threshold. We claim no
+practical finite coloring, finite van der Waerden record, or runtime gain.
+
+In fact every fixed $c<1/192$ is admitted by this sufficient region:
+take $\delta=1/3$, let $\gamma$ approach $1/12$ from below,
+take $a=1/4$, let $b$ approach $1/4$ from below, and choose any
+$m\in(3/4,1)$. Then $\gamma b/4$ approaches $1/192$.
+This is a supremum within these retained estimates, not a universal
+barrier on other improvements to the construction. The endpoint is not
+asserted. Literature searches found no specific competing numerical
+refinement, but this does not establish novelty or world-best status.
+
+\section{A sharper balance and a shorter dilation}\label{sec:sharpened}
+The supremum $1/192$ of Proposition~\ref{prop:region} is produced by
+two fixed choices in the source rather than by its geometry: the outer
+coloring is only asked to place one quarter of each bit on the tested
+positions, and the short-period cutoff $h_0=D^2$ makes
+$\log T_{\rm glob}=O(k^{3a}\log k)$. We relax both.
+
+Fix $0<\varepsilon<1/2$, $0<\varepsilon_{\rm r}\le1/2$, and $\delta>0$.
+Replace the source's cutoff and truncation scale by
+\[
+ h_0=D\lceil\log k\rceil^2,\qquad \eta=\frac{\varepsilon_{\rm r}}{8D},
+\]
+keeping the dilation $\lambda$ as the product of the full primary parts
+of every period at most $2M$ over primes at most $h_0$.
+
+\begin{proposition}\label{prop:sharpened}
+The parameter-dependent estimates in the released construction continue
+to hold, using Lemma~\ref{lem:band}, if
+\begin{gather*}
+ a,b,c>0,\quad 2a<m<1,\quad b<a,\quad 2a<1-b,\\
+ \gamma<(\tfrac12-\varepsilon)(1-\varepsilon_{\rm r})(1-\delta),\quad
+ 2c<\gamma b/2.
+\end{gather*}
+Consequently, conditional on the source's geometric and counting lemmas
+with the parameter transfer proved below, $W_r(k)>k^{ck\lfloor\log_2r\rfloor}$
+for all sufficiently large $k$ and every integer $r\ge2$, with a
+threshold independent of $r$. In particular every fixed $c<1/24$ is
+admitted, and $1/24$ is the supremum of this region.
+\end{proposition}
+\begin{proof}
+\emph{Dilation.} The dilation lemma is unchanged, so
+$\log\lambda\le h_0\log(2M)=O(k^a\log^3k)$ and every scalar denominator
+$s=h/\gcd(h,\lambda t)$ is $1$ or exceeds $h_0$. Hence
+$\log T_{\rm glob}=O(D(\log k+\log\lambda))=O(k^{2a}\log^3k)$, which is
+$o(M)$ by $2a<m$. The short-period case uses only $h\mid\lambda$ for
+$h\le h_0$. In the long-period case the nonregular fraction is at most
+$D(4\eta+1/h_0)=\varepsilon_{\rm r}/2+1/\lceil\log k\rceil^2\le\varepsilon_{\rm r}$
+for large $k$. The truncated mesh has at most $16/\eta+4\le C_1D$
+breakpoints with $C_1$ depending only on $\varepsilon_{\rm r}$, so the
+anchored count is $(CDh)^{6D}$ with $C=C(\varepsilon_{\rm r})$, and
+$6D\log(CDh)/h\le6\log(CD^2\log^2k)/\log^2k=o(1)$ uniformly for
+$h>h_0$. The inequality $h_0<2M<k$ follows from $a<m<1$.
+
+\emph{Balance.} Ask every tested family of $l$ distinct labels to carry
+each bit on at least a $(\frac12-\varepsilon)$ fraction of its positions.
+With $X$ the number of ones, the source's bound
+$\mathbb{E}\,e^{s(X-l/2)}\le e^{s^2l/8}$ at $s=4\varepsilon$ gives
+$\Pr(|X-l/2|\ge\varepsilon l)\le2e^{-2\varepsilon^2l}$.
+Weight the event by $z=e^{-\varepsilon^2l}$. The incident weight at one
+label is at most $kT_{\rm glob}e^{-\varepsilon^2(\delta M-1)}+
+\sum_{h>h_0}(CDh)^{6D}e^{-\varepsilon^2h/2}=o(1)$, so it is at most
+$\varepsilon^2/4$ eventually, and the local-lemma criterion
+$e^{-(\varepsilon^2+\varepsilon^2/2)l}\ge2e^{-2\varepsilon^2l}$ holds once
+$l\ge2\log2/\varepsilon^2$; tested sizes are at least $\delta M-1$ or
+$h/2$, both unbounded.
+
+\emph{Light positions outside heavy blocks.} For a progression word,
+choose the heavy label of smallest first occurrence and its closest-return
+gap $h$, cut the indices into full blocks of length $h$ and a remainder
+of fewer than $h$ indices, and call a full block eligible if it contains
+a heavy index. Let $S$ be the set of light positions outside eligible
+blocks; it is a function of the word. If there is no heavy label,
+$S$ is the whole progression. Whenever $|S|\ge\delta k$, form rows of
+$S$ as in the source's first family, each of size at least
+$\delta M-1$ with distinct labels, and demand
+$(\frac12-\varepsilon)$-balance on each row.
+
+\emph{Dichotomy.} Let the progression be nonaffine, so there is no heavy
+label or $h_0<h\le2M$. Full blocks that are not eligible consist of
+light positions, so with $E$ the union of eligible blocks,
+$k-|E|\le|S|+h$. Each eligible block is eligible in the source's sense
+by the unchanged verification, has at least $(1-\varepsilon_{\rm r})h$
+regular positions, and contributes at least
+$(\frac12-\varepsilon)(1-\varepsilon_{\rm r})h$ of each bit; when
+$|S|\ge\delta k$ the rows contribute $(\frac12-\varepsilon)|S|$ more on
+disjoint positions. In every case each bit occurs at least
+$(\frac12-\varepsilon)(1-\varepsilon_{\rm r})(k-h-\delta k)$ times, and
+$h\le2M=o(k)$ gives the stated $\gamma$.
+
+\emph{Probability.} By Lemma~\ref{lem:band} a rich progression needs
+$\gamma k/2$ distinct flips, so
+$R_k\le2q^{2D}p^{\gamma k/2}=o(1)$ when $2c<\gamma b/2$.
+For affine progressions,
+$\log\max(1,T_{\rm aff})=O(k^{2a}\log^3k)+6\log q+O(\log k)=o(k^{1-b})$
+by $2a<1-b$ and $b<a$, so $A_k\le2T_{\rm aff}(1-p)^{k/2}=o(1)$.
+The drift conditions have exponents $m-1$, $m-2$, $m-3$, $m+a-3$, all
+negative. The digit product is unchanged.
+
+\emph{Supremum.} From $b<a$ and $2a+b<1$ we get $b<1/3$; the balance
+condition gives $\gamma<1/2$; hence $c<\gamma b/4<1/24$, and every
+smaller $c$ is attained by letting $\varepsilon,\varepsilon_{\rm r},\delta\to0$,
+$b\to1/3$, $a$ slightly above $b$, and $m\in(2a,1)$.
+\end{proof}
+
+\subsection{Explicit choice}
+Take
+\[
+ a=\tfrac{333}{1000},\quad m=\tfrac45,\quad b=\tfrac{331}{1000},\quad
+ \delta=\varepsilon=\varepsilon_{\rm r}=\tfrac1{200},\quad
+ \gamma=\tfrac{97}{200},\quad c=\tfrac1{25}.
+\]
+The margins are $m-2a=67/500$, $a-b=1/500$, $1-b-2a=3/1000$,
+$(\frac12-\varepsilon)(1-\varepsilon_{\rm r})(1-\delta)-\gamma=40499/8000000$,
+and $\gamma b/2-2c=107/400000$. The coefficient ratio to $10^{-5}$ is
+exactly $4000$. These are verified by \texttt{audit\_math.py} together
+with rejection controls at $b=a$, $b=1-2a$, zero rich exponent, the
+exact balance bound, and $c=1/24$. The threshold is not explicit and
+may be very large; no finite coloring or runtime gain is claimed.
+
+\section{An obstruction for the matrix profile inequalities}
+The matrix paper defines a symmetric positive profile $P(a,b)$ with
+$P(1,b)=b$, separate discrete concavity, and shifted tripling
+$P(a,3h+a-1)\ge3P(a,h)$. Its rank envelope is
+$P(a,b)\le(a+b-1)^{1/t}$. We exhibit an abstract profile compatible with
+these conditions at $t=3/4$.
+
+\begin{theorem}\label{thm:barrier}
+For real $a,b\ge1$, set $u=\min(a,b)$, $v=\max(a,b)$ and
+\[
+ P_*(a,b)=\left(\frac{3u-1}{2}\right)^{1/3}
+                      \left(v+\frac{u-1}{2}\right).
+\]
+Then $P_*$ is positive, symmetric, nondecreasing and separately concave,
+$P_*(1,b)=b$, and it satisfies shifted tripling on positive integers.
+Moreover
+\[
+ P_*(a,b)\le(a+b-1)^{4/3},\qquad
+ P_*(a,a)=\left(\frac{3a-1}{2}\right)^{4/3}=\Theta(a^{4/3}).
+\]
+Thus these abstract constraints alone cannot force a larger diagonal
+growth exponent, or exclude $t=3/4$.
+\end{theorem}
+\begin{proof}
+Fix $a$. On $b\ge a$ the function is linear with positive slope.
+On $1\le b\le a$, put $x=3b-1$, $A=3a-1$; it is
+$(x/2)^{1/3}(2A+x)/6$. Its derivative in $b$ is positive and its
+second derivative is
+\[
+ \frac{2^{2/3}(x-A)}{3x^{5/3}}\le0.
+\]
+The one-sided first derivatives match at $b=a$, both equal to
+$((3a-1)/2)^{1/3}$. Concavity follows globally, and implies the required
+discrete inequalities. Symmetry supplies the other coordinate.
+
+If $h\ge a$, substitution gives
+$P_*(a,3h+a-1)=3P_*(a,h)$ exactly. If $h<a$, put
+$A=3a-1$, $B=3h-1$, and $z=(A/B)^{1/3}>1$.
+After multiplication by a positive factor, shifted tripling becomes
+\[
+ z^4-2z^3+2z-1=(z-1)^3(z+1)\ge0.
+\]
+The boundary value and diagonal formula are direct substitutions.
+Finally both $(3u-1)/2$ and $v+(u-1)/2$ are at most $a+b-1$,
+proving the rank-envelope inequality.
+\end{proof}
+This is not a construction of a tensor character. It is an obstruction
+to a proof using only the listed inequalities. New valid tensor
+constraints, or a different construction, could still improve $9/4$.
+The symbolic identity and exact rational cube comparisons were checked
+by \texttt{audit\_math.py}; these supplement the displayed proof.
+
+\section{Other tracks and verification limits}
+A model-proposed search contracted edges and flipped diagonals in the
+Sidorenko triple complex. It reproduced the released finite requirements
+and tested 56,984 labeled candidates, finding no smaller object satisfying
+the same discrete-refinement and three-cut certificate. This is neither
+an exhaustive isomorphism-class search nor a minimality proof. A second
+search tested 28,281 labeled candidates, including 2,518 discrete,
+degree-eligible candidates, using rational-weighted cut distributions.
+No feasible LP was returned. No impossibility certificate is claimed
+from this floating-point feasibility screen. In particular these searches
+do not exclude different pinning or singular-tail methods.
+
+The unit-distance source was inspected for an explicit quantitative
+target. Its proof uses asymptotic contradiction and successive limiting
+arguments. No explicit improved exponent was derived in this pass.
+The source manifest permits retrieval of the four inspected source trees.
+Publication of this draft does not establish independent verification or
+literature priority.
+\end{document}

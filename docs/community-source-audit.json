@@ -1,0 +1,145 @@
+{
+  "auditedOn": "2026-10-09",
+  "suppliedPost": "https://x.com/RohanArun/status/2108523972589429069",
+  "scope": "Source interpretation for three owner-supplied community projects and release family 161. All four repositories in the supplied post are now curated.",
+  "independentlyVerifiedProofs": false,
+  "upstreamCodeExecuted": false,
+  "limits": [
+    "README and written-proof interpretation only; no independent execution of project checks, plantri, Lean or the underlying transfer proofs.",
+    "Proof-grid counts, residual constants, and method barriers are supporting contributions; they never become headline frontier values.",
+    "The social post is a discovery lead, not a mathematical review receipt."
+  ],
+  "contributions": [
+    {
+      "repo": "rohanarun/sidorenko-template-refinements",
+      "problemId": "161",
+      "display": "1641 → 1032",
+      "kind": "refinement",
+      "authority": "unreviewed",
+      "frontierValue": null,
+      "scope": "Conditional on the released source arguments and plantri enumeration completeness. The 35-vertex minimum applies only to the stated finite template, not all Sidorenko counterexamples. The 1032 residual constant and sufficient even dimension 1034 concern one counting stratum; earlier dimension thresholds may dominate. The alternative 35-vertex certificate has no independently verified analytic transfer. Independent mathematical review and formal verification are not claimed."
+    },
+    {
+      "repo": "rohanarun/unit-distance-grid-refinement",
+      "problemId": "167",
+      "display": "100 → 36 edges",
+      "kind": "refinement",
+      "authority": "unreviewed",
+      "frontierValue": null,
+      "scope": "Conditional on the source generic-grid extraction, negligible-height passage and private-valuation arguments. The selected final proof grid has 36 edges instead of 100; no explicit power saving or improved headline unit-distance exponent is supplied. Symbolic and finite rational checks do not verify the imported geometric lemmas. Independent mathematical review and formal verification are not claimed."
+    },
+    {
+      "repo": "rohanarun/matrix-multiplication-sector-barrier",
+      "problemId": "107",
+      "display": "Sector-method barrier",
+      "kind": "method-limit",
+      "authority": "unreviewed",
+      "frontierValue": null,
+      "scope": "An obstruction for the listed scalar and symmetrized standard matched-sector inequalities, with no auxiliary output factors. The abstract profile is not claimed to be a realizable tensor character. This is not a new multiplication algorithm, a lower bound on the actual exponent, or a proof that 9/4 is optimal. Other blocks, factors and tensor constraints remain open. Independent mathematical review and formal verification are not claimed."
+    }
+  ],
+  "sources": [
+    {
+      "file": "sidorenko-template-refinements/README.md",
+      "url": "https://raw.githubusercontent.com/rohanarun/sidorenko-template-refinements/9e6e659656cf31a059d65b8c0b3140d243afbc2d/README.md",
+      "sha256": "cc814a310d4b3bfd334761e673bbdc0c48bac7f907943386ab384a6a7931be7e",
+      "bytes": 7416
+    },
+    {
+      "file": "unit-distance-grid-refinement/README.md",
+      "url": "https://raw.githubusercontent.com/rohanarun/unit-distance-grid-refinement/a1486a9c0f0ac44a4d7d1c7a0253abdfb68d93ca/README.md",
+      "sha256": "ba528b9f1edad2dcece105a48752c41afe86b46ab84293a53ba1efa5b030fd7e",
+      "bytes": 4152
+    },
+    {
+      "file": "matrix-multiplication-sector-barrier/README.md",
+      "url": "https://raw.githubusercontent.com/rohanarun/matrix-multiplication-sector-barrier/fd5f6443831af837bcf1168dd15e363fba2307e1/README.md",
+      "sha256": "14139d348d497b1244423090ec2c71916889817a83692bab40ebf844b8f5bb72",
+      "bytes": 4460
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/matrix-multiplication-sector-barrier/fd5f6443831af837bcf1168dd15e363fba2307e1/proof.tex",
+      "sha256": "b334ad8592f5cd14dccdb657d31d14cad2b561dae76d1065cf2b6e11bfde4664",
+      "bytes": 5608,
+      "file": "matrix-multiplication-sector-barrier/proof.tex"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/matrix-multiplication-sector-barrier/fd5f6443831af837bcf1168dd15e363fba2307e1/source-manifest.json",
+      "sha256": "74ea36dc362b4e6b34b2f54177110c303c45643c7875b9e040fb94986f6a3462",
+      "bytes": 315,
+      "file": "matrix-multiplication-sector-barrier/source-manifest.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/sidorenko-template-refinements/9e6e659656cf31a059d65b8c0b3140d243afbc2d/proof.tex",
+      "sha256": "4b8a0915e318b5820b5365d34c155010533b1030ac70c8640d888aa7eec0fa19",
+      "bytes": 9892,
+      "file": "sidorenko-template-refinements/proof.tex"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/sidorenko-template-refinements/9e6e659656cf31a059d65b8c0b3140d243afbc2d/source-manifest.json",
+      "sha256": "3456cedf6e49f32f2ef46b682ba2ffbabd4ce1e12e7109f57da2b1b63ec28027",
+      "bytes": 336,
+      "file": "sidorenko-template-refinements/source-manifest.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/sidorenko-template-refinements/9e6e659656cf31a059d65b8c0b3140d243afbc2d/experiments/residual-expected.json",
+      "sha256": "ae991deec136e2bb92dffac2ebdbf6e95e4f50675dcb13d9ad8e25e84af9f832",
+      "bytes": 6603,
+      "file": "sidorenko-template-refinements/experiments/residual-expected.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/sidorenko-template-refinements/9e6e659656cf31a059d65b8c0b3140d243afbc2d/experiments/minimality-independent.json",
+      "sha256": "72cd1a89f06b1f231c081dcf5cb62448654fb75e3f062f35e83d284e1e178613",
+      "bytes": 2707,
+      "file": "sidorenko-template-refinements/experiments/minimality-independent.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/sidorenko-template-refinements/9e6e659656cf31a059d65b8c0b3140d243afbc2d/experiments/order-13-classification-independent.json",
+      "sha256": "86773fb744746123dea766d20f37a1bcf701c9600b9cf41596cfa5755e7ab7b8",
+      "bytes": 677,
+      "file": "sidorenko-template-refinements/experiments/order-13-classification-independent.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/unit-distance-grid-refinement/a1486a9c0f0ac44a4d7d1c7a0253abdfb68d93ca/proof.tex",
+      "sha256": "639ecd3bc575e628f6cbd06c855ccf31c1b333193c01e9d1d8f46372ca6f6959",
+      "bytes": 4699,
+      "file": "unit-distance-grid-refinement/proof.tex"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/rohanarun/unit-distance-grid-refinement/a1486a9c0f0ac44a4d7d1c7a0253abdfb68d93ca/source-manifest.json",
+      "sha256": "71d51d5602cf10f05cd6012c803c2909bf849a54d9a94276ed1da773cca825c7",
+      "bytes": 338,
+      "file": "unit-distance-grid-refinement/source-manifest.json"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/math/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/161.md",
+      "sha256": "a1da28a997a9a27cad57f0862cd18e7502aa3129730d3bc7fd7a45fde14d3b1d",
+      "bytes": 946,
+      "file": "lean-161.md"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/math/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/build/paper.tex",
+      "sha256": "c396f2580a711b8b9e51ecf1265cb0e691acd745943f81bfc14ec0df209e1028",
+      "bytes": 43060,
+      "file": "matrix-multiplication-sector-barrier/original-source.tex"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/math/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-counterexample-to-Sidorenkos-conjecture-September-23-2026/build/sections/complex.tex",
+      "sha256": "b7023c77ec390b3392617c51b1ca3d3ee70d707af6c71e82b0b56547513bbe8a",
+      "bytes": 7236,
+      "file": "sidorenko-template-refinements/original-source.tex"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/math/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-planar-unit-distances-September-23-2026/build/sections/07-algebra.tex",
+      "sha256": "5e821f1eee20b854c7d72f35088a69c6f9b77c3e1d303b68c12c26a9256b2555",
+      "bytes": 32089,
+      "file": "unit-distance-grid-refinement/original-source.tex"
+    },
+    {
+      "file": "openai-CONTENTS.md",
+      "url": "https://raw.githubusercontent.com/openai/math/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "sha256": "cc7c0b8a1cdedd845a777e77cf682657308503daf8346c1349e06e9259d063c2",
+      "bytes": 638727
+    }
+  ]
+}

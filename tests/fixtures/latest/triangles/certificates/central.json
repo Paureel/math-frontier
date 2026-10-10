@@ -1,0 +1,101 @@
+{
+  "schema": "heilbronn-central-sphere-v1",
+  "upstream_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "status": "conditional-on-upstream-estimates",
+  "scope": "paper exponent; not the upstream Lean comparator exponent",
+  "previous_certificate": "certificates/slab.json",
+  "previous_sha256": "df7a70005c8a734cff376de212aa49c4dae4413c2c68a17dc1069adf80a0d819",
+  "d": 13,
+  "M": "476260169700",
+  "T": "18004519550937520342031694999844900",
+  "m": 17,
+  "A": 95,
+  "s": 190,
+  "b": 379,
+  "k": "68685738084332402266081168183005720790928059",
+  "energy": {
+    "digit_mean": 1504,
+    "digit_centered_sum": "0",
+    "digit_centered_square_sum": "343855008",
+    "center": 25568,
+    "radius": 10000,
+    "lower": 15568,
+    "upper": 35568,
+    "layer_count": 20001,
+    "outside_distance": 10001,
+    "word_count": "548038685778480218593900000000000000000",
+    "centered_square_sum": "16860944176870366476166331396160000000000000000",
+    "central_word_lower_bound": "379462960840521394976548392533409392788",
+    "required_words": "360108395538301344360975931691897844900",
+    "capacity_margin": "1935843640882614764789608148940445861204155100"
+  },
+  "cap": {
+    "set": "{(x,y,x^2-nu*y^2): 0 <= x < w, y in F_q}; nu nonsquare",
+    "width": "w = floor(q/(1000*H^2))",
+    "cardinality": "s = w*q",
+    "density_bound": "s >= q^2/(2000*H^2)",
+    "short_relation_change": "only first-coordinate bounds are required",
+    "proof_status": "written finite-field argument; not formalized in Lean"
+  },
+  "scales": {
+    "L": "400*k^2*r^4",
+    "B": "100*k^2*L^3 < B <= 200*k^2*L^3; B prime",
+    "h": "B^k",
+    "tau": "floor(B^(k-1)/2)",
+    "H": "2*h",
+    "q": "h^6 < q <= 2*h^6; q prime",
+    "N": "(h*q)^4",
+    "n_r": "floor(r^gamma*sqrt(N^3/tau))"
+  },
+  "rho": "34205497565997536328508421755136848953882173388",
+  "beta": {
+    "numerator": "2850458130499794694042368479594737412823514449",
+    "denominator": "1"
+  },
+  "gamma": {
+    "numerator": "34205497565997536328508421755136848953882173388",
+    "denominator": "68410995131995072657016843510273697907764346777"
+  },
+  "alpha": {
+    "numerator": "2340032127474926764275165599162694176386453011682956122347742639613939157707879208736755143864",
+    "denominator": "68410995131995072657016843510273697907764346777"
+  },
+  "eta": {
+    "numerator": "1",
+    "denominator": "34205497565997536328508421755136848953882173389"
+  },
+  "gain_from_slab": {
+    "numerator": "97143808785308517131759271202400441971695155581",
+    "denominator": "34205497565997536328508421755136848953882173389"
+  },
+  "constraints": {
+    "zero_case_h_powers": [
+      0,
+      -2,
+      -6
+    ],
+    "collision_r_power": {
+      "numerator": "-1",
+      "denominator": "68410995131995072657016843510273697907764346777"
+    },
+    "pair_r_power": {
+      "numerator": "-28193158162348515232230910833285472004656059931693406991306421311840272302390845193944841008",
+      "denominator": "68410995131995072657016843510273697907764346777"
+    }
+  },
+  "formal_scope": {
+    "proved": [
+      "symbolic word count, distinctness, first and second moments",
+      "central-window count and finite pigeonhole selection",
+      "complete finite packing for T = binom(binom(51,13),3), k = 379^17",
+      "inherited integer scale inequalities and exponent identity",
+      "284/100 < gain from slab < 285/100"
+    ],
+    "written_not_formalized": [
+      "slab cap geometry and short-relation exclusion",
+      "field norm, lattice, orbit and weighted counting estimates",
+      "probability, asymptotic deletion and interpolation"
+    ]
+  },
+  "parameter_choice": "explicit feasible witness; no optimality claim"
+}

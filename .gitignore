@@ -1,0 +1,41 @@
+# Dependencies, builds, public-source caches, and preview artifacts
+node_modules/
+dist/
+.sites-runtime/
+.netlify/
+.cache/
+outputs/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+*.log
+*.tmp
+public/frontier.json.lock
+
+# Local environment and authentication files; only an empty example is shared
+.env
+.env.*
+!.env.example
+.npmrc
+.netrc
+.git-credentials
+.aws/
+.ssh/
+credentials*.json
+service-account*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Machine-local assistant/editor state and operating-system files
+.codex/
+.agents/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

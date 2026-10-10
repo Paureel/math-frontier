@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-10",
+  "assets": [
+    {
+      "name": "Formula-B3HvQpQm.js",
+      "raw": 51390,
+      "gzip": 3837,
+      "brotli": 3170
+    },
+    {
+      "name": "Formula-BJmosK-V.css",
+      "raw": 30255,
+      "gzip": 8095,
+      "brotli": 6993
+    },
+    {
+      "name": "_virtual_frontier-excerpts-DO0JcQtG.js",
+      "raw": 48978,
+      "gzip": 19127,
+      "brotli": 16325
+    },
+    {
+      "name": "index-1bZcuMgN.js",
+      "raw": 194382,
+      "gzip": 63372,
+      "brotli": 48607
+    },
+    {
+      "name": "index-C5gWL_Rv.css",
+      "raw": 32692,
+      "gzip": 7583,
+      "brotli": 6659
+    }
+  ],
+  "api": {
+    "raw": 39413,
+    "gzip": 10453,
+    "brotli": 8524
+  },
+  "html": {
+    "raw": 702,
+    "gzip": 444,
+    "brotli": 268
+  },
+  "favicon": {
+    "raw": 290,
+    "gzip": 210,
+    "brotli": 181
+  },
+  "fonts": [
+    {
+      "name": "KaTeX_Main-Regular-B22Nviop.woff2",
+      "raw": 26272
+    },
+    {
+      "name": "KaTeX_Math-Italic-t53AETM-.woff2",
+      "raw": 16440
+    }
+  ],
+  "compressedBytes": {
+    "opening": 82062,
+    "optionalMath": 54644,
+    "optionalEvidence": 19127
+  },
+  "estimatedCreditsPer10000ColdOpenings": {
+    "basic": {
+      "bandwidth": 16.4124,
+      "requests": 10,
+      "total": 26.4124
+    },
+    "halfOpenMathAndEvidence": {
+      "bandwidth": 23.7895,
+      "requests": 15,
+      "total": 38.789500000000004
+    },
+    "allOpenMathAndEvidence": {
+      "bandwidth": 31.1666,
+      "requests": 20,
+      "total": 51.1666
+    }
+  },
+  "notes": "Gzip, decimal GB, current rates: 20 credits/GB and 2 credits/10k requests. Excludes headers, extra formula fonts, compute and production deploys; no visitor analytics.",
+  "originalBasicGzipBytes": 190741,
+  "basicTransferReductionPercent": 56.98,
+  "localWideSweep": {
+    "curatedProjects": 16,
+    "frontiers": 23,
+    "ownerDiscoveryCandidates": 16,
+    "discoveryAutomatic": false
+  }
+}

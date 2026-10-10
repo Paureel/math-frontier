@@ -1,0 +1,100 @@
+{
+  "scope": "Exact algebra and finite checks only; not an independent formal proof of upstream results",
+  "parameter_certificates": [
+    {
+      "name": "fixed-scales-25x",
+      "factor_over_release": "25",
+      "margins": {
+        "dimension_grows": "1/10",
+        "period_less_than_heavy_cutoff": "3/10",
+        "global_entropy_less_than_M": "1/5",
+        "M_sublinear": "1/2",
+        "flip_probability_decays": "1/20",
+        "affine_global_entropy_gap": "13/20",
+        "affine_norm_entropy_gap": "1/20",
+        "light_color_margin": "0",
+        "long_block_color_margin": "7/80",
+        "rich_union_bound_gap": "1/8000",
+        "drift_less_than_eta_gap": "12/5"
+      }
+    },
+    {
+      "name": "retuned-100x",
+      "factor_over_release": "100",
+      "margins": {
+        "dimension_grows": "1/5",
+        "period_less_than_heavy_cutoff": "7/20",
+        "global_entropy_less_than_M": "3/20",
+        "M_sublinear": "1/4",
+        "flip_probability_decays": "1/6",
+        "affine_global_entropy_gap": "7/30",
+        "affine_norm_entropy_gap": "1/30",
+        "light_color_margin": "0",
+        "long_block_color_margin": "7/80",
+        "rich_union_bound_gap": "1/12000",
+        "drift_less_than_eta_gap": "41/20"
+      }
+    },
+    {
+      "name": "retuned-500x",
+      "factor_over_release": "500",
+      "margins": {
+        "dimension_grows": "1/4",
+        "period_less_than_heavy_cutoff": "3/10",
+        "global_entropy_less_than_M": "1/20",
+        "M_sublinear": "1/5",
+        "flip_probability_decays": "247/1000",
+        "affine_global_entropy_gap": "3/1000",
+        "affine_norm_entropy_gap": "3/1000",
+        "light_color_margin": "1/750",
+        "long_block_color_margin": "1/750",
+        "rich_union_bound_gap": "127/1000000",
+        "drift_less_than_eta_gap": "39/20"
+      }
+    },
+    {
+      "name": "near-limit-518x",
+      "factor_over_release": "100000/193",
+      "margins": {
+        "dimension_grows": "1/4",
+        "period_less_than_heavy_cutoff": "3/10",
+        "global_entropy_less_than_M": "1/20",
+        "M_sublinear": "1/5",
+        "flip_probability_decays": "2499/10000",
+        "affine_global_entropy_gap": "1/10000",
+        "affine_norm_entropy_gap": "1/10000",
+        "light_color_margin": "1/3000",
+        "long_block_color_margin": "1/3000",
+        "rich_union_bound_gap": "31481/3860000000",
+        "drift_less_than_eta_gap": "39/20"
+      }
+    }
+  ],
+  "sharpened_parameter_certificates": [
+    {
+      "name": "sharpened-balance-4000x",
+      "factor_over_release": "4000",
+      "margins": {
+        "dimension_grows": "333/1000",
+        "short_period_cutoff_below_M": "467/1000",
+        "global_entropy_less_than_M": "67/500",
+        "M_sublinear": "1/5",
+        "flip_probability_decays": "331/1000",
+        "affine_global_entropy_gap": "3/1000",
+        "affine_norm_entropy_gap": "1/500",
+        "balance_tolerance_positive": "1/200",
+        "balance_tolerance_below_half": "99/200",
+        "nonregular_fraction_positive": "1/200",
+        "nonregular_fraction_at_most_half": "99/200",
+        "light_threshold_positive": "1/200",
+        "outer_color_margin": "40499/8000000",
+        "rich_union_bound_gap": "107/400000",
+        "drift_less_than_eta_gap": "1867/1000"
+      }
+    }
+  ],
+  "negative_controls_rejected": 8,
+  "half_open_band_test_cases": 26180,
+  "profile_exact_test_cases": 10000,
+  "symbolic_identities": "passed"
+}

@@ -1,0 +1,2 @@
+# Research fixtures retain the exact upstream bytes used by receipt hashes.
+tests/fixtures/** -text whitespace=-blank-at-eol,cr-at-eol

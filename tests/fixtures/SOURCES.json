@@ -1,0 +1,28 @@
+{
+  "purpose": "Immutable public primary-source fixtures for evidence-policy tests; their presence is not proof certification.",
+  "selection": "https://github.com/CrocSwap/integer-mult-bounds/blob/d1d6c070f5a8c684727ee7ec35d930f9ebfa9758/certificates/selected-result.json",
+  "review": {
+    "file": "review.md",
+    "url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/d1d6c070f5a8c684727ee7ec35d930f9ebfa9758/docs/research/community-round6-review.md",
+    "sha256": "981cdbb5feaa3bdde817584ab6af64c4d168b70d4ef21a2d0dfa58e1b2e1d54c",
+    "bytes": 10938
+  },
+  "validation": {
+    "file": "validation.json",
+    "url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/d1d6c070f5a8c684727ee7ec35d930f9ebfa9758/docs/research/community-round6-validation.json",
+    "sha256": "1e44de3e43edacc91045da504b2e8eb58c4ac46b5cd0e5d152a9224bb1b53d6c",
+    "bytes": 22646
+  },
+  "license": "CrocSwap/integer-mult-bounds: Apache-2.0; retain upstream attribution.",
+  "historicalReadme": {
+    "file": "maintainer-readme.md",
+    "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/d1d6c070f5a8c684727ee7ec35d930f9ebfa9758/README.md",
+    "sha256": "82a51095522b8e69c7fe6af79a12ae907a1cb5e0ee3428bf2af2a188dd6cc4db"
+  },
+  "approvedPR279": {
+    "provenance": "docs/approved-pr279-review.json",
+    "fixtures": "tests/fixtures/latest/crocswap",
+    "reviewedIdentityFixture": "pr279-reviewed-identity.json is synthetic identity/claim data for policy tests; actual current PR metadata is pr279-current.json.",
+    "license": "Apache-2.0; copied public upstream receipts retain author credits and assistance disclosures."
+  }
+}

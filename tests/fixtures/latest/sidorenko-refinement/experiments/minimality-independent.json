@@ -1,0 +1,90 @@
+{
+  "scope": "Minimum 35 incidence vertices within the distinct-triple, two-occurrences, paired spanning-exposure, weighted-cut coverage and discrete-incidence-refinement template; relies on plantri enumeration.",
+  "plantri_source_sha256": "3f70de5a3cacc78b2ed25b6a257588da94a518d8ae1dae74bcd0bf259cea07e8",
+  "sizes": [
+    {
+      "n": 4,
+      "counts": {
+        "all_triangulations": 1,
+        "degree_eligible": 1
+      },
+      "generator_output_sha256": "b0d1b37d2e170a5fea2f2d668e9316ee70300883c7a1d425bf74b24d130c583d"
+    },
+    {
+      "n": 5,
+      "counts": {
+        "all_triangulations": 1,
+        "degree_eligible": 1
+      },
+      "generator_output_sha256": "acd58e7881a665953eb5ab490c53e63e9f841fde1c93678e4368ef1afb2b4176"
+    },
+    {
+      "n": 6,
+      "counts": {
+        "all_triangulations": 2,
+        "degree_eligible": 2
+      },
+      "generator_output_sha256": "24ed34dd104c9f7ea3c56d48b11f19ed4fcff2c13d8066cab98905e113131b0a"
+    },
+    {
+      "n": 7,
+      "counts": {
+        "all_triangulations": 5,
+        "degree_eligible": 5
+      },
+      "generator_output_sha256": "7a0021d1c68a0a26fda200cdefe7b0dfd2ecd12591d155acf6d7cdb813c9be0f"
+    },
+    {
+      "n": 8,
+      "counts": {
+        "all_triangulations": 14,
+        "degree_eligible": 10
+      },
+      "generator_output_sha256": "e25fbb773188351a46a9dd68d10e76673bd756b689decb27424b0afa80df1f1f"
+    },
+    {
+      "n": 9,
+      "counts": {
+        "all_triangulations": 50,
+        "degree_eligible": 15,
+        "discrete_refinement": 1,
+        "exact_obstructions": 1
+      },
+      "generator_output_sha256": "943739305a74b806c783402c15f492e95e21093a119f27409052d95aef7903d6"
+    },
+    {
+      "n": 10,
+      "counts": {
+        "all_triangulations": 233,
+        "degree_eligible": 30,
+        "discrete_refinement": 4,
+        "exact_obstructions": 4
+      },
+      "generator_output_sha256": "e5a66e182c42f41434dcdb87729e918b1bd447accfdade7a403377090bb671ad"
+    },
+    {
+      "n": 11,
+      "counts": {
+        "all_triangulations": 1249,
+        "degree_eligible": 44,
+        "discrete_refinement": 12,
+        "exact_obstructions": 12
+      },
+      "generator_output_sha256": "3c610e04fb5902b26087cd4e9c929cea79ce779ad81ab39b9dea254866c1f681"
+    },
+    {
+      "n": 12,
+      "counts": {
+        "all_triangulations": 7595,
+        "degree_eligible": 77,
+        "discrete_refinement": 23,
+        "exact_obstructions": 23
+      },
+      "generator_output_sha256": "eaa99f853221d18d398a476e1d082f4b4f176628b56fce44449adc1dc75c602a"
+    }
+  ],
+  "exact_obstructions": 40,
+  "independent_hamilton_cycle_count": 16941,
+  "minimum_separation_margin": "1/75",
+  "negative_controls_rejected": 1
+}

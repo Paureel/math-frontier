@@ -1,0 +1,2146 @@
+{
+  "schemaVersion": 2,
+  "fetchedAt": "2026-10-10T14:19:24.995Z",
+  "live": false,
+  "problems": [
+    {
+      "id": "109",
+      "name": "Integer multiplication",
+      "shortName": "Multiply integers",
+      "field": "algorithms",
+      "summary": "How efficiently can we multiply two enormous whole numbers?",
+      "why": "Multiplication is a basic ingredient in computing. This research asks about the ultimate growth of the work needed as numbers get longer.",
+      "opportunity": "Increase the saving in the logarithmic exponent while keeping the same exact, fixed-tape computation model.",
+      "metric": {
+        "symbol": "κ",
+        "label": "Logarithmic saving",
+        "direction": "higher",
+        "value": 1.6313261169996311e-55,
+        "display": "2⁻¹⁸²",
+        "formula": "O(n(\\log n)^{1-\\kappa})",
+        "explanation": "A larger κ means a stronger theoretical saving. It does not measure how much faster a computer runs today.",
+        "unit": "exponent"
+      },
+      "assumptions": "Two n-bit integers, exact output, deterministic worst-case time on one fixed finite-alphabet machine with finitely many one-dimensional tapes. Constants and machine are fixed before inputs vary.",
+      "formalizationScope": "The catalogue does not list an accompanying top-line Lean formalization for this multiplication claim.",
+      "baselineReviewHash": "c9b10eb95342efded7a0cdfe3b26823eaaf0a2be9b805dc7ba0738de7b2246d1",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Integer multiplication below n log n",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Integer-multiplication-below-n-log-n-September-23-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": null,
+      "publishedSummary": "Multiplies two <i>n</i>-bit integers exactly at every input length in deterministic worst-case time $`O(n(\\log n)^{1-\\kappa})`$, with $`\\kappa=2^{-182}`$, on one fixed finite-alphabet Turing machine with finitely many one-dimensional tapes. This disproves the Schönhage–Strassen $`n\\log n`$ optimality conjecture in the ordinary multitape bit model."
+    },
+    {
+      "id": "130",
+      "name": "Fourier transforms",
+      "shortName": "Fourier transforms",
+      "field": "algorithms",
+      "summary": "Can we break a signal into its frequencies with fewer mathematical operations?",
+      "why": "Fourier transforms are central to signal processing. These papers study exact arithmetic and the asymptotic growth of operation counts.",
+      "opportunity": "Increase the saving δ, accounting for every operation and any extra logarithmic factors.",
+      "metric": {
+        "symbol": "δ",
+        "label": "Logarithmic saving",
+        "direction": "higher",
+        "value": 1e-13,
+        "display": "10⁻¹³",
+        "formula": "O(n(\\log n)^{1-\\delta})",
+        "explanation": "Larger δ is a better asymptotic exponent. Exact complex arithmetic is different from a practical finite-precision FFT.",
+        "unit": "exponent"
+      },
+      "assumptions": "Every positive transform length, exact complex arithmetic, unrestricted coefficients, and a supplied root of unity. Scalar preparation and logarithmic-word indexing are counted; finite-precision stability and bit complexity are different questions.",
+      "formalizationScope": "The upstream notes report a uniform all-length 10⁻¹³ theorem and a separate subsequential circuit theorem. The latter alone would not imply an all-length algorithm; extraction/search uniformization is outside the selected statements.",
+      "baselineReviewHash": "ece47f891502d68bf42ba1f72a5ca4d9dc10990b4b5ec05fa2e43512be291128",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "An explicit power saving for the exact discrete Fourier transform",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf"
+        },
+        {
+          "title": "Finite tensor savings and exact Fourier circuits",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Finite-tensor-savings-and-exact-Fourier-circuits-September-25-2026/main.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/130.md",
+      "publishedSummary": "Gives a deterministic length-<i>n</i> discrete Fourier transform algorithm using $`O(n(\\log n)^{1-\\delta})`$ operations for every <i>n</i>, with explicit $`\\delta=10^{-13}`$. The model uses exact complex arithmetic, unrestricted coefficients and a supplied root of unity, and counts scalar preparation and logarithmic-word indexing. ([Lean](lean/docs/130.md))"
+    },
+    {
+      "id": "107",
+      "name": "Matrix multiplication",
+      "shortName": "Multiply matrices",
+      "field": "algorithms",
+      "summary": "How much work does it take to multiply two large grids of numbers?",
+      "why": "Matrix multiplication sits inside scientific computing and machine learning. The exponent describes how arithmetic grows with grid size.",
+      "opportunity": "Lower the exponent, or extend a bound to more kinds of numbers. Compare results over the same field.",
+      "metric": {
+        "symbol": "ω",
+        "label": "Arithmetic exponent",
+        "direction": "lower",
+        "value": 2.25,
+        "display": "2.25",
+        "formula": "O_{\\varepsilon}(n^{\\omega+\\varepsilon})",
+        "explanation": "Smaller ω means a stronger asymptotic arithmetic-complexity bound. The October headline applies to complex numbers.",
+        "unit": "exponent"
+      },
+      "assumptions": "Square matrix multiplication over ℂ in division-free arithmetic programs, allowing every fixed positive exponent slack ε. This is an arithmetic-operation bound, not a bit-operation or benchmark bound.",
+      "formalizationScope": "The notes report ω(ℂ) ≤ 9/4, plus separate rectangular and all-field bounds. Their all-field result is < 2.371054886006746; it does not by itself establish 9/4 over every field.",
+      "baselineReviewHash": "6f2db60b5dcdefa60cad5d29c3159f0263b79b694a399f049eb36091a75712af",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "An Upper Bound of 9/4 for the Matrix Multiplication Exponent",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/paper.pdf"
+        },
+        {
+          "title": "Complex Matrix Multiplication Below 2.258 and Rectangular Bounds",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026/Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026.pdf"
+        },
+        {
+          "title": "Staggered extraction for exact matrix multiplication over every field",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Staggered-extraction-for-exact-matrix-multiplication-over-every-field-September-24-2026/Staggered-extraction-for-exact-matrix-multiplication-over-every-field-September-24-2026.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/107.md",
+      "publishedSummary": "Proves $`\\omega\\le9/4`$ over ℂ, giving $`O_\\varepsilon(n^{9/4+\\varepsilon})`$ arithmetic operations for square matrix multiplication. In characteristic zero, some inner dimension <i>n</i><sup><i>a</i></sup> with <i>a</i> &gt; 0.465 permits $`n^{2+o(1)}`$ rectangular multiplication. Further square bounds give <i>ω</i> &lt; 2.258 outside finitely many positive characteristics and <i>ω</i> &lt; 2.371054886006746 over every fixed field. ([Lean](lean/docs/107.md))"
+    },
+    {
+      "id": "003",
+      "name": "Zero-free regions",
+      "shortName": "Zero-free regions",
+      "field": "number",
+      "summary": "How far can we push the region where certain functions are guaranteed never to equal zero?",
+      "why": "The zeros of these functions are connected to the distribution of prime numbers. A smaller boundary rules out zeros in a larger region.",
+      "opportunity": "Lower the right-hand boundary of the zero-free half-plane, preserving the same class of functions.",
+      "metric": {
+        "symbol": "β",
+        "label": "Zero-free boundary",
+        "direction": "lower",
+        "value": 0.875,
+        "display": "0.875",
+        "formula": "\\operatorname{Re}(s)>\\beta",
+        "explanation": "Smaller β widens the zero-free region. Improving this bound is not the same as proving the Riemann hypothesis.",
+        "unit": "boundary"
+      },
+      "assumptions": "The strict half-plane Re(s) > β for Dirichlet L-functions and finite-order Hecke L-functions over ℚ(√−3). Principal-character poles at s = 1 are excluded. No claim is made about the boundary line.",
+      "formalizationScope": "The notes report 7/8 bounds for zeta, Dirichlet, and the specified Hecke functions. This dashboard has not compiled or audited their theorem dependencies.",
+      "baselineReviewHash": "807c75aa73b9f0ccb0774836f0a3715e88eaf228a9bc1cb3a9db254a3c690de4",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane \\Re s> 7/8",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+        },
+        {
+          "title": "The Quasi-Riemann Hypothesis (alternate 11/12 proof)",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/paper2.pdf"
+        },
+        {
+          "title": "Uniform exclusion of Landau–Siegel zeros",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/003.md",
+      "publishedSummary": "Proves that every Dirichlet <i>L</i>-function, including $`\\zeta(s)`$, is zero-free in $`\\Re s\\gt 7/8`$, resolving the quasi-Riemann hypothesis. The same half-plane is zero-free for every finite-order Hecke <i>L</i>-function over $`\\mathbb Q(\\sqrt{-3})`$. A companion gives a different proof of the zero-free half-plane $`\\Re s\\gt 11/12`$. ([Lean](lean/docs/003.md))"
+    },
+    {
+      "id": "191",
+      "name": "Heilbronn triangles",
+      "shortName": "Heilbronn triangles",
+      "field": "geometry",
+      "summary": "Place points in a square so that even the smallest triangle stays as large as possible.",
+      "why": "This is a simple geometric puzzle with very difficult guarantees. The goal is to keep every triangle formed by three points from being too tiny.",
+      "opportunity": "Find a larger positive saving η with a valid construction for every sufficiently large number of points.",
+      "metric": {
+        "symbol": "η",
+        "label": "Triangle-area saving",
+        "direction": "higher",
+        "value": null,
+        "display": "η > 0",
+        "formula": "\\Delta(n)\\ge c n^{-2+\\eta}",
+        "explanation": "A larger η gives a stronger lower bound on the smallest triangle. The catalogue states a positive saving without a numeric headline.",
+        "unit": "exponent"
+      },
+      "assumptions": "The manuscript claim concerns n points in the unit square and all sufficiently large n, with one fixed positive area-exponent saving. It is an asymptotic construction, not a finite point-set record.",
+      "formalizationScope": "The reported Lean statement covers an unbounded sequence of sizes. The manuscript’s every-sufficiently-large-n claim is broader; the existence of the linked formalization does not certify that broader scope.",
+      "baselineReviewHash": "539be30d773a05a3253ec8b134b893462e9acf9b0a7d379d97fdef6d140994f0",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A power improvement in the Heilbronn triangle lower bound",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-improvement-in-the-Heilbronn-triangle-lower-bound-September-25-2026/main.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/191.md",
+      "publishedSummary": "For every sufficiently large <i>n</i>, constructs <i>n</i> points in the unit square such that every triangle has area at least $`n^{-2+c}`$ for one absolute <i>c</i> &gt; 0. This disproves the conjectured almost-<i>n</i><sup>−2</sup> upper bound in Heilbronn's triangle problem, which asks how large the smallest determined triangle can be. ([Lean](lean/docs/191.md))"
+    },
+    {
+      "id": "124",
+      "name": "Job scheduling",
+      "shortName": "Schedule jobs",
+      "field": "algorithms",
+      "summary": "Finish jobs as quickly as possible when some jobs must wait for others.",
+      "why": "The released manuscript claims optimal schedules for unit-length jobs on three identical machines, including arbitrary dependencies.",
+      "opportunity": "Explore whether the exact guarantee extends to more machines, while checking that the algorithm really finds an optimal schedule.",
+      "metric": {
+        "symbol": "m",
+        "label": "Machines covered",
+        "direction": "scope",
+        "value": 3,
+        "display": "3 machines",
+        "formula": "P_m\\mid\\mathrm{prec},p_j=1\\mid C_{\\max}",
+        "explanation": "Here the frontier is the scope of the guarantee: how many machines it covers. A proposed four-machine adaptation still needs careful review.",
+        "unit": "machines"
+      },
+      "assumptions": "Nonpreemptive unit-length jobs with arbitrary acyclic precedence constraints on three identical parallel machines. The objective is minimum makespan, and the input explicitly encodes the precedence graph.",
+      "formalizationScope": "The notes report exact deadline feasibility and optimal schedules for nonempty instances in polynomial binary-input time. Four-machine adaptations require their own completeness and optimality arguments.",
+      "baselineReviewHash": "cfa4f6222ee317a02758880e2ea80dba06aa0d3409c6324ab6ae2f86d57628d8",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/124.md",
+      "publishedSummary": "Resolves the three-processor unit-job scheduling problem of Garey and Johnson: a deterministic polynomial-time algorithm minimizes makespan for nonpreemptive unit-length jobs with arbitrary precedence constraints on three identical parallel machines. For an explicitly given precedence graph, it decides deadline feasibility exactly and constructs a feasible schedule. ([Lean](lean/docs/124.md))"
+    },
+    {
+      "id": "138",
+      "name": "Subset Sum",
+      "shortName": "Subset Sum",
+      "field": "algorithms",
+      "summary": "Choose some numbers from a list so that they add up to an exact target.",
+      "why": "This classic problem appears in combinatorial search. A smaller exponent reduces the theoretical growth of a worst-case search.",
+      "opportunity": "Lower the runtime exponent below 0.49 under the same randomized word-RAM guarantees.",
+      "metric": {
+        "symbol": "α",
+        "label": "Exponential-time exponent",
+        "direction": "lower",
+        "value": 0.49,
+        "display": "0.49",
+        "formula": "O(2^{\\alpha n})",
+        "explanation": "Smaller α means a better exponential runtime bound. The guarantee includes a success probability of at least two thirds.",
+        "unit": "exponent"
+      },
+      "assumptions": "Worst-case lists of positive integers, including repeats, with polynomial-bit inputs. Randomized word-RAM time is bounded on every execution; success is at least 2/3 per input, with O(n+b)-bit words.",
+      "formalizationScope": "The catalogue does not list an accompanying top-line Lean formalization for this Subset Sum claim.",
+      "baselineReviewHash": "78b17b8c1b6442747175d1447901636e1532854654179e2de857c0ed66503a48",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Subset Sum in Time O(2^{0.49n})",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Subset-Sum-in-Time-2-power-0-49n-October-4-2026/subset-sum.pdf"
+        },
+        {
+          "title": "A Low-Space Algorithm for Worst-Case Subset Sum",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Low-Space-Algorithm-for-Worst-Case-Subset-Sum-September-26-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": null,
+      "publishedSummary": "Gives a uniform randomized classical algorithm for worst-case Subset Sum in ordinary $`O(2^{0.49n})`$ word-RAM time on polynomial-bit inputs, where <i>n</i> counts the integers. The time bound holds on every execution and success probability is at least 2/3 on every input. Inputs may repeat positive integers; words have $`O(n+b)`$ bits for maximum input bit length <i>b</i>."
+    },
+    {
+      "id": "111",
+      "name": "Matroid prophet inequalities",
+      "shortName": "Choose as options arrive",
+      "field": "algorithms",
+      "summary": "Choose valuable options as they arrive, with limited capacity and no undo button.",
+      "why": "You get one historical sample per option. The guarantee compares your expected total reward with the best feasible selection made by someone who sees all values in advance.",
+      "opportunity": "Raise the guaranteed fraction while retaining one sample, arbitrary finite matroids and an adversary that sees every sample, value and random seed.",
+      "metric": {
+        "symbol": "α",
+        "label": "Guaranteed reward fraction",
+        "direction": "higher",
+        "value": 4.794036587204811e-94,
+        "display": "2⁻³¹⁰",
+        "formula": "\\mathbb E[\\mathrm{reward}]\\ge\\alpha\\,\\mathbb E[\\mathrm{OPT}]",
+        "explanation": "Larger α guarantees a greater fraction of the expected hindsight optimum. This is a theorem coefficient, not observed performance or a polynomial-time implementation.",
+        "unit": "reward fraction"
+      },
+      "assumptions": "Every finite labeled matroid known in advance; independent nonnegative element values with one independent identically distributed sample per element. Only the expected offline optimum must be finite. Choices are irrevocable and feasible after every arrival prefix. The arrival order may depend measurably on all samples, values and the complete finite random seed; computation and storage need not be polynomial.",
+      "formalizationScope": "The release notes report a one-sample prophet guarantee of 2⁻³¹⁰ and a separate fixed-weight hidden-vector selection guarantee of 2⁻²⁹³. The latter alone is not the one-sample theorem. This app has not independently compiled or checked the Lean dependencies.",
+      "baselineReviewHash": "3b115827c59c9bcb99208b3d205efdee2ef78d997cf0fe46d9876005beafa370",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "One Sample Suffices for Matroid Prophet Inequalities against an Almighty Adversary",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/One-Sample-Suffices-for-Matroid-Prophet-Inequalities-against-an-Almighty-Adversary-September-23-2026/final.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/111.md",
+      "publishedSummary": "For every finite matroid known in advance, gives a distribution-independent online rule using one independent sample per element and earning a universal constant fraction of the expected offline optimum. Values are independent and nonnegative, with finite expected optimum. The guarantee holds even when the arrival-order adversary sees all samples, values, and the rule's entire random seed; no polynomial-time implementation is asserted. ([Lean](lean/docs/111.md))"
+    },
+    {
+      "id": "137",
+      "name": "Time-to-space simulation",
+      "shortName": "Use less memory",
+      "field": "algorithms",
+      "summary": "Simulate a long computation while using much less memory.",
+      "why": "A simulation can trade a great deal of time for less storage. This result concerns the memory needed to recover a machine’s outcome.",
+      "opportunity": "Lower the power of T in the space bound, preserving the one-tape model and input-access assumptions.",
+      "metric": {
+        "symbol": "a",
+        "label": "Space exponent",
+        "direction": "lower",
+        "value": 0.4,
+        "display": "0.4",
+        "formula": "O(T^a\\log^C(T+2))",
+        "explanation": "A smaller a means less asymptotic memory. This theorem does not promise a faster simulation.",
+        "unit": "exponent"
+      },
+      "assumptions": "A fixed deterministic machine with one writable tape and finitely many read-only input heads; head moves are local, initial contents are independent of T, and symbols have polylogarithmic-space access. Simulation time is unrestricted.",
+      "formalizationScope": "The notes report finite-control and halting outcomes in two-fifths-power space. General multitape simulations and hierarchy consequences are outside the selected statements.",
+      "baselineReviewHash": "60c01f895b547aeb5788fe12cf14affee9fec9e59571c14e0e5b0bdc527e3d1b",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Simulating One-Tape Time in Two-Fifths-Power Space",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Simulating-One-Tape-Time-in-Two-Fifths-Power-Space-September-25-2026/article.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/137.md",
+      "publishedSummary": "Determines the halting and finite-control outcome of a fixed deterministic one-writable-tape machine up to time <i>T</i> using $`O(T^{2/5}\\log^C(T+2))`$ space, improving the square-root exponent. Heads move at most one cell per step; finitely many read-only input heads are allowed. Initial contents are independent of <i>T</i>, and contents and input symbols have polylogarithmic-space access. Simulation time is unrestricted. ([Lean](lean/docs/137.md))"
+    },
+    {
+      "id": "108",
+      "name": "Permanent lower bounds",
+      "shortName": "Permanent complexity",
+      "field": "algorithms",
+      "summary": "Prove that a certain difficult calculation cannot be represented by a small determinant.",
+      "why": "Lower bounds tell us what computation cannot avoid. The permanent looks like a determinant but behaves very differently.",
+      "opportunity": "Raise the exponent in the border determinantal complexity lower bound, keeping the same representation model.",
+      "metric": {
+        "symbol": "a",
+        "label": "Lower-bound exponent",
+        "direction": "higher",
+        "value": 3,
+        "display": "3",
+        "formula": "\\mathrm{bdc}(\\mathrm{perm}_n)\\ge c n^a",
+        "explanation": "Larger a proves a stronger limitation. This is a lower bound on representation size, not an algorithm speedup.",
+        "unit": "exponent"
+      },
+      "assumptions": "The complex n×n permanent, represented by determinants of affine-linear matrices or coefficientwise limits of such representations. The lower bound holds asymptotically for matrix size.",
+      "formalizationScope": "The notes report cubic exact and border determinantal lower bounds, including an explicit threshold. Broader algebraic-branching-program consequences are outside those statements.",
+      "baselineReviewHash": "6ba45081ccca9f4a9022c3ecbe6c3487aac30b3b227a0274b278413d94506c2e",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A cubic lower bound for border determinantal complexity of the permanent",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-cubic-lower-bound-for-border-determinantal-complexity-of-the-permanent-September-24-2026/A-cubic-lower-bound-for-border-determinantal-complexity-of-the-permanent-September-24-2026.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/108.md",
+      "publishedSummary": "Proves an $`\\Omega(n^3)`$ lower bound for the border determinantal complexity of the $`n\\times n`$ permanent over ℂ. Even coefficientwise limits of determinants of affine-linear matrices require matrix size at least $`cn^3`$, for an absolute <i>c</i> &gt; 0 and all sufficiently large <i>n</i>; the same bound therefore holds for exact representations. ([Lean](lean/docs/108.md))"
+    },
+    {
+      "id": "104",
+      "name": "Strategy games",
+      "shortName": "Find winning strategies",
+      "field": "algorithms",
+      "summary": "Find the best strategy in games played on a network of states.",
+      "why": "These games are used to reason about systems that interact over time. The release gives quasipolynomial algorithms with precisely stated input models.",
+      "opportunity": "Improve the time bound toward polynomial time, without dropping reward, probability, or priority encodings.",
+      "metric": {
+        "symbol": "t",
+        "label": "Algorithmic growth",
+        "direction": "lower",
+        "value": null,
+        "display": "Quasipolynomial",
+        "formula": "2^{O((\\log(L+2))^2)}",
+        "explanation": "This is a quasipolynomial upper bound, not a polynomial-time guarantee. Hidden constants prevent a direct numeric comparison.",
+        "unit": "growth class"
+      },
+      "assumptions": "The manuscript’s deterministic quasipolynomial bit-time claim uses complete binary input length L, including signed rewards, rational probabilities, and priorities. Its ordinary, stochastic, and parity variants have distinct output guarantees.",
+      "formalizationScope": "The reported Lean scope is a randomized ordinary mean-payoff winning-set algorithm with success ≥ 7/8, plus a finite counterexample. It does not certify the deterministic and extended-game claims shown in the family description.",
+      "baselineReviewHash": "a0d078a082b62f737bd95b8cba68f0614e22775a8d4c046fdceab3af0de45e24",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Turn-Based Stochastic Mean-Payoff Games in Deterministic Quasipolynomial Time",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Turn-Based-Stochastic-Mean-Payoff-Games-in-Deterministic-Quasipolynomial-Time-October-5-2026/stochastic-mean-payoff-games.pdf"
+        },
+        {
+          "title": "Mean-payoff parity games in quasipolynomial time",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Mean-payoff-parity-games-in-quasipolynomial-time-October-5-2026/mean-payoff-parity.pdf"
+        },
+        {
+          "title": "Deterministic quasipolynomial-time mean-payoff games",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
+        },
+        {
+          "title": "Randomized quasipolynomial-time mean-payoff games",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Randomized-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/104.md",
+      "publishedSummary": "Gives deterministic algorithms using $`2^{O((\\log(L+2))^2)}`$ bit operations, for complete binary input length <i>L</i>, for ordinary mean-payoff games and two separate extensions. They compute exact values and optimal positional strategies in ordinary games, the nonnegative expectation-of-liminf value set in turn-based stochastic games, and the winning set for nonnegative liminf mean payoff conjoined with parity. Signed rewards, rational chance probabilities, and parity priorities are unrestricted and binary-encoded. ([Lean](lean/docs/104.md))"
+    },
+    {
+      "id": "120",
+      "name": "Exact graph matching",
+      "shortName": "Match a network",
+      "field": "algorithms",
+      "summary": "Pair as many connected points as possible without using a point twice.",
+      "why": "Matching appears in assignment and network problems. The released manuscript describes a randomized exact algorithm with almost-linear word time.",
+      "opportunity": "Improve the remaining overhead or reliability while retaining an exact maximum matching.",
+      "metric": {
+        "symbol": "t",
+        "label": "Runtime overhead",
+        "direction": "lower",
+        "value": null,
+        "display": "Almost linear",
+        "formula": "(n+m)^{1+o(1)}",
+        "explanation": "The o(1) term tends to zero as the graph grows. A concrete overhead bound is needed before a numeric improvement can be ranked.",
+        "unit": "growth class"
+      },
+      "assumptions": "Simple undirected graphs, exact maximum-cardinality matching, randomized word time, and success at least 2/3. The time bound holds on every computation path.",
+      "formalizationScope": "The catalogue does not list an accompanying top-line Lean formalization for this matching claim.",
+      "baselineReviewHash": "18d1655ad958d7b32d3533bf5a1465b42fd943fa5670894ce58b6674457b2f0d",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Almost-Linear-Time Maximum-Cardinality Matching in General Graphs",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Almost-Linear-Time-Maximum-Cardinality-Matching-in-Sparse-General-Graphs-September-24-2026/main.pdf"
+        }
+      ],
+      "leanUrl": null,
+      "publishedSummary": "Gives a randomized algorithm finding an exact maximum-cardinality matching in any simple undirected graph in $`(n+m)^{1+o(1)}`$ word time, with success probability at least 2/3. The time bound holds on every computation path. The same guarantees apply to finding a spanning subgraph with prescribed admissible vertex degrees, or deciding that none exists."
+    },
+    {
+      "id": "121",
+      "name": "Edit distance",
+      "shortName": "Compare two strings",
+      "field": "algorithms",
+      "summary": "Estimate how many insertions, deletions, or changes turn one string into another.",
+      "why": "Comparing sequences is useful across computing. The manuscript claims almost-linear expected time for any fixed relative approximation error.",
+      "opportunity": "Improve runtime overhead, accuracy dependence, or success guarantees while holding the other parameters fixed.",
+      "metric": {
+        "symbol": "t",
+        "label": "Runtime overhead",
+        "direction": "lower",
+        "value": null,
+        "display": "Almost linear",
+        "formula": "N^{1+o(1)}",
+        "explanation": "Accuracy is fixed before the asymptotic comparison. Bounds with different accuracy settings are not directly comparable.",
+        "unit": "growth class"
+      },
+      "assumptions": "Unit-cost edit distance, fixed rational relative error ε ∈ (0,1), total length N, and polynomially bounded integer symbols. The approximation succeeds with probability at least 2/3; the time guarantee is expected time.",
+      "formalizationScope": "The notes report a randomized (1+ε) estimate in expected almost-linear work at fixed accuracy. This is not an exact-distance or deterministic worst-case-time claim.",
+      "baselineReviewHash": "6c09ed5dbc60aafe4ac02cdcdc01f95cd09875e6405254a7d53b65df5740b668",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "An Almost-Linear Approximation Scheme for Edit Distance",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/An-Almost-Linear-Approximation-Scheme-for-Edit-Distance-September-24-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/121.md",
+      "publishedSummary": "For every fixed rational $`\\varepsilon\\in(0,1)`$, gives a randomized $`(1+\\varepsilon)`$ approximation to unit-cost edit distance in worst-case expected time $`N^{1+o(1)}`$, with success probability at least 2/3. The strings have total length <i>N</i> and polynomially bounded integer symbols. This is an asymptotic guarantee at fixed accuracy. ([Lean](lean/docs/121.md))"
+    },
+    {
+      "id": "122",
+      "name": "Deletion-trace reconstruction",
+      "shortName": "Recover a noisy string",
+      "field": "algorithms",
+      "summary": "Reconstruct a string from many copies in which some characters have disappeared.",
+      "why": "How many damaged copies are enough? The release leaves a gap between a superpolynomial lower bound and a quasipolynomial reconstruction bound.",
+      "opportunity": "Close the gap in the number of samples needed, for the same deletion probability.",
+      "metric": {
+        "symbol": "s",
+        "label": "Samples required",
+        "direction": "lower",
+        "value": null,
+        "display": "Quasipolynomial upper bound",
+        "formula": "n^{c\\log\\log n}\\le s(n)\\le\\exp((\\log n)^C),\\quad c,C>0",
+        "explanation": "Stronger upper bounds need fewer samples; stronger lower bounds prove more are necessary. Keep these two directions separate.",
+        "unit": "sample growth"
+      },
+      "assumptions": "Worst-case binary strings, independent deletion traces, and a fixed deletion probability in (0,1). Upper and lower sample bounds answer different questions; the uniform decoder upper bound assumes a known fixed rational retention probability.",
+      "formalizationScope": "The notes report superpolynomial and quantitative sample lower bounds. The family’s quasipolynomial decoder upper bound is outside the selected formalized statement.",
+      "baselineReviewHash": "3212d6bffcce34ba4f5514e2e936873563b98f4b9fc3996e17ebdf5ac7a6c22c",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Uniform quasipolynomial-time trace reconstruction",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Uniform-quasipolynomial-time-trace-reconstruction-October-5-2026/uniform-trace-reconstruction.pdf"
+        },
+        {
+          "title": "A latest-anchor induction with spectrally compact masks for worst-case trace reconstruction",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-latest-anchor-induction-with-spectrally-compact-masks-for-worst-case-trace-reconstruction-October-5-2026/paper.pdf"
+        },
+        {
+          "title": "Quantitative lower bounds for trace reconstruction",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/quantitative-lower-bounds-for-trace-reconstruction-September-24-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/122.md",
+      "publishedSummary": "At every fixed deletion probability in $`(0,1)`$, reconstructing an arbitrary length-<i>n</i> binary string requires $`n^{\\Omega(\\log\\log n)}`$ independent traces, ruling out polynomial-sample reconstruction. A uniform decoder achieves quasipolynomial sample and running-time bounds for known fixed rational retention probabilities. When the deletion probability is at most $`n^{-\\varepsilon}`$ for fixed <i>ε</i> &gt; 0, both bounds become polynomial in the input and parameter encoding. ([Lean](lean/docs/122.md))"
+    },
+    {
+      "id": "159",
+      "name": "Arithmetic progressions",
+      "shortName": "Avoid equal-step patterns",
+      "field": "combinatorics",
+      "summary": "How many numbers can a set contain while avoiding a fixed-length equal-step pattern?",
+      "why": "Dense sets are forced to contain structure. Quantitative bounds measure how strong that guarantee can be.",
+      "opportunity": "Increase the decay exponent εₖ for a fixed progression length k, with explicit constants and assumptions.",
+      "metric": {
+        "symbol": "εₖ",
+        "label": "Density-decay exponent",
+        "direction": "higher",
+        "value": null,
+        "display": "εₖ > 0",
+        "formula": "|A|\\le C_k N e^{-c_k(\\log N)^{\\varepsilon_k}}",
+        "explanation": "A larger exponent gives a stronger size restriction. The catalogue does not specify its numerical value.",
+        "unit": "exponent"
+      },
+      "assumptions": "A nonconstant k-term arithmetic progression with fixed k ≥ 3, and subsets of {1,…,N}. The positive constants and decay exponent depend on k; changing k changes the comparison.",
+      "formalizationScope": "The reported Lean statement is the divergent-reciprocal-sum consequence. The quantitative progression-free-set upper bound displayed here is outside that selected statement.",
+      "baselineReviewHash": "7e9b061c99de74e7a946bef32b85e7bee8db4a11584dcfa7370bc691650648e3",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Quasipolynomial Bounds for Arithmetic Progressions",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/159.md",
+      "publishedSummary": "Proves Erdős's conjecture that every set of positive integers with divergent reciprocal sum contains arithmetic progressions of every finite length. Quantitatively, for each fixed <i>k</i> ≥ 3, every subset of $`\\{1,\\ldots,N\\}`$ with no nonconstant <i>k</i>-term progression has size at most $`C_kN\\exp[-c_k(\\log N)^{\\varepsilon_k}]`$, with positive constants depending only on <i>k</i>. ([Lean](lean/docs/159.md))"
+    },
+    {
+      "id": "160",
+      "name": "Van der Waerden numbers",
+      "shortName": "Colouring number lines",
+      "field": "combinatorics",
+      "summary": "Colour the number line while avoiding a long equal-step pattern of one colour.",
+      "why": "Lower bounds say how long an interval can remain free of a monochromatic pattern.",
+      "opportunity": "Strengthen the growth constant or construction for specified numbers of colours and pattern lengths.",
+      "metric": {
+        "symbol": "c",
+        "label": "Growth constant",
+        "direction": "higher",
+        "value": null,
+        "display": "c > 0",
+        "formula": "W_r(k)>k^{ck\\lfloor\\log_2 r\\rfloor}",
+        "explanation": "Larger c gives a stronger lower bound. Colour count and progression length must be held consistent.",
+        "unit": "constant"
+      },
+      "assumptions": "For every integer colour count r ≥ 2 and all sufficiently large progression lengths k, with one absolute threshold independent of r. Wᵣ(k) is the least interval length forcing a monochromatic k-term progression.",
+      "formalizationScope": "The notes report the uniform lower bound with c = 1/100000, its growth limits, and boundary values. Sharper intermediate estimates are excluded. The catalogue headline itself states only c > 0.",
+      "baselineReviewHash": "1fb75412bfa4e80e34daf91156351ea0e721ac4cc0870491b23ce51d19ae6bc5",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Quantitative Superexponential Bounds for van der Waerden Numbers",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quantitative-Superexponential-Bounds-for-van-der-Waerden-Numbers-September-23-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/160.md",
+      "publishedSummary": "Resolves Erdős's superexponential-growth question for van der Waerden numbers. If $`W_r(k)`$ is the least interval length forcing a monochromatic <i>k</i>-term progression in every <i>r</i>-coloring, then $`W_r(k)\\gt k^{ck\\lfloor\\log_2 r\\rfloor}`$ for an absolute <i>c</i> &gt; 0, all <i>r</i> ≥ 2 and sufficiently large <i>k</i>, uniformly in <i>r</i>. In particular, $`W_r(k)^{1/k}\\to\\infty`$ for each fixed <i>r</i>. ([Lean](lean/docs/160.md))"
+    },
+    {
+      "id": "167",
+      "name": "Planar unit distances",
+      "shortName": "Equal-distance pairs",
+      "field": "geometry",
+      "summary": "How many pairs of points in the plane can sit exactly one unit apart?",
+      "why": "A stronger counting bound limits how frequently one distance can occur in a point arrangement.",
+      "opportunity": "Increase the power saving δ in the bound on the number of unit-distance pairs.",
+      "metric": {
+        "symbol": "δ",
+        "label": "Counting-exponent saving",
+        "direction": "higher",
+        "value": null,
+        "display": "δ > 0",
+        "formula": "O(n^{4/3-\\delta})",
+        "explanation": "Larger δ lowers the upper bound. The published family description states a positive, unspecified saving.",
+        "unit": "exponent"
+      },
+      "assumptions": "Unordered unit-distance pairs among n distinct points in the Euclidean plane. The exponent saving and multiplicative constant are absolute; this bound is distinct from the pinned-distances theorem.",
+      "formalizationScope": "The notes separately report a unit-distance bound with one fixed exponent β < 4/3 and a weak pinned-distances theorem. Neither description gives a numerical saving δ to rank.",
+      "baselineReviewHash": "33722386bae1f26d33a2423cf43377928cc6d1f5544d7ad8901a6bf60625db3d",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "The weak pinned planar distance theorem",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-weak-pinned-planar-distance-theorem-September-23-2026/paper.pdf"
+        },
+        {
+          "title": "A power saving for planar unit distances",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-planar-unit-distances-September-23-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/167.md",
+      "publishedSummary": "Proves the weak pinned Erdős distance conjecture: for every fixed <i>ε</i> &gt; 0, all but $`o(n)`$ points of any <i>n</i>-point planar set determine at least $`n^{1-\\varepsilon}`$ distinct nonzero distances. A complementary theorem bounds the number of unit-distance pairs by $`O(n^{4/3-\\delta})`$ for an absolute <i>δ</i> &gt; 0. ([Lean](lean/docs/167.md))"
+    },
+    {
+      "id": "161",
+      "name": "Sidorenko counterexamples",
+      "shortName": "Sidorenko patterns",
+      "field": "combinatorics",
+      "summary": "Find a small bipartite pattern that appears less often than the random-graph prediction.",
+      "why": "The released manuscript challenges a long-standing prediction about how frequently patterns occur in networks, using one connected pattern with 35 vertices and 66 edges.",
+      "opportunity": "Seek a smaller valid counterexample pattern, or clarify which parts of the construction are necessary. A minimum within one finite template is not a minimum over all counterexamples.",
+      "metric": {
+        "symbol": "v",
+        "label": "Counterexample-pattern vertices",
+        "direction": "lower",
+        "value": 35,
+        "display": "35 vertices",
+        "formula": "|V(H)|=35,\\quad |E(H)|=66,\\quad t_H(G)<t_{K_2}(G)^{66}",
+        "explanation": "Smaller valid counterexample patterns would reduce the construction size. Internal counting constants and finite-template minima do not establish a smaller general counterexample.",
+        "unit": "vertices"
+      },
+      "assumptions": "A connected bipartite pattern H with 35 vertices and 66 edges, and a nonempty finite simple host graph G. Homomorphism density counts all vertex maps, not only injective copies. Smaller patterns require a valid analytic counterexample, not just a finite certificate in a chosen construction template.",
+      "formalizationScope": "The release notes report a finite host graph violating the Sidorenko density inequality for the fixed 35-vertex, 66-edge pattern. The separate forcing-conjecture consequence is outside that formalized statement. This app has not independently compiled the proof.",
+      "baselineReviewHash": "2fdc79642ed74951bae716e3130fd799c1b0ef03f8f3080f2b6144a21063ed5e",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A counterexample to Sidorenko's conjecture",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-counterexample-to-Sidorenkos-conjecture-September-23-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/161.md",
+      "publishedSummary": "Disproves Sidorenko's conjecture with a connected bipartite pattern on 35 vertices and 66 edges that occurs less frequently than in a random graph of the same edge density. The same pattern disproves the forcing conjecture of Skokan and Thoma: matching its density and the edge density of a constant graphon need not force quasirandomness. ([Lean](lean/docs/161.md))"
+    },
+    {
+      "id": "183",
+      "name": "Halving lines",
+      "shortName": "Split a point cloud",
+      "field": "geometry",
+      "summary": "Count lines through two points that leave equally many other points on each side.",
+      "why": "These counts are connected to geometric search and the complexity of separating point sets.",
+      "opportunity": "Make the positive exponent saving explicit or improve it, keeping the no-three-collinear assumption.",
+      "metric": {
+        "symbol": "ε",
+        "label": "Counting-exponent saving",
+        "direction": "higher",
+        "value": null,
+        "display": "ε > 0",
+        "formula": "O(n^{4/3-\\varepsilon})",
+        "explanation": "Larger ε gives fewer possible halving lines. The catalogue says the positive exponents are nonquantitative.",
+        "unit": "exponent"
+      },
+      "assumptions": "Even planar point sets with no three collinear, all sufficiently large sizes, and one absolute positive saving. A halving pair’s line leaves equally many remaining points on either side.",
+      "formalizationScope": "The notes report halving-pair bounds and level-switch bounds with additional generic-position assumptions. The constants are existential, rather than numerical headline values.",
+      "baselineReviewHash": "f1becd1b85f77e5d6141e35283f8818c0ce40c92ee8710c063b68d9581d0445e",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A power saving for planar halving lines",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-planar-halving-lines-September-25-2026/main.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/183.md",
+      "publishedSummary": "Improves the planar halving-line bound to $`O(n^{4/3-\\varepsilon})`$ for sets with no three collinear and an absolute <i>ε</i> &gt; 0. More generally, an <i>n</i>-point set with no three collinear has $`O(n(k+1)^{1/3-\\varepsilon_0})`$ strictly separable <i>k</i>-subsets for $`1\\le k\\le n/2`$, with an absolute $`\\varepsilon_0\\gt 0`$. The constants and positive exponents are nonquantitative. ([Lean](lean/docs/183.md))"
+    },
+    {
+      "id": "182",
+      "name": "Polynomial-free differences",
+      "shortName": "Avoid polynomial gaps",
+      "field": "combinatorics",
+      "summary": "How large can a set be while its pairwise gaps avoid values of a fixed polynomial?",
+      "why": "Quantitative size bounds describe how hard it is for a set to avoid this arithmetic structure.",
+      "opportunity": "Improve the saving cₖ for a fixed polynomial degree and preserve the required modular-root conditions.",
+      "metric": {
+        "symbol": "cₖ",
+        "label": "Size-exponent saving",
+        "direction": "higher",
+        "value": null,
+        "display": "cₖ > 0",
+        "formula": "|A|=O_h(N^{1-c_k})",
+        "explanation": "Larger cₖ gives a stronger upper bound on the set’s size. It depends on polynomial degree.",
+        "unit": "exponent"
+      },
+      "assumptions": "A fixed intersective integer polynomial h of degree k ≥ 2 with positive leading coefficient. Differences exclude nonzero positive-argument values; intersective means a root modulo every modulus. Prime-argument variants require a stronger modular condition.",
+      "formalizationScope": "The reported Lean statement is the square-difference case. The general intersective-polynomial and prime-argument claims in the family description have broader scope.",
+      "baselineReviewHash": "9659d0668706b1f7ea3e2eddafcdb2b0ab995ec777b0b9566a9b88016e0dfda9",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A power saving for intersective polynomial differences with an exponent depending only on the degree",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-intersective-polynomial-differences-with-an-exponent-depending-only-on-the-degree-October-5-2026/power-saving-intersective-polynomial-differences.pdf"
+        },
+        {
+          "title": "A Power Saving for Polynomial Differences at Prime Arguments",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Power-Saving-for-Polynomial-Differences-at-Prime-Arguments-October-5-2026/prime-argument-polynomial-differences.pdf"
+        },
+        {
+          "title": "A power saving for square-difference-free sets",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-square-difference-free-sets-September-24-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/182.md",
+      "publishedSummary": "For every fixed intersective integer polynomial <i>h</i> of degree <i>k</i> ≥ 2 with positive leading coefficient, proves that a subset of $`\\{1,\\ldots,N\\}`$ avoiding nonzero values $`h(1),h(2),\\ldots`$ as differences has size $`O_h(N^{1-c_k})`$, with $`c_k\\gt 0`$ depending only on degree. Here intersective means having a root modulo every modulus. For prime arguments, a power saving also holds when <i>h</i> has a unit root modulo every modulus, with exponent allowed to depend on <i>h</i>. ([Lean](lean/docs/182.md))"
+    },
+    {
+      "id": "174",
+      "name": "Thin spanning trees",
+      "shortName": "Sparse network backbones",
+      "field": "combinatorics",
+      "summary": "Connect a network with a tree that crosses every cut only a few times.",
+      "why": "A tree can be a sparse backbone of a larger network. The goal is to distribute its edges evenly across every possible separation.",
+      "opportunity": "Reduce the universal thinness constant C, preserving the connectivity and constructive guarantees.",
+      "metric": {
+        "symbol": "C",
+        "label": "Thinness constant",
+        "direction": "lower",
+        "value": null,
+        "display": "Universal C",
+        "formula": "|T\\cap\\delta(S)|\\le (C/k)|\\delta(S)|",
+        "explanation": "A smaller C is a thinner guaranteed tree. The overview gives no numerical value to compare.",
+        "unit": "constant"
+      },
+      "assumptions": "Finite loopless k-edge-connected multigraphs with at least two vertices. Cuts count parallel edges with multiplicity, and the constructive runtime uses binary input length.",
+      "formalizationScope": "The notes report both an existential thin-tree bound and a separate deterministic polynomial-time construction. No numerical universal constant C is supplied.",
+      "baselineReviewHash": "e14d02fc64bc0e0d8da5557a8b0c2a5739d3bcf86ba08dad4e4d533b736bf8f1",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "The strong thin tree conjecture",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-strong-thin-tree-conjecture-September-23-2026/paper.pdf"
+        },
+        {
+          "title": "A polynomial-time construction of strong thin trees",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-polynomial-time-construction-of-strong-thin-trees-September-23-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/174.md",
+      "publishedSummary": "Resolves the strong thin-tree conjecture constructively. Every finite loopless <i>k</i>-edge-connected multigraph on at least two vertices has a spanning tree containing at most a universal $`C/k`$ fraction of the edges of every cut. Such a tree can be found deterministically in polynomial time, even with binary-encoded parallel-edge multiplicities. ([Lean](lean/docs/174.md))"
+    },
+    {
+      "id": "265",
+      "name": "Quantum-state approximations",
+      "shortName": "Represent quantum states",
+      "field": "quantum",
+      "summary": "Represent some two-dimensional quantum ground states using manageable mathematical building blocks.",
+      "why": "The released area-law manuscript claims polynomial bond-dimension approximations under a uniform spectral gap.",
+      "opportunity": "Improve the polynomial bond-dimension bound for the same gap, interactions, and approximation error.",
+      "metric": {
+        "symbol": "D",
+        "label": "Bond-dimension growth",
+        "direction": "lower",
+        "value": null,
+        "display": "Polynomial",
+        "formula": "D(L)=L^{O(1)}",
+        "explanation": "A smaller growth exponent means a more compact representation. The constants depend on physical assumptions.",
+        "unit": "representation size"
+      },
+      "assumptions": "Unique ground states on open L×L squares, uniformly gapped nearest-neighbour Hamiltonians, bounded interactions, and global vector approximation error at most L⁻¹. Polynomial bond dimension is not a guarantee for arbitrary quantum states.",
+      "formalizationScope": "The catalogue does not list an accompanying top-line Lean formalization for this quantum-state approximation claim.",
+      "baselineReviewHash": "c830814fb3295d7571e65542af8c7e8dd6ebccdae9db70dc5fe3a42807b0589d",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "A two-dimensional area law from a global spectral gap",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf"
+        },
+        {
+          "title": "Polynomial PEPS approximation of gapped square-grid ground states",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": null,
+      "publishedSummary": "Proves an entropy area law for unique ground states of finite-range Hamiltonians on arbitrary finite induced square-lattice domains, using only a uniform full-system spectral gap and bounds on the local interactions. On open $`L\\times L`$ squares, uniformly gapped nearest-neighbor ground states also admit projected entangled-pair state approximations with polynomial bond dimension and global vector error at most <i>L</i><sup>−1</sup>."
+    },
+    {
+      "id": "277",
+      "name": "Entangled-game repetition",
+      "shortName": "Repeat quantum games",
+      "field": "quantum",
+      "summary": "How quickly does a quantum team’s chance of beating a threshold fall when a game is repeated?",
+      "why": "An exponential decay guarantee limits how much coordinated quantum strategies can help across repeated games.",
+      "opportunity": "Strengthen the decay rate while fixing the game and the gap above its entangled value.",
+      "metric": {
+        "symbol": "c",
+        "label": "Exponential-decay rate",
+        "direction": "higher",
+        "value": null,
+        "display": "c > 0",
+        "formula": "\\Pr(\\mathrm{wins}\\ge(v+\\delta)k)\\le e^{-ck}",
+        "explanation": "Larger c means a stronger bound. Different games or threshold gaps cannot be ranked together.",
+        "unit": "decay rate"
+      },
+      "assumptions": "A finite two-player one-round game with finite-dimensional entangled value v < 1, a fixed gap 0 < δ < 1−v, and independent repetitions. Joint entangled strategies and correlated questions within each game are allowed.",
+      "formalizationScope": "The notes report exponential decay with explicit dependence on δ and answer-set sizes. The separate distribution-dependent cubic bound is excluded; rates for different games or gaps are not directly comparable.",
+      "baselineReviewHash": "51c54e4ae7c407673090db57ffac25ac6008ce26d5fd862becacc8e1eaa6747c",
+      "baselineFresh": true,
+      "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "papers": [
+        {
+          "title": "Threshold parallel repetition for finite-dimensional entangled games",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Threshold-parallel-repetition-for-finite-dimensional-entangled-games-September-25-2026/paper.pdf"
+        }
+      ],
+      "leanUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/277.md",
+      "publishedSummary": "Proves exponential threshold repetition for every finite two-player one-round game: if its entangled value is <i>v</i> &lt; 1, the probability of winning at least a fraction $`v+\\delta`$ of <i>k</i> independent repetitions decays exponentially in <i>k</i>, for $`0\\lt \\delta\\lt 1-v`$. Arbitrary joint finite-dimensional entangled strategies and correlated question distributions are allowed. ([Lean](lean/docs/277.md))"
+    }
+  ],
+  "projects": [
+    {
+      "id": "crocswap",
+      "repo": "CrocSwap/integer-mult-bounds",
+      "branch": "main",
+      "problemId": "109",
+      "name": "Integer multiplication bounds",
+      "summary": "A community effort to sharpen the theoretical limit for multiplying enormous integers.",
+      "approach": "Build smaller finite networks, check exact certificates, and review how their savings transfer to the full algorithm.",
+      "status": "Saved maintainer review",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds",
+      "readmeUrl": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/README.md",
+      "updatedAt": "2026-10-10T14:13:38Z",
+      "stars": 166,
+      "forks": 67,
+      "openIssues": 240,
+      "sourceHash": "b81f8035b859007add6693c6d860371c9100a6766e494045495a28a457a5fcb9",
+      "checkedAt": "2026-10-10T14:49:16.315Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "CrocSwap/integer-mult-bounds",
+        "defaultBranch": "main",
+        "commit": "12a4934d15006e8c10f9b2264f13f8f341be802b",
+        "readmeHash": "b81f8035b859007add6693c6d860371c9100a6766e494045495a28a457a5fcb9"
+      },
+      "claim": {
+        "scope": "Conditional on retained analytic and fixed-tape interfaces. Finite certificates and written review do not establish the complete multiplication theorem. Maintainer scope: Conditional on retained all-size compiler, weighted/common-ancestor chart, restored rows, selectors/routing, prime supply, precision/recovery, complex symbolic correctness and analytic transfer; finite replay and written review, not a full formal multiplication theorem.",
+        "source": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/certificates/selected-result.json",
+        "observedAt": "2026-10-10T14:49:16.315Z",
+        "authority": "maintainer-reviewed",
+        "independentlyVerified": false,
+        "value": 0.000723571590007464,
+        "display": "0.000723571590007464",
+        "kind": "conditional",
+        "evidence": "{\n  \"status\": \"Published on main: maintainer-reviewed conditional construction\",\n  \"kappa\": \"90446448750933/125000000000000000\",\n  \"decimal\": \"0.000723571590007464\",\n  \"source_prs\": [\n    279,\n    276,\n    244,\n    234,\n    209,\n    197,\n    237,\n    200,\n    193,\n    168,\n    144\n  ],\n  \"source_manifest\": \"research/five-stage-gen4-banks/MANIFEST.json\",\n  \"certificate\": \"research/community-pr279-audit/certificate.json\",\n  \"certificate_sha256\": \"6a457a34b4db57417e5b253cf1c169da2bd6aff4c21363a31fd85dc931d49589\",\n  \"proof\": \"research/five-stage-gen4-banks/PROOF.md\",\n  \"proof_supplements\": {\n    \"research/five-stage-gen4-banks/BANK-PROOF.md\": \"bbc328e05848a211c981288514380a4ba12fddaed16c9d23328b5764502be411\"\n  },\n  \"review\": \"docs/research/community-pr279-review.md\",\n  \"validation\": \"docs/research/community-pr279-integration.json\",\n  \"reproduce\": \"make gen4-bank-verify\",\n  \"scope\": \"Conditional on retained all-size compiler, weighted/common-ancestor chart, restored rows, selectors/routing, prime supply, precision/recovery, complex symbolic correctness and analytic transfer; finite replay and written review, not a full formal multiplication theorem.\",\n  \"previous_kappa\": \"330942774629799/500000000000000000\",\n  \"previous_certificate\": \"research/coordinated-frames-and-entrance-banks/certificate.json\",\n  \"previous_audited_kappa\": \"710046193349537/1000000000000000000\",\n  \"audited_source_head\": \"4d8c31eec7ae618645cb058101cb4e72a97268d3\"\n}",
+        "review": {
+          "sourcePR": 279,
+          "reviewedHead": "4d8c31eec7ae618645cb058101cb4e72a97268d3",
+          "kappa": "90446448750933/125000000000000000",
+          "scope": "Conditional on retained all-size compiler, weighted/common-ancestor chart, restored rows, selectors/routing, prime supply, precision/recovery, complex symbolic correctness and analytic transfer; finite replay and written review, not a full formal multiplication theorem.",
+          "selectionHash": "df836c6d34509e980d067bd5678489c968bc6e329af9dd82c6207abf6443da89",
+          "reviewPath": "docs/research/community-pr279-review.md",
+          "validationPath": "docs/research/community-pr279-integration.json",
+          "reviewHash": "2dffff824e2124baa5c6ece5d0d9c9ea93faeca4a2903a61f706085590f26915",
+          "validationHash": "e790e42bbd0e57e3be92191309d3489ec91b738239622e69759604212b2d0f29",
+          "artifacts": {
+            "research/community-pr279-audit/certificate.json": "6a457a34b4db57417e5b253cf1c169da2bd6aff4c21363a31fd85dc931d49589",
+            "research/five-stage-gen4-banks/PROOF.md": "75cd7e51722ebcf826070aca4b289a72526d50264688d8c6bb298bf8a7dfef37",
+            "research/five-stage-gen4-banks/BANK-PROOF.md": "bbc328e05848a211c981288514380a4ba12fddaed16c9d23328b5764502be411",
+            "research/five-stage-gen4-banks/MANIFEST.json": "99e202d9ffe5baf89e02796edbfc7095b2b227622eccf7b61afa01fd61aeb385",
+            "research/community-pr279-audit/verification.json": "d63a463096febb74fc70a19db52ed489e66514413142ffd5d08e3bb6266fde66",
+            "research/community-pr279-audit/independent-retiming.json": "9abbc8d2630a4565c59117b73df4fa0f08f93d655a7780e5ccefc29cda701b31",
+            "research/community-pr279-audit/independent-word.json": "749d93632987346d62d7d68c5a05f07526eb9f40627bfc1feb4f4cbee15df206",
+            "research/community-pr279-audit/pr210-complex-scalar.json": "96eefe380f0ecc884f92b1796573e1f4d81c4dc8b0d400de2268ceb0640ff2d5"
+          },
+          "reviewUrl": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/docs/research/community-pr279-review.md",
+          "validationUrl": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/docs/research/community-pr279-integration.json",
+          "prUrl": "https://github.com/CrocSwap/integer-mult-bounds/pull/279",
+          "currentPR": "changed"
+        }
+      },
+      "assessment": {
+        "inspectedCommit": "12a4934d15006e8c10f9b2264f13f8f341be802b",
+        "readmeHash": "b81f8035b859007add6693c6d860371c9100a6766e494045495a28a457a5fcb9",
+        "label": "Maintainer-reviewed conditional construction",
+        "summary": "The selected gen4 construction combines the PR 276 circuit with PR 279 common-delivery retiming at the audited head. The upstream maintainer reviewed the finite replay, producer regeneration and written compatibility argument.",
+        "limitations": "Conditional on retained all-size compiler, weighted/common-ancestor chart, restored rows, selectors/routing, prime supply, precision/recovery, complex symbolic correctness and analytic transfer; finite replay and written review, not a full formal multiplication theorem. The Codex-assisted maintainer review is not independent human peer review. This dashboard has not rerun the proof; the inherited complex scalar receipt was reused after hash checks, not freshly executed. Later PR 279 revisions remain unreviewed.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "certificates/selected-result.json",
+            "sha256": "df836c6d34509e980d067bd5678489c968bc6e329af9dd82c6207abf6443da89",
+            "observedHash": "df836c6d34509e980d067bd5678489c968bc6e329af9dd82c6207abf6443da89",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/certificates/selected-result.json",
+            "state": "matched"
+          },
+          {
+            "path": "docs/research/community-pr279-review.md",
+            "sha256": "2dffff824e2124baa5c6ece5d0d9c9ea93faeca4a2903a61f706085590f26915",
+            "observedHash": "2dffff824e2124baa5c6ece5d0d9c9ea93faeca4a2903a61f706085590f26915",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/docs/research/community-pr279-review.md",
+            "state": "matched"
+          },
+          {
+            "path": "docs/research/community-pr279-integration.json",
+            "sha256": "e790e42bbd0e57e3be92191309d3489ec91b738239622e69759604212b2d0f29",
+            "observedHash": "e790e42bbd0e57e3be92191309d3489ec91b738239622e69759604212b2d0f29",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/docs/research/community-pr279-integration.json",
+            "state": "matched"
+          },
+          {
+            "path": "research/community-pr279-audit/certificate.json",
+            "sha256": "6a457a34b4db57417e5b253cf1c169da2bd6aff4c21363a31fd85dc931d49589",
+            "observedHash": "6a457a34b4db57417e5b253cf1c169da2bd6aff4c21363a31fd85dc931d49589",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/certificate.json",
+            "state": "matched"
+          },
+          {
+            "path": "research/five-stage-gen4-banks/PROOF.md",
+            "sha256": "75cd7e51722ebcf826070aca4b289a72526d50264688d8c6bb298bf8a7dfef37",
+            "observedHash": "75cd7e51722ebcf826070aca4b289a72526d50264688d8c6bb298bf8a7dfef37",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/five-stage-gen4-banks/PROOF.md",
+            "state": "matched"
+          },
+          {
+            "path": "research/five-stage-gen4-banks/BANK-PROOF.md",
+            "sha256": "bbc328e05848a211c981288514380a4ba12fddaed16c9d23328b5764502be411",
+            "observedHash": "bbc328e05848a211c981288514380a4ba12fddaed16c9d23328b5764502be411",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/five-stage-gen4-banks/BANK-PROOF.md",
+            "state": "matched"
+          },
+          {
+            "path": "research/five-stage-gen4-banks/MANIFEST.json",
+            "sha256": "99e202d9ffe5baf89e02796edbfc7095b2b227622eccf7b61afa01fd61aeb385",
+            "observedHash": "99e202d9ffe5baf89e02796edbfc7095b2b227622eccf7b61afa01fd61aeb385",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/five-stage-gen4-banks/MANIFEST.json",
+            "state": "matched"
+          },
+          {
+            "path": "research/community-pr279-audit/verification.json",
+            "sha256": "d63a463096febb74fc70a19db52ed489e66514413142ffd5d08e3bb6266fde66",
+            "observedHash": "d63a463096febb74fc70a19db52ed489e66514413142ffd5d08e3bb6266fde66",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/verification.json",
+            "state": "matched"
+          },
+          {
+            "path": "research/community-pr279-audit/independent-retiming.json",
+            "sha256": "9abbc8d2630a4565c59117b73df4fa0f08f93d655a7780e5ccefc29cda701b31",
+            "observedHash": "9abbc8d2630a4565c59117b73df4fa0f08f93d655a7780e5ccefc29cda701b31",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/independent-retiming.json",
+            "state": "matched"
+          },
+          {
+            "path": "research/community-pr279-audit/independent-word.json",
+            "sha256": "749d93632987346d62d7d68c5a05f07526eb9f40627bfc1feb4f4cbee15df206",
+            "observedHash": "749d93632987346d62d7d68c5a05f07526eb9f40627bfc1feb4f4cbee15df206",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/independent-word.json",
+            "state": "matched"
+          },
+          {
+            "path": "research/community-pr279-audit/pr210-complex-scalar.json",
+            "sha256": "96eefe380f0ecc884f92b1796573e1f4d81c4dc8b0d400de2268ceb0640ff2d5",
+            "observedHash": "96eefe380f0ecc884f92b1796573e1f4d81c4dc8b0d400de2268ceb0640ff2d5",
+            "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/pr210-complex-scalar.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "fourier-eumemic",
+      "repo": "eumemic/exact-dft-bounds",
+      "branch": "main",
+      "problemId": "130",
+      "name": "Batched Fourier transforms",
+      "summary": "A conditional argument transferring a community-built network to exact Fourier transforms.",
+      "approach": "Group work into recursive batches and certify the resulting exponent with exact arithmetic.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/eumemic/exact-dft-bounds",
+      "readmeUrl": "https://github.com/eumemic/exact-dft-bounds/blob/6f87d1a0c9ae462cdcb2034a1361c87623221e66/README.md",
+      "updatedAt": "2026-10-09T09:34:28Z",
+      "stars": 5,
+      "forks": 1,
+      "openIssues": 1,
+      "sourceHash": "eb030a25060f0b93abd7b8e301650ef70e428045fc0cfe1afd1ed52fda297acb",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "eumemic/exact-dft-bounds",
+        "defaultBranch": "main",
+        "commit": "6f87d1a0c9ae462cdcb2034a1361c87623221e66",
+        "readmeHash": "eb030a25060f0b93abd7b8e301650ef70e428045fc0cfe1afd1ed52fda297acb"
+      },
+      "claim": {
+        "scope": "The stated bound includes a log-log factor. Every smaller fixed saving can absorb that factor; the endpoint itself is not a pure-power guarantee.",
+        "source": "https://github.com/eumemic/exact-dft-bounds/blob/6f87d1a0c9ae462cdcb2034a1361c87623221e66/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.0004856,
+        "display": "δ < 0.0004856",
+        "kind": "conditional",
+        "evidence": "# Exact DFT with a 4.856·10⁻⁴ power saving in the logarithm\n\n$$\nT(n)=O\\!\\left(n(\\log n)^{\\theta}(\\log\\log n)^{4-\\theta}\\right),\\qquad\n\\theta = 1-\\frac{607}{1250000} = 1-4.856\\times10^{-4}.\n$$\n\nThis bound applies to the exact discrete Fourier transform of every length n. It also applies to\nexact complex convolution, as a bilinear algorithm with general multiplication allowed for the\npointwise products (as in OpenAI's Corollary 1.3). It uses the exact complex-arithmetic model of OpenAI's\n[An explicit power saving for the exact discrete Fourier transform](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf)\n(25 September 2026), where 1 − θ ≈ 2.1·10⁻¹³. The saving here is about 2.3·10⁹ times larger, and\nfor every fixed κ < 4.856·10⁻⁴ the cost is O(n (log n)^(1−κ)).\n\nThe result depends on the correctness of a community-built finite network (see Scope).\n\n**[Proof note (PDF)](artifacts/batched-dft-note.pdf)** · [LaTeX](notes/batched-dft-note.tex) ·\n[network children](certificates/network-children.json) · [moment certificate](certificates/moment.json)\n\n"
+      },
+      "assessment": {
+        "inspectedCommit": "6f87d1a0c9ae462cdcb2034a1361c87623221e66",
+        "readmeHash": "eb030a25060f0b93abd7b8e301650ef70e428045fc0cfe1afd1ed52fda297acb",
+        "label": "Exact finite moment certificate",
+        "summary": "A written Fourier construction is supported by an exact rational moment certificate and a source inventory.",
+        "limitations": "The reported endpoint includes a log-log factor; only strictly smaller fixed savings give a pure power bound. Finite arithmetic does not verify the complete algorithm or transfer argument.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "SOURCES.json",
+            "sha256": "7b50c7016efb294765207c54f9f539e129a13d1804e3a19546f9f7ee63669bec",
+            "observedHash": "7b50c7016efb294765207c54f9f539e129a13d1804e3a19546f9f7ee63669bec",
+            "url": "https://github.com/eumemic/exact-dft-bounds/blob/6f87d1a0c9ae462cdcb2034a1361c87623221e66/SOURCES.json",
+            "state": "matched"
+          },
+          {
+            "path": "certificates/moment.json",
+            "sha256": "57348140ad4d6a7283bd9ed41e9d46c6c2ad9cc86bdfd1c0968fd8ce960e5fb5",
+            "observedHash": "57348140ad4d6a7283bd9ed41e9d46c6c2ad9cc86bdfd1c0968fd8ce960e5fb5",
+            "url": "https://github.com/eumemic/exact-dft-bounds/blob/6f87d1a0c9ae462cdcb2034a1361c87623221e66/certificates/moment.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "fourier-shea",
+      "repo": "shea256/fourier-transform-below-nlogn",
+      "branch": "master",
+      "problemId": "130",
+      "name": "Fourier exponent exploration",
+      "summary": "A research draft proposing a larger saving in the exact Fourier-transform exponent.",
+      "approach": "Adapt finite networks and check the recurrence, array layout, and endpoints.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/shea256/fourier-transform-below-nlogn",
+      "readmeUrl": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/README.md",
+      "updatedAt": "2026-10-10T04:53:39Z",
+      "stars": 15,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "08b2caa75c73911b65f62070a08faedbb31cf50be809a25f04c5f6addfd3594f",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "shea256/fourier-transform-below-nlogn",
+        "defaultBranch": "master",
+        "commit": "62554f945b58454fb8452f4daaca1222ce5ca58e",
+        "readmeHash": "08b2caa75c73911b65f62070a08faedbb31cf50be809a25f04c5f6addfd3594f"
+      },
+      "claim": {
+        "scope": "The source reports incorporation and a Lean replay of an all-positive-length exact DFT theorem with δ = 0.000754736, strictly below tensor saving 0.0007547361. Exact complex arithmetic, supplied roots, scalar preparation and bounded indexing remain part of the model. This app has inspected the pinned report and receipt but has not independently replayed Lean, the official comparator or a second kernel. Independent human review remains pending; the earlier written exposition has not thereby all been formalized.",
+        "source": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.000754736,
+        "display": "7.54736 × 10⁻⁴",
+        "kind": "proposed",
+        "evidence": "# Finite Network Improvements for the Exact Discrete Fourier Transform\n\nA living research project on **OpenAI Math Problem #130**, *An explicit power saving for the exact discrete Fourier transform*. We study how improvements to the complex networks developed around integer multiplication (#109) transfer to all-length Fourier bounds.\n\n<!-- current-result:start -->\n\n## Latest paper\n\n**[Read the latest paper (PDF)](manuscript.pdf)** · [Read online (Markdown)](manuscript.md) · [LaTeX source](tex/manuscript.tex)\n\nThis is the complete current paper: the reusable Fourier argument, the selected network construction and the improvement history. These links stay the same as the paper is updated; earlier versions are preserved under [archive/](archive/).\n\nCurrent selection: **[Sussman and Boukhalfa five-stage complex network](results/five-stage-pr233.md)**, recorded 2026-10-09.\n\n```math\nT(n)=O\\left(n(\\log n)^{1-\\delta}\\right),\\qquad \\delta=0.000754736.\n```\n\n**An incorporated upstream result with a reproduced Lean proof.** The bound comes from Jacob Sussman's five-stage framework and Chafik Boukhalfa's stronger instantiation of the community circuit. Independent human mathematical review remains pending.\n\nThe exponent saving is approximately **7.547 billion times** OpenAI's [published headline](https://github.com/openai/math/blob/main/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf) of `delta=1e-13`. It is **12.65% above** the [previous selection](results/round11.md) of `delta=0.00067`. These ratios compare exponent parameters, not measured runtimes.\n\nThe Fourier saving is chosen below the upstream complex-tensor witness `a=0.0007547361`, leaving a positive gap to absorb the Fourier reduction's overhead. The integer-multiplication headline `kappa` is a separate parameter.\n\nThe [finite certificate](verification/certificates/f"
+      },
+      "assessment": {
+        "inspectedCommit": "62554f945b58454fb8452f4daaca1222ce5ca58e",
+        "readmeHash": "08b2caa75c73911b65f62070a08faedbb31cf50be809a25f04c5f6addfd3594f",
+        "label": "Repository-reported all-length Lean replay",
+        "summary": "The current selected five-stage source pair reports Fourier saving δ = 0.000754736, with a finite certificate and a recorded Lean build and statement comparison.",
+        "limitations": "The dashboard has not independently rerun the proof or validated every imported dependency. The source reports no official comparator or second-kernel run and no independent human review. Larger queue targets and integer κ values do not replace this Fourier δ.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "results/registry.json",
+            "sha256": "78f15065fd58fb40674204b1fc2fdb73414825a02e9fda7bc925881285483abc",
+            "observedHash": "78f15065fd58fb40674204b1fc2fdb73414825a02e9fda7bc925881285483abc",
+            "url": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/results/registry.json",
+            "state": "matched"
+          },
+          {
+            "path": "results/five-stage-pr233.md",
+            "sha256": "2e4ecb2da7a276860dc11a3dcae4273999384f8a0b1e5cd3c2115fe8a3bd1b6a",
+            "observedHash": "2e4ecb2da7a276860dc11a3dcae4273999384f8a0b1e5cd3c2115fe8a3bd1b6a",
+            "url": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/results/five-stage-pr233.md",
+            "state": "matched"
+          },
+          {
+            "path": "verification/FIVE_STAGE_AUDIT.md",
+            "sha256": "9c7c411cdf71fefae22ec14e2b10b8df874f6fa282737f13dc5dbff44e28d382",
+            "observedHash": "9c7c411cdf71fefae22ec14e2b10b8df874f6fa282737f13dc5dbff44e28d382",
+            "url": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/verification/FIVE_STAGE_AUDIT.md",
+            "state": "matched"
+          },
+          {
+            "path": "verification/certificates/five_stage_reference.json",
+            "sha256": "295a3f5c0e6843db7fec76b25609d93e0a7aeb60fb79c394e1851ebb6a8789f1",
+            "observedHash": "295a3f5c0e6843db7fec76b25609d93e0a7aeb60fb79c394e1851ebb6a8789f1",
+            "url": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/verification/certificates/five_stage_reference.json",
+            "state": "matched"
+          },
+          {
+            "path": "verification/certificates/five_stage_lean_receipt.json",
+            "sha256": "195df11c9eb43f56a671bd5f90c96f810bac8ea954cde85dc44c100e04190604",
+            "observedHash": "195df11c9eb43f56a671bd5f90c96f810bac8ea954cde85dc44c100e04190604",
+            "url": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/verification/certificates/five_stage_lean_receipt.json",
+            "state": "matched"
+          },
+          {
+            "path": "paper/framework.md",
+            "sha256": "1c9fd478acf2c4e56b70e8077c453000c425b20fbe909ae169a45a290f011e63",
+            "observedHash": "1c9fd478acf2c4e56b70e8077c453000c425b20fbe909ae169a45a290f011e63",
+            "url": "https://github.com/shea256/fourier-transform-below-nlogn/blob/62554f945b58454fb8452f4daaca1222ce5ca58e/paper/framework.md",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "matroid-shea",
+      "repo": "shea256/matroid-prophet-inequality",
+      "branch": "master",
+      "problemId": "111",
+      "name": "A stronger one-sample reward guarantee",
+      "summary": "A written proof proposing a larger guaranteed reward fraction when valuable options arrive one at a time.",
+      "approach": "Strengthen the query-potential lemma, count residual pivot tests jointly, and account for rounding and exceptional events.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/shea256/matroid-prophet-inequality",
+      "readmeUrl": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/README.md",
+      "updatedAt": "2026-10-10T06:52:51Z",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 1,
+      "sourceHash": "0486831e71b151036075acb70ec0a7b63aa030e1ef144b49a8abacaad453ac81",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "shea256/matroid-prophet-inequality",
+        "defaultBranch": "master",
+        "commit": "08300e2d9c4a8529db0198631716b7ef20dd8aa5",
+        "readmeHash": "0486831e71b151036075acb70ec0a7b63aa030e1ef144b49a8abacaad453ac81"
+      },
+      "claim": {
+        "scope": "A written one-sample matroid prophet proof proposing a coefficient above 2⁻³⁴, with one independent sample per element and 37n+24 initial fair bits. It retains arbitrary finite matroids, independent nonnegative values, integrable offline optimum, exact observations and an arrival adversary that sees the complete seed. Computation and storage may be exponential. Same-agent audits and finite arithmetic do not prove the universal theorem; independent mathematical review and formalization are pending. The displayed release baseline is the 2⁻³¹⁰ one-sample guarantee, not the separate 2⁻²⁹³ hidden-vector result.",
+        "source": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 5.820766091346741e-11,
+        "display": "> 2⁻³⁴",
+        "kind": "proposed",
+        "evidence": "\n\n```math\n\\mathbb E[\\mathrm{reward}]\\ge 2^{-34}\\,\\mathbb E[\\mathrm{OPT}].\n```\n\nIt uses one independent sample per label and **`37n+24` initial fair bits**.\nThe rule needs no description of the value distributions, maintains matroid\nindependence at every arrival prefix, and retains the full-seed almighty\nadversary. Only the offline optimum must be integrable. Computation and\nstorage may be exponential, and observations are exact; no polynomial-time\nor practical-performance claim is made.\n\n**Status: written proof with same-agent\nverification. Independent mathematical review and formalization are pending.**\nExact arithmetic and finite tests accompany the proof; they do not prove\nits universal assertions. No best-known-bound or priority claim is made.\n\nThe repository is public. The author announced the earlier `2^-36` result on\nOctober 10, 2026; this branch proposes the subsequent `2^-34` refinement.\n\n"
+      },
+      "assessment": {
+        "inspectedCommit": "08300e2d9c4a8529db0198631716b7ef20dd8aa5",
+        "readmeHash": "0486831e71b151036075acb70ec0a7b63aa030e1ef144b49a8abacaad453ac81",
+        "label": "Written proof; independent review pending",
+        "summary": "The current joint-residual draft supersedes the announced 2⁻³⁶ version with a proposed coefficient above 2⁻³⁴ and a recorded exact scalar certificate.",
+        "limitations": "The proof uses the original structural lemmas, a shared-variable encoding and density cutoff. Same-agent second passes and finite tests are not independent mathematical review or a formal theorem. This dashboard has not executed upstream code or formalized the result.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "manuscript.md",
+            "sha256": "11774c0c5a0aebf5061c44e91539cecd90c8882fb97a43d9b831d6c826de8de1",
+            "observedHash": "11774c0c5a0aebf5061c44e91539cecd90c8882fb97a43d9b831d6c826de8de1",
+            "url": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/manuscript.md",
+            "state": "matched"
+          },
+          {
+            "path": "results/current.json",
+            "sha256": "bdc8cb5e8c4be8dae8ce12709fb6213983cdac3665bc4b85426d95216a019f0c",
+            "observedHash": "bdc8cb5e8c4be8dae8ce12709fb6213983cdac3665bc4b85426d95216a019f0c",
+            "url": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/results/current.json",
+            "state": "matched"
+          },
+          {
+            "path": "verification/README.md",
+            "sha256": "e985a030faaacdfc210e57c997a6f3ebe5581ce14e326058f46a532d15848de5",
+            "observedHash": "e985a030faaacdfc210e57c997a6f3ebe5581ce14e326058f46a532d15848de5",
+            "url": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/verification/README.md",
+            "state": "matched"
+          },
+          {
+            "path": "proofs/joint_residual.md",
+            "sha256": "4a5223586ad79b28ddc5342206ad5f70d92c1e50b1a8c13b4d3c6e8b14ffb7f1",
+            "observedHash": "4a5223586ad79b28ddc5342206ad5f70d92c1e50b1a8c13b4d3c6e8b14ffb7f1",
+            "url": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/proofs/joint_residual.md",
+            "state": "matched"
+          },
+          {
+            "path": "proofs/joint_residual_audit.md",
+            "sha256": "8394ac1e3623db57209d4b3316d307fca824739073b99b532ce58b33a6d25adc",
+            "observedHash": "8394ac1e3623db57209d4b3316d307fca824739073b99b532ce58b33a6d25adc",
+            "url": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/proofs/joint_residual_audit.md",
+            "state": "matched"
+          },
+          {
+            "path": "verification/reference/joint_residual_constants_output.json",
+            "sha256": "a874a68a51249652ccfd3272f6e9c3c42b4bacfcc3aa1acdfbf4d38d5bc2c40a",
+            "observedHash": "a874a68a51249652ccfd3272f6e9c3c42b4bacfcc3aa1acdfbf4d38d5bc2c40a",
+            "url": "https://github.com/shea256/matroid-prophet-inequality/blob/08300e2d9c4a8529db0198631716b7ef20dd8aa5/verification/reference/joint_residual_constants_output.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "fourier-lean",
+      "repo": "danadran01/exact-dft-power-saving",
+      "branch": "main",
+      "problemId": "130",
+      "name": "A Fourier bound in Lean",
+      "summary": "A reported formal proof of a stronger exact Fourier-transform saving, built on the released model.",
+      "approach": "Group recursive work, share registers in finite networks, and connect the improvement to the original formal theorem.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/danadran01/exact-dft-power-saving",
+      "readmeUrl": "https://github.com/danadran01/exact-dft-power-saving/blob/1a7b25e3a934459eb2c1bf69f4b85627fbef9cd3/README.md",
+      "updatedAt": "2026-10-09T03:56:04Z",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "0778380c0d69faf0b2263edc4c646ade3ecd6ac8fc3431c3def8389868f98c1e",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "danadran01/exact-dft-power-saving",
+        "defaultBranch": "main",
+        "commit": "1a7b25e3a934459eb2c1bf69f4b85627fbef9cd3",
+        "readmeHash": "0778380c0d69faf0b2263edc4c646ade3ecd6ac8fc3431c3def8389868f98c1e"
+      },
+      "claim": {
+        "scope": "The repository reports an end-to-end Lean theorem in OpenAI’s exact-arithmetic model, with standard axioms only. This app has not independently compiled the proof or checked statement equivalence.",
+        "source": "https://github.com/danadran01/exact-dft-power-saving/blob/1a7b25e3a934459eb2c1bf69f4b85627fbef9cd3/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.0000032,
+        "display": "3.2 × 10⁻⁶",
+        "kind": "proposed",
+        "evidence": "# An improved exponent for the exact power-saving DFT (formally verified)\n\n**Main result.** There is a single deterministic algorithm which, for every n ≥ 1 and x ∈ ℂⁿ,\ncomputes the discrete Fourier transform Fₙx exactly in\n\n> **O(n (log n)^{1 − 3.2·10⁻⁶})** operations,\n\nin the exact-arithmetic model of OpenAI's paper *An explicit power saving for the exact discrete\nFourier transform* (which proves 1 − θ ≈ 2.1·10⁻¹³; its Lean formalization proves 1 − 2·10⁻¹¹).\nThe same holds for exact convolution.\n\nThe result is **formally verified in Lean 4 / Mathlib**, as an extension of OpenAI's open\nformalization ([github.com/openai/math](https://github.com/openai/math)). The final theorem uses only\nthe standard axioms `propext`, `Classical.choice`, `Quot.sound` (no `sorry`, no `native_decide`).\n\n- Paper: [`paper/paper.pdf`](paper/paper.pdf) (LaTeX source alongside).\n- Lean proof: [`lean/`](lean/).\n\n## The two ideas\n1. **Grouped recursion.** OpenAI's recursion runs every directional factor of their finite network as a\n   separate recursive call. All factors of one *edge* of the network form a single tensor power and can\n   be run as one call on a larger fibre. The exponent becomes the root of Σₑ(ρₑ/m)ᵖ = W* instead of\n   log_m(Σₑρₑ/W*). On OpenAI's own formalized network alone this gives O(n (log n)^{1−10⁻⁸}).\n2. **Colour registers.** A new network in which most of the paper's side wires (one per ordered pair\n   of orthogonal triples) are replaced by a few shared registers meeting at common labels, with\n   searched register designs. Factor sizes (30, 20, 41), 2⁴³ roles, 24 600 coordinates.\n\n## Verifying the Lean proof\nRequirements: [elan](https://github.com/leanprover/elan) (the toolchain `leanprover/lean4:v4.34.1` is\npinned in `lean/lean-toolchain`; Mathlib is fetched by Lake).\n\n```bash\ncd lean\nlake exe cache get        # download prebuilt Mathlib\nlake build OAI.Computability.FourierTransform.Main\nlake env lean Check.lean  # prints the statement and its axioms\n```\n\nExpected output of `Check.lean` (abridged):\n\n```\nOAI.PowerSaving.transform_improved : OAI.PowerSaving.ImprovedGoal\ndef OAI.PowerSaving.ImprovedGoal : Prop :=\n∃ order solve W, DFTProgram order solve W ∧ TimeBounds W ∧ (fun n => ↑(W n)) =O[atTop] improvedTime\ndef OAI.PowerSaving.improvedExponent : ℝ := 1 - 32 / 10 ^ 7\n'OAI.PowerSaving.transform_improved' depends on axioms: [propext, Classical.choice, Quot.sound]\n```\n\nA self-contained statement for OpenAI's comparator tool is in\n`lean/ComparatorChallenges/ImprovedFourier.lean` (+ `.json`): OpenAI's challenge file with the three\nnew definitions (`improvedExponent`, `improvedTime`, `ImprovedGoal`) and the two theorems.\n\n`DFTProgram` and `TimeBounds` are OpenAI's definitions, unchanged (file\n`OAI/Computability/FourierTransform/Goal.lean` and OpenAI's challenge statement\n`ComparatorChallenges/UniformFourier.lean` are byte-identical to OpenAI's). `improvedTime n = n·(log n)^improvedExponent`.\n\n## What is new\n- `OAI/Computability/FourierTransform/Grouped/`: the grouped recursion (batch identity, batch addressing\n  in OpenAI's RAM model, multi-size recurs"
+      },
+      "assessment": {
+        "inspectedCommit": "1a7b25e3a934459eb2c1bf69f4b85627fbef9cd3",
+        "readmeHash": "0778380c0d69faf0b2263edc4c646ade3ecd6ac8fc3431c3def8389868f98c1e",
+        "label": "Repository-reported end-to-end Lean proof",
+        "summary": "The verification report identifies an end-to-end theorem in the exact-arithmetic RAM model, an axiom audit and Lean kernel replays.",
+        "limitations": "This app has inspected the statement and verification report, but has not independently compiled Lean or checked every dependency or statement equivalence. The numerical claim remains unreviewed here.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "VERIFICATION.md",
+            "sha256": "f249ce867b751f4ceb17a474d4c411ab540879305bb5ff2fcbad88d3ecd06b74",
+            "observedHash": "f249ce867b751f4ceb17a474d4c411ab540879305bb5ff2fcbad88d3ecd06b74",
+            "url": "https://github.com/danadran01/exact-dft-power-saving/blob/1a7b25e3a934459eb2c1bf69f4b85627fbef9cd3/VERIFICATION.md",
+            "state": "matched"
+          },
+          {
+            "path": "lean/Check.lean",
+            "sha256": "f660d3be862328f3c9f903ec68187fbc3147a4db0b721cca87ea32bc1163df5d",
+            "observedHash": "f660d3be862328f3c9f903ec68187fbc3147a4db0b721cca87ea32bc1163df5d",
+            "url": "https://github.com/danadran01/exact-dft-power-saving/blob/1a7b25e3a934459eb2c1bf69f4b85627fbef9cd3/lean/Check.lean",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "matrix-fields",
+      "repo": "selanavot/matrix-multiplication-all-fields",
+      "branch": "main",
+      "problemId": "107",
+      "name": "Matrix multiplication in every field",
+      "summary": "A reported extension of the 2.25 exponent to every field, including finite fields.",
+      "approach": "Generalize the algebra and document the Lean theorem and its arithmetic model.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/selanavot/matrix-multiplication-all-fields",
+      "readmeUrl": "https://github.com/selanavot/matrix-multiplication-all-fields/blob/08481ef22bca7dc9ffba091083b7c1e81e537220/README.md",
+      "updatedAt": "2026-10-09T03:27:04Z",
+      "stars": 26,
+      "forks": 1,
+      "openIssues": 0,
+      "sourceHash": "25ef57746dd00bc0d6383d9a5918867c6a24bb2b1423701627bde7f86dd37a07",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "selanavot/matrix-multiplication-all-fields",
+        "defaultBranch": "main",
+        "commit": "08481ef22bca7dc9ffba091083b7c1e81e537220",
+        "readmeHash": "25ef57746dd00bc0d6383d9a5918867c6a24bb2b1423701627bde7f86dd37a07"
+      },
+      "claim": {
+        "scope": "Same exponent, broader class of fields. Repository-reported Lean checking; this app does not independently compile the proof or claim a practical speedup.",
+        "source": "https://github.com/selanavot/matrix-multiplication-all-fields/blob/08481ef22bca7dc9ffba091083b7c1e81e537220/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 2.25,
+        "display": "2.25 · every field",
+        "kind": "extension",
+        "evidence": "# Matrix multiplication over arbitrary fields\n\nThis is a focused source fork of [OpenAI's mathematics repository](https://github.com/openai/math), extending its Lean proof of the matrix multiplication exponent bound **ω ≤ 9/4** from the complex numbers to **every field**. The original 9/4 construction and proof are OpenAI's work. This project generalizes the scalar field, supplies the necessary algebraic descent, and keeps the original arithmetic complexity specification.\n\nThe extension of OpenAI's proof to arbitrary fields was found and formalized by **consumer-grade GPT-6 Astra and GPT-6.1 Sol**, working under Sela Navot's direction. Lean checked the resulting formal proof; the verification scope is documented below.\n\n**Paper:** [*The Matrix Multiplication Bound ω ≤ 9/4 over Arbitrary Fields*](paper/paper.pdf)\n([LaTeX source](paper/paper.tex), [build instructions](paper/README.md)).\n**The paper itself was also AI-generated through Codex, under Sela Navot's direction.**\nThe note describes the positive-characteristic modifications and fixed-overhead\ndescent, with explicit attribution to OpenAI's original construction and the\nclassical field-extension argument. The characteristic-zero consequence already\nfollows from OpenAI's proof using standard descent.\n\nThe sources are extracted from the `MatrixMultiplication` subtree at OpenAI commit [`adc7f1241b42e322a6451854ab7e4b4c146bf78a`](https://github.com/openai/math/tree/adc7f1241b"
+      },
+      "assessment": {
+        "inspectedCommit": "08481ef22bca7dc9ffba091083b7c1e81e537220",
+        "readmeHash": "25ef57746dd00bc0d6383d9a5918867c6a24bb2b1423701627bde7f86dd37a07",
+        "label": "Repository-reported Lean field extension",
+        "summary": "The verification report describes Lean and Comparator checks for extending the 9/4 exponent to every field.",
+        "limitations": "This is broader field coverage at the same exponent. Checks reported by the repository are not an independently replayed proof in this app or a practical speed benchmark.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "docs/field-port/VERIFICATION.md",
+            "sha256": "bb366782e78114d7ea12810fe575a6b4da9e3ed1deb64ae20add2233ccd6067a",
+            "observedHash": "bb366782e78114d7ea12810fe575a6b4da9e3ed1deb64ae20add2233ccd6067a",
+            "url": "https://github.com/selanavot/matrix-multiplication-all-fields/blob/08481ef22bca7dc9ffba091083b7c1e81e537220/docs/field-port/VERIFICATION.md",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "zero-crossnox",
+      "repo": "CrossNox/quasi-riemann-hypothesis-extension",
+      "branch": "master",
+      "problemId": "003",
+      "name": "A wider zero-free region",
+      "summary": "A reported extension of the seven-eighths argument to a slightly wider zero-free region.",
+      "approach": "Tune the analytic geometry and certify exact margins, using the upstream proof.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/CrossNox/quasi-riemann-hypothesis-extension",
+      "readmeUrl": "https://github.com/CrossNox/quasi-riemann-hypothesis-extension/blob/f677cc0a820bb2aff86bb4cbe783d076f5c097db/README.md",
+      "updatedAt": "2026-10-09T03:38:39Z",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "01fa9167d59b31b795d8a76129b321b71d3cc3de3823c31a9056dcf10c55e76c",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "CrossNox/quasi-riemann-hypothesis-extension",
+        "defaultBranch": "master",
+        "commit": "f677cc0a820bb2aff86bb4cbe783d076f5c097db",
+        "readmeHash": "01fa9167d59b31b795d8a76129b321b71d3cc3de3823c31a9056dcf10c55e76c"
+      },
+      "claim": {
+        "scope": "An extension of the upstream seven-eighths argument. Its soundness depends on that proof; the app has not independently rerun Lean or Comparator.",
+        "source": "https://github.com/CrossNox/quasi-riemann-hypothesis-extension/blob/f677cc0a820bb2aff86bb4cbe783d076f5c097db/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.8749570698,
+        "display": "0.8749570698",
+        "kind": "extension",
+        "evidence": "# The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane $\\Re(s)>0.8749570698$\n\n[paper.pdf](paper.pdf) states and proves nonvanishing for\n`Re(s) > 4374785349/5000000000 = 0.8749570698`\nfor finite-order Hecke L-functions over `Q(sqrt(-3))` and Dirichlet\nL-functions, including the Riemann zeta function, with the principal pole\nallowed. It extends the analytic estimates in OpenAI's\n[seven-eighths manuscript](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/build/paper.tex).\n\nThis is a small numerical extension of that result. It uses the 7/8 proof\nthroughout and is only as sound as that proof. The paper, the Lean proofs,\nand the scripts were entirely AI generated.\n\nThe geometry uses slot-length increase `t = 42930200831/250000000000000`\nand asymmetry `k = 12457523527/15625000000000`. The physical lengths are\n`17/48+k-t/2` and `23/48-k-t/2`. An exact polynomial certificate gives\nhigh-endpoint margin `1/1250000000000`. The low estimate has margin\n`831/1000000000000000`. Both margins are strictly positive rational numbers.\n\n[OAIHighUnconditional.lean](lean/OAIHighUnconditional.lean) proves the final\nstatements without an assumed moment estimate or prior zero-free bound.\nIt obtains the prior `beta ≤ 7/8`\ntheorem from upstream and proves the perturbed source moments through\n[OAIHighMomentTransport.lean](lean/OAIHighMomentTransport.lean).\nThe theorem names are\n`OAI.SevenEighths.PerturbedZeroFree.bound_zero_supremum`,\n`prove_hecke_nonvanishing`, `prove_dirichlet_nonvanishing`, and\n`prove_zeta_nonvanish"
+      },
+      "assessment": {
+        "inspectedCommit": "f677cc0a820bb2aff86bb4cbe783d076f5c097db",
+        "readmeHash": "01fa9167d59b31b795d8a76129b321b71d3cc3de3823c31a9056dcf10c55e76c",
+        "label": "Repository-reported Lean zero-free extension",
+        "summary": "The formalization report states Hecke, Dirichlet and zeta extensions using the upstream seven-eighths theorem, with Lean and Comparator checks.",
+        "limitations": "The extension depends on the upstream theorem and its model. This app has not independently rerun Lean or Comparator.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "docs/FORMALIZATION.md",
+            "sha256": "3abcc91a57f2d015556426c84dbade59efe460ccbadb7dea62719f11121ae842",
+            "observedHash": "3abcc91a57f2d015556426c84dbade59efe460ccbadb7dea62719f11121ae842",
+            "url": "https://github.com/CrossNox/quasi-riemann-hypothesis-extension/blob/f677cc0a820bb2aff86bb4cbe783d076f5c097db/docs/FORMALIZATION.md",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "zero-cubic",
+      "repo": "lixiang90/RH-Zero-Free-Formalization",
+      "branch": "main",
+      "problemId": "003",
+      "name": "Zero-free boundary certificates",
+      "summary": "Tune a zero-free boundary and formalize its algebraic and analytic components.",
+      "approach": "Isolate a cubic root, certify the parameter geometry, and work toward closing the remaining analytic obligations.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/lixiang90/RH-Zero-Free-Formalization",
+      "readmeUrl": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/README.md",
+      "updatedAt": "2026-10-09T15:32:44Z",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "cee78c28abb41a35dd3d86eff924f00e0152f03798a65d5f424064d122111ec9",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "lixiang90/RH-Zero-Free-Formalization",
+        "defaultBranch": "main",
+        "commit": "ebf33a7da37784960c8bf758d4f901a9e16c1322",
+        "readmeHash": "cee78c28abb41a35dd3d86eff924f00e0152f03798a65d5f424064d122111ec9"
+      },
+      "claim": {
+        "scope": "The repository reports formalizations of the numerical boundary and selected reductions, including a strengthened source-after-slots interface. The complete moment record, remaining source budgets and physical probe remain open; the strongest zeta theorem has an explicit arithmetic-probe hypothesis. An unconditional improved-region proof is pending.",
+        "source": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.874957019420099,
+        "display": "≈ 0.8749570194",
+        "kind": "conditional",
+        "evidence": "# RH-Zero-Free-Formalization\r\n\r\nLean companion to the RH-Weil project's best zero-free-boundary derivation.\r\nAuthor of this formalization: **Li Xiang / lixiang90**.\r\n\r\nThe boundary is\r\n$$\r\n\\sigma_* = \\frac{11}{12}-\\frac{e_*}{4}\r\n          =0.874957019420098946\\ldots,\r\n\\qquad 657e_*^3-954e_*^2+21e_*+20=0,\r\n$$\r\nwith the unique root strictly isolated by\r\n$$\r\n\\frac{16683858898627}{10^{14}}<e_*<\r\n\\frac{16683858898628}{10^{14}}.\r\n$$\r\n\r\n**Proof status:** the exact boundary, continuous algebraic certificate,\r\nparameter feedback, ordered height closure and the concrete zeta inverse\r\nMellin signal are formalized. The separate arithmetic development now checks the complete low-kappa energy\r\ninduction, terminal certificate, finite-row energy bridges, slot construction,\r\nmoving parameters and local Euler corrections. The complete physical probe and its\r\nlow/raw-high estimates remain open. The sharpest zeta theorem\r\nhas an explicit `ZetaInverse.ArithmeticProbeObligation` hypothesis;\r\nan unconditional Lean proof of the improved zero-free region is still pending.\r\n\r\nThe [main paper](papers/kappa-feedback-cubic-boundary-paper.pdf) derives the\r\nstrict half-plane Re(s) > sigmaStar for finite-order Hecke functions over\r\nQ(sqrt(-3)), followed by Dirichlet functions and zeta, **relative to its stated\r\nimported analytic package**. Principal poles are allowed and the boundary\r\nline is excluded. The new code preserves those distinctions.\r\n\r\n## What the kernel checks\r\n\r\n| Module | Content |\r\n|---|---|\r\n| [Boundary](ZeroFree/Boundary.lean) | Root existence by the intermediate value theorem, uniqueness, strict rational isolation, and exact improvement over 7/8, 69999/80000 and the free-b boundary. |\r\n| [Certificate](ZeroFree/Certificate.lean) | Every coefficient identity modulo the cubic, positive coefficients in the real embedding, square completion, and the continuous reference inequality. |\r\n| [Geometry](ZeroFree/Geometry.lean) | Positive margins and ring identities for physical ranges, Gram gaps, slot supply, Euler boxes and the auxiliary buffer. |\r\n| [Feedback](ZeroFree/Feedback.lean) | Exact finite count differences, their bound by a parameter increment divided by 50, the derived phy"
+      },
+      "assessment": {
+        "inspectedCommit": "ebf33a7da37784960c8bf758d4f901a9e16c1322",
+        "readmeHash": "cee78c28abb41a35dd3d86eff924f00e0152f03798a65d5f424064d122111ec9",
+        "label": "Formal components; analytic obligation open",
+        "summary": "The updated proof-status and integrity reports describe 99 selected roots across 34 modules, including a strengthened source-after-slots interface. These are repository-reported replays; the numerical boundary is unchanged.",
+        "limitations": "The earlier source-order gate is reported cleared, but complete source budgets, the four-field moment record and the physical probe remain open. Reported kernel checks do not remove the explicit theorem hypothesis or establish an unconditional improved region; this app has not independently compiled Lean.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "docs/proof-status.md",
+            "sha256": "03b69f62d70f9da84b861478ef434925afc39be4f35dff052ad77952c3a690f9",
+            "observedHash": "03b69f62d70f9da84b861478ef434925afc39be4f35dff052ad77952c3a690f9",
+            "url": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/docs/proof-status.md",
+            "state": "matched"
+          },
+          {
+            "path": "verification/independent-kernel.json",
+            "sha256": "14337695daf10f31304d212fd97e0fa48c4bbe3092911ecdf05beb3fbbb430d9",
+            "observedHash": "14337695daf10f31304d212fd97e0fa48c4bbe3092911ecdf05beb3fbbb430d9",
+            "url": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/verification/independent-kernel.json",
+            "state": "matched"
+          },
+          {
+            "path": "docs/source-assembly-order-audit/README.md",
+            "sha256": "9bc399db0bfece682fce454c894a0ca05d69902b8c75b7a6530354f175829deb",
+            "observedHash": "9bc399db0bfece682fce454c894a0ca05d69902b8c75b7a6530354f175829deb",
+            "url": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/docs/source-assembly-order-audit/README.md",
+            "state": "matched"
+          },
+          {
+            "path": "upstream/plain-kappa/README.md",
+            "sha256": "60fc4d83ac9588bfafe49eb3c98e04c6709c6f4bc90441d07663eebec2c1177c",
+            "observedHash": "60fc4d83ac9588bfafe49eb3c98e04c6709c6f4bc90441d07663eebec2c1177c",
+            "url": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/upstream/plain-kappa/README.md",
+            "state": "matched"
+          },
+          {
+            "path": "upstream/plain-kappa/verification/authored99-independent-evidence-integrity.json",
+            "sha256": "b04cc85b5f16cdf285acd296416ab32c371468639a73f11e97deb1fd98b7d97b",
+            "observedHash": "b04cc85b5f16cdf285acd296416ab32c371468639a73f11e97deb1fd98b7d97b",
+            "url": "https://github.com/lixiang90/RH-Zero-Free-Formalization/blob/ebf33a7da37784960c8bf758d4f901a9e16c1322/upstream/plain-kappa/verification/authored99-independent-evidence-integrity.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "triangles",
+      "repo": "littleBro/heilbronn-triangle-bounds",
+      "branch": "main",
+      "problemId": "191",
+      "name": "Larger smallest triangles",
+      "summary": "A conditional construction seeking a larger guarantee for the smallest triangle.",
+      "approach": "Tune finite packings, prove selected components in Lean, and publish reproducible certificates.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/littleBro/heilbronn-triangle-bounds",
+      "readmeUrl": "https://github.com/littleBro/heilbronn-triangle-bounds/blob/2259fc0f9d7edc0785838bceee835829df034952/README.md",
+      "updatedAt": "2026-10-09T00:24:07Z",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 1,
+      "sourceHash": "52a45ae3797b89d57c3dc8b6fc9b016246fedc8fa787c74c20f5ddd99457bec9",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "littleBro/heilbronn-triangle-bounds",
+        "defaultBranch": "main",
+        "commit": "2259fc0f9d7edc0785838bceee835829df034952",
+        "readmeHash": "52a45ae3797b89d57c3dc8b6fc9b016246fedc8fa787c74c20f5ddd99457bec9"
+      },
+      "claim": {
+        "scope": "Conditional on the pinned manuscript’s geometric estimates. The repository reports formalized finite packing and scale components; the full geometry and Heilbronn theorem are not.",
+        "source": "https://github.com/littleBro/heilbronn-triangle-bounds/blob/2259fc0f9d7edc0785838bceee835829df034952/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 2.923506661672024e-47,
+        "display": "≈ 2.92351 × 10⁻⁴⁷",
+        "kind": "conditional",
+        "evidence": "# Heilbronn triangle bounds: finite packings and improved scales\n\nA conditional research draft by **[Ivan Blinov (@littleBro)](https://github.com/littleBro)**, extending [OpenAI math family 191](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-improvement-in-the-Heilbronn-triangle-lower-bound-September-25-2026), with OpenAI Codex assistance.\n\nThe current version counts a central energy interval in the centered-sphere packing, with dimension d = 13 and an auxiliary cap restricted to a slab. It gives the **conditional paper exponent**\n\n$$\n\\Delta(n)\\ge c\\,n^{-2+\\eta},\\qquad\n\\boxed{\\eta=\\frac{1}{498\\cdot379^{17}+7}\\approx2.92350666167202\\cdot10^{-47}}.\n$$\n\nThe claim is for every sufficiently large n, conditional on the pinned manuscript's geometric estimates. The second-moment bound, layer selection, complete finite packing and selected scale inequalities are proved in Lean. The slab cap has a written finite-field proof; that geometry and the full Heilbronn theorem are not formalized in Lean.\n\n[Proof and review guide](docs/review.md) · [Current certificate](certificates/central.json) · [Lean packing proof](lean/Central.lean) · [Reproduction guide](docs/reproducibility.md)\n\nRun all retained results with Python 3.11+, Git and the pinned Lean 4.11.0 toolchain:\n\n    python scripts/verify_all.py\n\nOn systems with Make, make verify runs the same checks. The command also requires all ten certificates and patches to regenerate byte for byte.\n\n| Packing | k | Conditional paper exponent |\n| --- | --- | --- |\n| Pinned manuscript | T² + 1 | ≈ 3."
+      },
+      "assessment": {
+        "inspectedCommit": "2259fc0f9d7edc0785838bceee835829df034952",
+        "readmeHash": "52a45ae3797b89d57c3dc8b6fc9b016246fedc8fa787c74c20f5ddd99457bec9",
+        "label": "Reviewed finite components",
+        "summary": "The project review and central certificate support finite packing and scale components of a conditional triangle-bound argument.",
+        "limitations": "The full geometric estimates and all-size Heilbronn theorem are not formalized. The finite certificate does not establish those imported estimates.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "docs/review.md",
+            "sha256": "b2b31620a793704f4b391959097257e03889077e41eec8393627ca1253ab6e38",
+            "observedHash": "b2b31620a793704f4b391959097257e03889077e41eec8393627ca1253ab6e38",
+            "url": "https://github.com/littleBro/heilbronn-triangle-bounds/blob/2259fc0f9d7edc0785838bceee835829df034952/docs/review.md",
+            "state": "matched"
+          },
+          {
+            "path": "certificates/central.json",
+            "sha256": "41f9889d0b318bcf51e1bc49c87fb76d0fffced60d0aa04ffca13538c5d26cf9",
+            "observedHash": "41f9889d0b318bcf51e1bc49c87fb76d0fffced60d0aa04ffca13538c5d26cf9",
+            "url": "https://github.com/littleBro/heilbronn-triangle-bounds/blob/2259fc0f9d7edc0785838bceee835829df034952/certificates/central.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "integer-lean",
+      "repo": "platypii/integer-mult-bounds-lean",
+      "branch": "master",
+      "problemId": "109",
+      "name": "Integer multiplication in Lean",
+      "summary": "Work toward checking the entire multiplication proof, including an actual tape machine.",
+      "approach": "Formalize the machine, runtime accounting, and algorithmic components piece by piece.",
+      "status": "Proof in progress",
+      "url": "https://github.com/platypii/integer-mult-bounds-lean",
+      "readmeUrl": "https://github.com/platypii/integer-mult-bounds-lean/blob/c53cc0124e652cbe2bffb13946839cbe5aecc3a6/README.md",
+      "updatedAt": "2026-10-10T11:39:26Z",
+      "stars": 2,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "b0b48be0b96db9314def6dd7aa81fdef6092847ae2a64b64d8c29ff35d96ffaf",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "platypii/integer-mult-bounds-lean",
+        "defaultBranch": "master",
+        "commit": "c53cc0124e652cbe2bffb13946839cbe5aecc3a6",
+        "readmeHash": "b0b48be0b96db9314def6dd7aa81fdef6092847ae2a64b64d8c29ff35d96ffaf"
+      },
+      "claim": {
+        "scope": "The end-to-end multiplication theorem is not proved. The source reports a complete ordinary quadratic-time machine and additional physical stopped-call, child-return and controller components; the final sub-n-log-n fast path remains open. Its target kappa is not an achieved saving. Reported component proofs have not been independently compiled by this dashboard.",
+        "source": "https://github.com/platypii/integer-mult-bounds-lean/blob/c53cc0124e652cbe2bffb13946839cbe5aecc3a6/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": null,
+        "display": "End-to-end proof open",
+        "kind": "verification",
+        "evidence": "# Integer multiplication in Lean\n\n**Work in progress. The end-to-end multiplication theorem is not proved.**\n\n## Main result\n\nThe target is an actual deterministic machine with a fixed finite alphabet and\na fixed number of one-dimensional tapes, correct on every positive input\nlength, with worst-case runtime\n`O(n (max(ceil(log₂ n), 1))^(1 - 83/10^12))`.\n\n`IntegerMultBounds/Machine.lean` defines the machine semantics and the target\nproposition `IntegerMultBounds.Machine.EndToEnd`. This is a proposition to be\nproved, not a theorem or an assumed interface. Its transition function only\nsees the finite state and scanned symbols. Each step writes at most one cell\nper tape and moves each head at most one cell. Constants and the machine are\nchosen before quantifying over inputs.\n\n## Status\n\nSection 5 remains open. Fixed no-order character boundaries, uniform phase and\nnegation, named role exchange, and genuine stopped-denominator return adapters\nare proved. Actual stopped result installation, returned grids and payload\nreconstruction are now derived from execution. Corrected controller composition,\nsaved-return linkage, full recursive correctness and the total runtime recurrence\nstill require integration.\n\nThe machine model, the target statement, and a growing set of algorithmic and\nanalytic components are formalized and checked. See\n[COMPONENTS.md](COMPONENTS.md) for a file-by-file summary of what each\ncomponent proves and what it leaves open, and [PLAN.md](PLAN.md) for a\ndetailed status of each row below, broken down by subcomponent.\n\nRows follow the sections of the OpenAI manuscript, plus the Harvey–van der\nHoeven `O(n log n)` multiplier it uses as a subroutine. *Mathematics* "
+      },
+      "assessment": {
+        "inspectedCommit": "c53cc0124e652cbe2bffb13946839cbe5aecc3a6",
+        "readmeHash": "b0b48be0b96db9314def6dd7aa81fdef6092847ae2a64b64d8c29ff35d96ffaf",
+        "label": "Formalization in progress",
+        "summary": "The source reports a complete ordinary quadratic-time multiplier and substantial tape-machine components, while explicitly leaving the fast end-to-end multiplication theorem unproved.",
+        "limitations": "Inherited precision propagation, interleaved unstopped recursive execution, root callback discharge and the uniform physical recursive cost sum remain open. The Schönhage–Strassen recursion, its cost and tape machines also remain work in progress. A quadratic-time correct machine does not establish the target sub-n-log-n bound.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "AxiomAudit.lean",
+            "sha256": "76c71c3dcebb90a15762e13bba20d80a27241649e497a2b17aeb13fcd34c1743",
+            "observedHash": "76c71c3dcebb90a15762e13bba20d80a27241649e497a2b17aeb13fcd34c1743",
+            "url": "https://github.com/platypii/integer-mult-bounds-lean/blob/c53cc0124e652cbe2bffb13946839cbe5aecc3a6/AxiomAudit.lean",
+            "state": "matched"
+          },
+          {
+            "path": "IntegerMultBounds/Machine.lean",
+            "sha256": "130a6994ab700bab0f4aecce3b8ce95e1d77e2f6f88e0f216cebe5ecbb04bed6",
+            "observedHash": "130a6994ab700bab0f4aecce3b8ce95e1d77e2f6f88e0f216cebe5ecbb04bed6",
+            "url": "https://github.com/platypii/integer-mult-bounds-lean/blob/c53cc0124e652cbe2bffb13946839cbe5aecc3a6/IntegerMultBounds/Machine.lean",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "integer-extension",
+      "repo": "pranavbalakri/integer-mult-bounds-improvement",
+      "branch": "main",
+      "problemId": "109",
+      "name": "Finite-network experiments",
+      "summary": "Explore alternative networks and precision arguments for the multiplication exponent.",
+      "approach": "Publish proof notes, exact-arithmetic certificates, and reproducible finite checks.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/pranavbalakri/integer-mult-bounds-improvement",
+      "readmeUrl": "https://github.com/pranavbalakri/integer-mult-bounds-improvement/blob/2298fe65a8a4d10e18b39edc7e9a5e2d5d50f7b9/README.md",
+      "updatedAt": "2026-10-09T02:35:56Z",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "4c24dd5aa0897a77786c61568f8933c196073b6d3fddd9f17f5da6b14657fe82",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "pranavbalakri/integer-mult-bounds-improvement",
+        "defaultBranch": "main",
+        "commit": "2298fe65a8a4d10e18b39edc7e9a5e2d5d50f7b9",
+        "readmeHash": "4c24dd5aa0897a77786c61568f8933c196073b6d3fddd9f17f5da6b14657fe82"
+      },
+      "claim": {
+        "scope": "Finite checks support conditional arguments. Global interfaces remain inherited assumptions; the latest experimental candidate need not replace the main certificate.",
+        "source": "https://github.com/pranavbalakri/integer-mult-bounds-improvement/blob/2298fe65a8a4d10e18b39edc7e9a5e2d5d50f7b9/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.000036942,
+        "display": "3.6942 × 10⁻⁵",
+        "kind": "conditional",
+        "evidence": "# A stronger conditional bound with a linear precision guard\n\nBuilding on [Swapnil Jain's round-six construction](https://github.com/Swapnil-jain/integer-mult-kappa/tree/f2176bc1124821bf17eb63725bd366d7bdc020a3), this proposed extension gives\n\n$$\nT(n)=O\\!\\left(n(\\log n)^{1-\\kappa}\\right),\\qquad\n\\kappa=\\frac{36942}{10^9}=0.000036942>2^{-15}.\n$$\n\nThis exponent saving is **0.7537% larger** than that repository's witness\n`3666565558019/10^17`. The more substantial change concerns overhead:\n\n- An exact **linear guard**, `Delta = 128(d+1)`, replaces the conservative guard exponent `14694`.\n- Coefficient precision becomes **`p = 768 b^3`**, where `b = ceil(log2 n)`, instead of a choice proportional to `b^14696`.\n- The complex network uses **14,570,080 roles**, down from 207,387,136: **14.23 times fewer complex roles**. The bit network still has 148,225,616 roles.\n- A second parameter choice still beats the comparator while increasing the axis-width exponent about **191 times** and allowing much more arithmetic slack.\n\nThese are **conditional, unreviewed mathematical improvements**. They assume the linked construction's phase transfer, bit-frame compiler, batching, Gaussian inverse, layout"
+      },
+      "assessment": {
+        "inspectedCommit": "2298fe65a8a4d10e18b39edc7e9a5e2d5d50f7b9",
+        "readmeHash": "4c24dd5aa0897a77786c61568f8933c196073b6d3fddd9f17f5da6b14657fe82",
+        "label": "Unreviewed conditional certificate",
+        "summary": "The main README and latest certificate describe a conditional multiplication saving with finite precision and interface checks.",
+        "limitations": "Inherited global interfaces remain assumptions. An experimental candidate or a PASS field cannot replace an inspected main claim or establish the full theorem.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "certificates/latest.json",
+            "sha256": "339b4ccb81edd7a4099bda986d251786300fee76d91f4970ec52ac6c4e525128",
+            "observedHash": "339b4ccb81edd7a4099bda986d251786300fee76d91f4970ec52ac6c4e525128",
+            "url": "https://github.com/pranavbalakri/integer-mult-bounds-improvement/blob/2298fe65a8a4d10e18b39edc7e9a5e2d5d50f7b9/certificates/latest.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "scheduling",
+      "repo": "drbh/scheduling-proof-exploration",
+      "branch": "main",
+      "problemId": "124",
+      "name": "From three machines to four",
+      "summary": "An enthusiast’s exploration of extending an optimal scheduling proof to four machines.",
+      "approach": "Inspect which statements depend on machine count and test the adapted formal development.",
+      "status": "Research target",
+      "url": "https://github.com/drbh/scheduling-proof-exploration",
+      "readmeUrl": "https://github.com/drbh/scheduling-proof-exploration/blob/6faeb33e9bf29c6e769fdd9fd49aa0567078ea5c/README.md",
+      "updatedAt": "2026-10-08T15:00:52Z",
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "c74770de73486a5aaa46c361936c7db9b1efcab9ef62652f3a9a1d88e17de164",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "drbh/scheduling-proof-exploration",
+        "defaultBranch": "main",
+        "commit": "6faeb33e9bf29c6e769fdd9fd49aa0567078ea5c",
+        "readmeHash": "c74770de73486a5aaa46c361936c7db9b1efcab9ef62652f3a9a1d88e17de164"
+      },
+      "claim": {
+        "scope": "The author describes this as educational work and requests review of assumptions. Four machines are a research target here, not an accepted frontier update.",
+        "source": "https://github.com/drbh/scheduling-proof-exploration/blob/6faeb33e9bf29c6e769fdd9fd49aa0567078ea5c/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": null,
+        "display": "4-machine exploration",
+        "kind": "exploration",
+        "evidence": "# scheduling proof adaptation: three machines to four\n\n> [!WARNING]\n> i'm not a mathematician and i dont really know what im doing here. this is for fun, education and exploration. Fable 5.1 and GPT6 Astra helped with the analysis and the changes for four machines. please check the assumptions yourself, my reading of them could be wrong\n\n## what this repo is\n\nthis repo takes the three-machine Lean scheduling development and updates it for four machines. the jobs each take one slot, and they can have dependencies - one job has to finish before another can start. we want to get all the jobs done in the fewest slots\n\nthe first commit is the upstream source, unchanged. the second has the changes for four machines, all together so you can see what actually depends on the number of machines\n\nfor a file by file explanation see [CHANGELOG.md](CHANGELOG.md). or start at `Feasible` in [Model.lean](OAI/Computability/Scheduling/Model.lean). thats the definition of a valid schedule, and the rest of the diff follows it into the slots, the solver, the correctness proofs and the cost estimates\n\nlets take four jobs with no dependencies. with four machines they can all run at once. a solver that gives us two slots has given us a valid schedule, sure, but its missed the one-slot answer. checking that the output is valid doesnt cover that. we also need completeness, so when a schedule fits a deadline the solver can find one\n\nps: the names `ThreeMachine` and `Triple` are intentional. changing those would add a bunch of naming diffs without helping explain the change to four machines\n\n## upstream and building\n\nthere are 53 scheduling files in the baseline, from `openai/math`. this was upstream HEAD when retrieved on 2026-10-08, pinned here to `fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`\n\nhttps://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/OAI/Computability/Scheduling\n\nthe copy drops the `lean/` prefix. toolchain and license are from upstream, as is the Mathlib pin. the Lake config is smaller since we only want to build this library and its Mathlib dependency\n\n```sh\nlake exe cache get\nlake build OAI.Computability.Scheduling.Main\n```\n\n`OAI.ThreeMachine.main_"
+      },
+      "assessment": {
+        "inspectedCommit": "6faeb33e9bf29c6e769fdd9fd49aa0567078ea5c",
+        "readmeHash": "c74770de73486a5aaa46c361936c7db9b1efcab9ef62652f3a9a1d88e17de164",
+        "label": "Educational exploration",
+        "summary": "The README describes a four-machine research target and requests review of its assumptions.",
+        "limitations": "No accepted four-machine bound or validated frontier improvement is reported. A target is not an achieved result.",
+        "state": "matched",
+        "sources": []
+      },
+      "stale": true
+    },
+    {
+      "id": "van-der-waerden",
+      "repo": "rohanarun/van-der-waerden-refinement",
+      "branch": "main",
+      "problemId": "160",
+      "name": "Van der Waerden coefficient refinement",
+      "summary": "A conditional draft seeking a stronger guarantee for equal-step patterns in coloured number lines.",
+      "approach": "Tighten a geometric multiplicity lemma and retune construction parameters, with exact rational checks and a written transfer argument.",
+      "status": "Author claim · unreviewed",
+      "url": "https://github.com/rohanarun/van-der-waerden-refinement",
+      "readmeUrl": "https://github.com/rohanarun/van-der-waerden-refinement/blob/54ac9715fceab938ca77d5980c36ab691765a04d/README.md",
+      "updatedAt": "2026-10-10T12:41:31Z",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "cd41154d35978d0d9f5a428750547f0919870e72e35086eb44d5680d825cde14",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "rohanarun/van-der-waerden-refinement",
+        "defaultBranch": "main",
+        "commit": "54ac9715fceab938ca77d5980c36ab691765a04d",
+        "readmeHash": "cd41154d35978d0d9f5a428750547f0919870e72e35086eb44d5680d825cde14"
+      },
+      "claim": {
+        "scope": "Conditional on the upstream geometric and counting lemmas and a modified local-lemma transfer. The new draft proposes c = 1/25 with a sufficiently-large-k threshold independent of the colour count r. Shorter dilation, sharper bit balance and separate balancing of light positions outside heavy blocks are written dependencies that have not been independently reviewed. Exact rational margins do not prove the full transfer. The retained sharpened region admits every fixed c < 1/24; that endpoint is not asserted. No finite colouring record, runtime speedup or literature priority is established.",
+        "source": "https://github.com/rohanarun/van-der-waerden-refinement/blob/54ac9715fceab938ca77d5980c36ab691765a04d/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": 0.04,
+        "display": "1/25",
+        "kind": "conditional",
+        "evidence": "# Conditional refinements of OpenAI's October 2026 math release\n\nThis research draft proposes a stronger coefficient in the released van der Waerden lower bound, together with an elementary geometric lemma and a parameter-transfer argument. It also gives an abstract obstruction for a selected set of matrix-multiplication profile inequalities.\n\n**Status:** AI-generated mathematical research prepared with Codex. The main refinement is conditional on the upstream geometric and counting arguments; it has not received independent mathematical review or formal verification. This repository does not claim a verified world record or a new matrix-multiplication algorithm. It is an independent follow-up, not an official OpenAI publication.\n\nRead the full argument in **[research-note.tex](research-note.tex)**. Exact checks, parameter choices, and experimental records are included below.\n\n## Main proposed refinement\n\nThe original manuscript establishes a bound of the form\n\n```math\nW_r(k)>k^{c k\\lfloor\\log_2 r\\rfloor}\n```\n\nwith $c=1/100000$, for sufficiently large $k$ and every integer $r\\ge2$. Our conditional parameter-transfer argument admits **$c=1/25$**, with the threshold independent of $r$, and every fixed $c\\lt1/24$ in the same sharpened region.\n\nThat is a **4000-fold increase in the coefficient inside the exponent** (and $193/25\\approx7.72$ times the previous explicit choice $1/193$). The earlier $1/193$ and $1/200$ choices remain included for comparison. No explicit finite coloring record or runtime improvement follows. The threshold may be very large and is not made explicit here.\n\n### Progress over time\n\n![Coefficient c in the van der Waerden lower bound over time](progress/progress.png)\n\nThe data behind the chart are in [progress/progress.json](progress/progress.json) and the chart is regenerated by [progress/progress_chart.py](progress/progress_chart.py). Plain-language summaries of each step are in [progress/](progress/).\n\n### Why the argument changes\n\nThe source bounds the multiplicity of a geometric key by four. Its affinity and separation properties place points of one key on an affine real line, at mutual distances at least one, with squared norms in a half-open interval $[m,m+1)$.\n\nIn fact there are at most **two** such points. Parameterize the line by signed arclength $t$ from its nearest point to the origin, so squared norm is $t^2+C$. Among three parameters, two lie on the same half-line. Their absolute values satisfy $v-u\\ge1$, hence\n\n```math\nv^2-u^2=(v-u)(v+u)\\ge1,\n```\n\ncontradicting membership in a common half-open interval of width one. This elementary lemma is proved directly; applying it to the original construction still requires the source's hypotheses.\n\nUsing this multiplicity bound, write $D=\\lceil k^a\\rceil$, $M=\\lceil k^m\\rceil$, and $p=k^{-b}$. The note derives the sufficient region\n\n```math\na,b,c>0,\\quad 3a\\lt m\\lt 1,\\quad b\\lt a,\\quad 3a\\lt 1-b,\n```\n\n```math\n0<\\delta<1,\\quad 0<\\gamma\\le\\delta/4,\\quad \\gamma<(1-\\delta)/8,\\quad 2c<\\gamma b/2.\n```\n\n| Choice | $a$ | $m$ | $b$ | $\\delta$ | $\\gamma$ | $c$ | Coefficient ratio |\n|---|---|---|---|---|---|---|---|\n| Original dimension scales | 1/10 | 1/2 | 1/20 | 1/10 | 1/40 | 1/4000 | 25 |\n| Retuned parameters | 1/5 | 3/4 | 1/6 | 1/10 | 1/40 | 1/1000 | 100 |\n| Earlier 500-fold choice | 1/4 | 4/5 | 247/1000 | 1/3 | 41/500 | 1/200 | 500 |\n| New proposed choice | 1/4 | 4/5 | 2499/10000 | 1/3 | 83/1000 | 1/193 | 100000/193 |\n\nThe new choice has strictly positive exact margins and stays below the retained region's endpoint $1/192$. Its full transfer argument and margin table are in [near-limit-proof.md](near-limit-proof.md).\n\nFor the earlier 500-fold row, $\\gamma b/2-2c=127/1000000$ and both affine entropy power gaps equal $3/1000$. These strict margins are checked with exact rational arithmetic in [parameters.json](parameters.json) and [audit_math.py](audit_math.py).\n\nThe same sufficient region admits every fixed positive $c<1/192$. The endpoint is not asserted, and this is only a supremum within the retained estimates. The full transfer proof and its dependencies are in the note; passing the scripts does not establish that transfer as a theorem.\n\n### Breaking t"
+      },
+      "assessment": {
+        "inspectedCommit": "54ac9715fceab938ca77d5980c36ab691765a04d",
+        "readmeHash": "cd41154d35978d0d9f5a428750547f0919870e72e35086eb44d5680d825cde14",
+        "label": "Exact conditional parameter audit",
+        "summary": "The sharpened-region proof note and exact parameter audit support the displayed conditional coefficient c = 1/25; the proposed sufficient range is strictly c < 1/24.",
+        "limitations": "The three changes to the local-lemma transfer still require independent mathematical review, alongside imported geometric and counting hypotheses. The endpoint is not attained and no finite threshold or colouring record is supplied.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "experiments/exact-audit.json",
+            "sha256": "917ac588397e9ca1098c8fbccc18d01f16f2ca4ffab6a7a68dfbfdb7b9f9b075",
+            "observedHash": "917ac588397e9ca1098c8fbccc18d01f16f2ca4ffab6a7a68dfbfdb7b9f9b075",
+            "url": "https://github.com/rohanarun/van-der-waerden-refinement/blob/54ac9715fceab938ca77d5980c36ab691765a04d/experiments/exact-audit.json",
+            "state": "matched"
+          },
+          {
+            "path": "research-note.tex",
+            "sha256": "700a23a04b9ac5845fd961366c02fcf781c57334bd1af28a99b41130d28172c2",
+            "observedHash": "700a23a04b9ac5845fd961366c02fcf781c57334bd1af28a99b41130d28172c2",
+            "url": "https://github.com/rohanarun/van-der-waerden-refinement/blob/54ac9715fceab938ca77d5980c36ab691765a04d/research-note.tex",
+            "state": "matched"
+          },
+          {
+            "path": "parameters.json",
+            "sha256": "5d7cc3391820ed4d9ef7b608d0ab574197f2f35b5069b5eba68b645d97f449a2",
+            "observedHash": "5d7cc3391820ed4d9ef7b608d0ab574197f2f35b5069b5eba68b645d97f449a2",
+            "url": "https://github.com/rohanarun/van-der-waerden-refinement/blob/54ac9715fceab938ca77d5980c36ab691765a04d/parameters.json",
+            "state": "matched"
+          },
+          {
+            "path": "sharpened-region-proof.md",
+            "sha256": "daf7302d0a5c1efc0334c6c908a57356863ccf8b18bd1ffcf92b1ac55c321640",
+            "observedHash": "daf7302d0a5c1efc0334c6c908a57356863ccf8b18bd1ffcf92b1ac55c321640",
+            "url": "https://github.com/rohanarun/van-der-waerden-refinement/blob/54ac9715fceab938ca77d5980c36ab691765a04d/sharpened-region-proof.md",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "sidorenko-refinement",
+      "repo": "rohanarun/sidorenko-template-refinements",
+      "branch": "main",
+      "problemId": "161",
+      "name": "Sidorenko template and counting refinements",
+      "summary": "Explore a reported minimum within one finite construction template and tighten an internal counting step.",
+      "approach": "Relate admissible cuts to Hamiltonian cycles, enumerate eligible sphere triangulations, check exact rational obstructions, and tighten the local residual constant using active-support and sequential basis counts. The reported 35-vertex template minimum retains the original pattern size.",
+      "status": "Author claim · unreviewed",
+      "contribution": {
+        "label": "Internal counting constant",
+        "impact": "Pattern size unchanged",
+        "explanation": "The author reports a smaller internal residual counting term, plus a 35-vertex minimum within the specified finite template. This is not a smaller general counterexample or a dimension guarantee for the full construction."
+      },
+      "url": "https://github.com/rohanarun/sidorenko-template-refinements",
+      "readmeUrl": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/README.md",
+      "updatedAt": "2026-10-10T12:41:39Z",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "6d27cab5b9cde46521654f9227b7d167a9a3b48cfa9d9d8e8c50c57b364c6f9a",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "rohanarun/sidorenko-template-refinements",
+        "defaultBranch": "main",
+        "commit": "d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d",
+        "readmeHash": "6d27cab5b9cde46521654f9227b7d167a9a3b48cfa9d9d8e8c50c57b364c6f9a"
+      },
+      "claim": {
+        "scope": "A conditional finite-template and proof-component refinement. The sequential basis-count draft reports internal residual constant 189, so even dimension 190 suffices for one counting stratum; the earlier residue and transverse thresholds of the full construction remain required and may dominate. The 35-vertex minimum applies only within the specified finite template, not all Sidorenko counterexamples. Enumeration completeness and analytic transfer remain dependencies. No smaller general pattern, whole-construction dimension guarantee, independent mathematical review or formal verification is claimed.",
+        "source": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": null,
+        "display": "1641 → 189",
+        "kind": "refinement",
+        "evidence": "# Sidorenko: finite-template minimum and a smaller residual bound\n\nAn independent, AI-generated research draft prepared with Codex, following OpenAI's *A counterexample to Sidorenko's conjecture*. This repository contains three refinements of its method, proofs, exact certificates, and a reproducible enumeration.\n\n**Scope:** a computer-assisted minimum within a specified finite construction template, and a smaller constant in one counting step. This is **not** a minimum for all Sidorenko counterexamples, a smaller general counterexample, or a verified bound on the full construction's dimension. The results depend on the stated source arguments and, for enumeration completeness, plantri. Mathematical priority and formal verification are not claimed.\n\n## Results and proof ideas\n\n### A 35-vertex minimum within the finite template\n\nThe template has distinct triangular faces; every point pair occurs in exactly two faces; each admissible cut partitions the faces into two spanning exposure orders; a probability distribution over cuts crosses every pair with probability at least $1/3$; and incidence color refinement, starting from the two part colors, is discrete.\n\nEach exposure order builds a triangulated polygon containing every point on its boundary. Gluing the two polygons gives a sphere triangulation. Admissible cuts correspond to Hamiltonian cycles in its point graph. Consequently, if $a_e$ is the crossing probability,\n\n$$\\sum_{e\\ni v}a_e=2.$$\n\nThus $a_e\\ge1/3$ forces every point degree to be at most six. We enumerate all simple sphere triangulations on 4 through 12 points and filter by that condition and discrete incidence refinement:\n\n| Points | All triangulations | Degree at most six | Discrete refinement | Exact obstructions |\n|---|---:|---:|---:|---:|\n| 4 | 1 | 1 | 0 | 0 |\n| 5 | 1 | 1 | 0 | 0 |\n| 6 | 2 | 2 | 0 | 0 |\n| 7 | 5 | 5 | 0 | 0 |\n| 8 | 14 | 10 | 0 | 0 |\n| 9 | 50 | 15 | 1 | 1 |\n| 10 | 233 | 30 | 4 | 4 |\n| 11 | 1249 | 44 | 12 | 12 |\n| 12 | 7595 | 77 | 23 | 23 |\n\nFor each surviving graph, the saved nonnegative rational edge weights sum to one and give **every Hamiltonian cycle weight strictly below $1/3$**. Any admissible cut mixture would instead have expected weight at least $1/3$, a contradiction. This excludes arbitrary weighted mixtures, not just three equally weighted cuts.\n\nAn independent exact verifier uses Held–Karp dynamic programming, checks 16,941 cycles in aggregate, and obtains a minimum separating margin of $1/75$. The original 13-point, 22-face certificate gives the matching 35-vertex incidence graph. Completeness remains dependent on plantri's enumeration algorithm; the certificates are not Lean proofs.\n\nAt 13 points, a further enumeration leaves exactly two feasible isomorphism classes within the finite template. One is the original; the other is a different 35-vertex finite certificate. Both pass the combinatorial and support checks. **The alternative is not claimed as a newly proved counterexample:** its full analytic transfer has not been independently verified.\n\n### Residual constant: 1641 to 189\n\nThe latest refinement redoes the nondirect residual count one basis vector at a time, as the original paper already does in its direct case. Every new vector is symplectically orthogonal to everything already placed at either endpoint, which cancels the containment cross terms, and the defect $d=\\sum_i k_i-2k$ counts exactly the vectors that raise a local span without raising the global one. Averaging the remaining intersection terms over the 28-pair allowed graph gives\n\n$$R\\le\\sum_i\\deg(i)^2-3m+\\left\\lfloor\\tfrac{k_i+k_j-1}{2}\\right\\rfloor=262-84+11=189,$$\n\nand defects at least two give ratio at most $122$. An exhaustive audit over all $8{,}192$ supports and $55{,}173$ relaxed defect-one strata attains exactly $189$, only on the full support with every local dimension at or one below full rank. See [sequential-refinement.md](sequential-refinement.md). Thus this nondirect residual contribution is\n\n$$O_D(q^{-D+189})\\qquad(D\\ge189),$$\n\nand **even dimension 190** suffices for this one step, instead of the earlier 980, 1034, or source 1642. Earlier residue and transverse thresholds remain required and may dominate. The graph, cuts, and activation laws are unchanged. The two earlier refinements below are retained as the history of the bound.\n\n### Earlier refinements: 1641 to 1032 to 978\n\nThe original proof's equality stratum forces zero pair dimension wherever cut coverage exceeds $1/3$. Its published cuts exclude five pairs, leaving only 28 potentially active pairs. This tightens the local dimension caps.\n\nWriting $d=\\sum_i k_i-2k\\ge1$, the original counting exponent, including the gain, is bounded by\n\n$$-Dd-k^2+2mk-2m+\\sum_i\\binom{k_i}{2}.$$\n\nThe new caps first bound the remainder by 1196. The earlier relaxation gave 1032. Tracking the active vertex support further requires every supported local dimension to be at least two and uses the degrees of its induced allowed graph. A convexity argument and independent integer dynamic program check all 55,173 feasible defect-one cases over all 8,192 vertex subsets, obtaining **978**. Defects at least two remain covered by the coarser bound. See [support-refinement.md](support-refinement.md) for the full new argument. Thus this nondirect residual contribution is\n\n$$O_D(q^{-D+978})\\qquad(D\\ge978).$$\n\nEven dimension **980** sufficed for this one step at that stage; the sequential count above now lowers it to 190.\n\n## Reproduce\n\nUse Python 3.11 or 3.12:\n\n```sh\npython3 -m venv .venv\n. .venv/bin/activate\npython -m pip install -r requirements.txt\npython -B run_checks.py\n```\n\nGitHub Actions runs the same command on pushes and pull requests. Do not enable Python optimization (`-O` or `PYTHONOPTIMIZE`); certificate assertions must remain active. The runner rejects optimized execution.\n\nThe full argument is in [proof.tex](proof.tex), which has been compiled successfully with the Codex document editor. No compiled PDF is bundled. The tests supplement the mathematical argument; they are not a formal proof of the original papers or an independent review.\n\nThe Sidorenko runner also requires a C compiler (`cc`, or set `CC`) and network access to retrieve one hash-verified original source file. It builds the included unmodified plantri source into ignored `build/`, reruns the enumeration through 13 points, checks the saved certificates independently, verifies the original finite certificate, and recomputes the residual bounds from the original published table. Outputs go to `build/`; the saved evidence is preserved.\n\n## Evidence and tests\n\n- [Exact obstruction witnesses](experiments/cut-obstructions/summary.json), [independent minimum check](experiments/minimality-independent.json).\n- [Order-13 classification](experiments/order-13-classification-independent.json) and [two feasible certificates](experiments/order-13-cuts/).\n- [Residual arithmetic expectations](experiments/residual-expected.json), including every span case.\n- [Active-support expectations](experiments/support-expected.json) and [independent support audit](audit_support.py), included in the standard runner.\n- [Sequential-count expectations](experiments/sequential-expected.json) and [independent sequential audit](audit_sequential.py), included in the standard runner; see [progress.md](progress.md) for the bound over time.\n- [verify_minimality.py](verify_minimality.py) reconstructs faces and refinement separately from the proposal code and optimizes Hamiltonian-cycle weights exactly, without SciPy.\n- [check_complex.py](check_complex.py) checks pair multiplicity, connectedness, exposure orders, coverage, refinement, and support intersections. Duplicate-face and incomplete-exposure mutations are rejected.\n- A corrupted edge-weight certificate is rejected. Floating-point LP success or failure is never used as the final infeasibility certificate.\n\nTo regenerate proposed witnesses, install `requirements-search.txt` and use `certify_cut_obstructions.py --help`. The included optimizer uses SciPy only to suggest rational witnesses; the independent verifier certifies them. `enumerate_triangulations.py` and `search_complex.py` retain the proposal methods for inspection.\n\n## Original sources and third-party code\n\n- OpenAI, [*A counterexample to Sidorenko's conjecture*](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-counterexample-to-Sidorenkos-conjecture-September-23-2026), September 23, 2026, pinned at [`fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb). The original authors retain credit for the construction, analytic lemmas, and baseline certificate.\n- [source-manifest.json](source-manifest.json) pins and hashes the original finite-complex table used in the residual audit; `fetch_sources.py` retrieves it from the original repository.\n- [plantri 5.8](https://users.cecs.anu.edu.au/~bdm/plantri/), by Gunnar Brinkmann, Heidi Van den Camp, and Brendan McKay, supplies the enumeration. Its unmodified C source, manual, [Apache 2.0 license](vendor/plantri/LICENSE-2.0.txt), and [download provenance](vendor/plantri/provenance.json) are included. The saved verification receipt pins the C-source hash.\n\nThis repository is an independent follow-up, not an official OpenAI publication.\n"
+      },
+      "assessment": {
+        "inspectedCommit": "d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d",
+        "readmeHash": "6d27cab5b9cde46521654f9227b7d167a9a3b48cfa9d9d8e8c50c57b364c6f9a",
+        "label": "Finite template and counting refinement",
+        "summary": "The sequential basis-count note and saved arithmetic audit report residual constant 189, improving 978 and the original 1641. The 35-vertex template minimum retains its limited scope.",
+        "limitations": "Even dimension 190 is sufficient for one counting stratum only; earlier full-construction thresholds may dominate. Finite enumeration is not a global minimum or an independently verified analytic counterexample.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "experiments/residual-expected.json",
+            "sha256": "ae991deec136e2bb92dffac2ebdbf6e95e4f50675dcb13d9ad8e25e84af9f832",
+            "observedHash": "ae991deec136e2bb92dffac2ebdbf6e95e4f50675dcb13d9ad8e25e84af9f832",
+            "url": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/experiments/residual-expected.json",
+            "state": "matched"
+          },
+          {
+            "path": "experiments/minimality-independent.json",
+            "sha256": "72cd1a89f06b1f231c081dcf5cb62448654fb75e3f062f35e83d284e1e178613",
+            "observedHash": "72cd1a89f06b1f231c081dcf5cb62448654fb75e3f062f35e83d284e1e178613",
+            "url": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/experiments/minimality-independent.json",
+            "state": "matched"
+          },
+          {
+            "path": "support-refinement.md",
+            "sha256": "aac209ab465af19c4acf8a659c7a922103af126f0505d577f365ec976ab6e33f",
+            "observedHash": "aac209ab465af19c4acf8a659c7a922103af126f0505d577f365ec976ab6e33f",
+            "url": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/support-refinement.md",
+            "state": "matched"
+          },
+          {
+            "path": "experiments/support-expected.json",
+            "sha256": "6dc351a495dda04c14c1b6a666980892da5cec29abd270f994bba7f1230338ec",
+            "observedHash": "6dc351a495dda04c14c1b6a666980892da5cec29abd270f994bba7f1230338ec",
+            "url": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/experiments/support-expected.json",
+            "state": "matched"
+          },
+          {
+            "path": "sequential-refinement.md",
+            "sha256": "4fda960d3b355ce969e8279238746618e09e238fb9f4ec7160d35065bf165b92",
+            "observedHash": "4fda960d3b355ce969e8279238746618e09e238fb9f4ec7160d35065bf165b92",
+            "url": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/sequential-refinement.md",
+            "state": "matched"
+          },
+          {
+            "path": "experiments/sequential-expected.json",
+            "sha256": "a53800e9bdfadb6895f2f0f0f66e64218d4a8a8f0a4257d58c1cc2bfbedf0d21",
+            "observedHash": "a53800e9bdfadb6895f2f0f0f66e64218d4a8a8f0a4257d58c1cc2bfbedf0d21",
+            "url": "https://github.com/rohanarun/sidorenko-template-refinements/blob/d1df2a5cc0cb0c9003466b1c7f8ecb77a8e72a7d/experiments/sequential-expected.json",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "unit-grid-refinement",
+      "repo": "rohanarun/unit-distance-grid-refinement",
+      "branch": "main",
+      "problemId": "167",
+      "name": "A smaller unit-distance proof grid",
+      "summary": "A conditional reduction in the final algebraic proof grid, with smaller witnesses for line cases.",
+      "approach": "Normalize the velocity equations to reduce the field-generator budget, then use generic points and anchors for the final sign-change argument.",
+      "status": "Author claim · unreviewed",
+      "contribution": {
+        "label": "Final proof-grid edges",
+        "impact": "No exponent improvement",
+        "explanation": "A smaller final algebraic grid changes a proof component. General and line cases have different witness sizes; the unit-distance exponent saving remains unspecified."
+      },
+      "url": "https://github.com/rohanarun/unit-distance-grid-refinement",
+      "readmeUrl": "https://github.com/rohanarun/unit-distance-grid-refinement/blob/62455a6709204f79a3a93c4eace817c3ce0d54ec/README.md",
+      "updatedAt": "2026-10-10T12:41:25Z",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 0,
+      "sourceHash": "ce38d5e65cfbfa49f3cce82fb44546c4a444ec8fe5ae633ef5bafe7e3facc704",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "rohanarun/unit-distance-grid-refinement",
+        "defaultBranch": "main",
+        "commit": "62455a6709204f79a3a93c4eace817c3ce0d54ec",
+        "readmeHash": "ce38d5e65cfbfa49f3cce82fb44546c4a444ec8fe5ae633ef5bafe7e3facc704"
+      },
+      "claim": {
+        "scope": "Conditional on the original generic-grid, negligible-height and private-valuation lemmas. The new draft uses an 8×4 grid (32 edges) in the general rank-two branch, 6×4 (24 edges) when one locus is a line, and 4×3 (12 edges) only when both loci are the same line. These are proof witnesses, not unit-distance exponents or whole-construction dimensions. No explicit power saving, independent mathematical review, formal verification or literature priority is claimed.",
+        "source": "https://github.com/rohanarun/unit-distance-grid-refinement/blob/62455a6709204f79a3a93c4eace817c3ce0d54ec/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": null,
+        "display": "100 → 32 proof-grid edges",
+        "kind": "refinement",
+        "evidence": "# Unit distances: reducing the final generic grid\n\nAn independent, AI-generated research draft prepared with Codex and Claude. We give a conditional reduction of the final algebraic grid in OpenAI's unit-distance argument from **20×5 to 8×4**, or 100 selected edges to 32, with smaller witnesses when a locus is a line.\n\n**This does not improve the headline unit-distance exponent or provide an explicit power saving.** The original generic-grid extraction, negligible-height passage, and private-valuation arguments remain dependencies. Independent mathematical review, formal verification, and literature priority are not claimed.\n\n| branch | grid | edges | previous version |\n|---|---|---|---|\n| general (rank two) | 8×4 | 32 | 9×4 = 36 |\n| one locus is a line (rank two) | 6×4 | 24 | 9×4 = 36 |\n| both loci the same line | 4×3 | 12 | 6×3 = 18 |\n\nA single 8×4 generic grid contains the smaller sub-grids, so one selection covers every case.\n\n![Progress chart](progress/progress.png)\n\n## Argument\n\nThe source obtains equations\n\n$$2(p_i-r_\\ell)\\cdot(H_i-U_\\ell)=R_{i\\ell}(A_i-A'_\\ell),\\qquad A_i-A'_\\ell\\ne0.$$\n\nThese are preserved by a five-dimensional group of transformations: translations and an infinitesimal rotation of all velocities (because $x\\cdot Jx=0$), a common shift of all logarithmic velocities, and a common nonzero scaling of all velocity data (which multiplies both sides). The source's normalization already gives $A'_1=0$.\n\nLet $J(x,y)=(-y,x)$, $v=r_2-r_1$, and $\\omega=((U_2-U_1)\\cdot Jv)/(v\\cdot v)$. Subtracting $U_1$ and $\\omega J(\\cdot-r_1)$ from all velocities makes the first right velocity zero and the second parallel to $v$, say $\\tau v$. **Scaling by $1/\\tau$** (when $\\tau\\ne0$) then makes the second right velocity exactly $v$, which lies in the field already generated by the anchors. With four anchors the normalized right-hand data need only **seven field generators**: $3j-5$ in general.\n\nEight generic left points therefore guarantee a point surviving as generic after those generators are adjoined ($8d_1-7>8(d_1-1)$). The source's private valuations make the radical square classes independent; three equations determine the rank-two solution and changing the fourth radical's sign gives the contradiction. Seven left points would give equality and prove nothing.\n\n## Collinear anchors: 24 edges\n\nIf either locus is a line, name the sides so the anchors lie on it: $r_\\ell=r_1+\\sigma_\\ell v$. By the Leibniz rule $U_\\ell-U_1=\\sigma_\\ell\\,\\partial v+(\\partial\\sigma_\\ell)v$, and after the rotation step $\\partial v-\\omega Jv$ is parallel to $v$. So **every normalized anchor velocity is a scalar multiple of $v$**, costing one generator instead of two: $2j-3=5$ for $j=4$, hence six left points and a **6×4 grid, or 24 edges**.\n\n## Common-line branch: 12 edges\n\nIf both loci are the same line, three anchors suffice for the two-unknown Cramer system and the third sign change, and the collinear count gives three generators. Four left points suffice: a **4×3 grid, or 12 selected edges**, conditional on the same generic-grid and private-valuation lemmas.\n\n## Why it stops here\n\nThe symmetry group is exactly five-dimensional (dilations are not symmetries), so $3j-5$ is the floor for normalizing anchor data. Four anchors are forced in the rank-two case, and the counting $N>\\text{cost}$ is sharp for the subadditivity argument. Choosing the derivation to kill anchor data was examined and gives no unconditional saving. See the last section of [proof.tex](proof.tex).\n\nThe full conditional proof is in [proof.tex](proof.tex). It compiles with `tectonic proof.tex`. No compiled PDF is bundled.\n\n## Reproduce\n\nUse Python 3.11 or 3.12:\n\n```sh\npython3 -m venv .venv\n. .venv/bin/activate\npython -m pip install -r requirements.txt\npython -B run_checks.py\n```\n\nGitHub Actions runs the same command on pushes and pull requests. Do not enable Python optimization (`-O` or `PYTHONOPTIMIZE`); certificate assertions must remain active. The runner rejects optimized execution.\n\nTo regenerate the progress chart (needs `matplotlib`, not a test dependency): `python -B progress/make_chart.py`. The data behind it is [progress/progress.json](progress/progress.json); social-post drafts for each PR are in [progress/tweet.md](progress/tweet.md).\n\n## What the tests establish\n\nThe thirteen tests check symbolic invariance under translation, rotation and scaling; that the second velocity becomes exactly $v$ after scaling (1,000 seeded exact-rational proposals); that dilations are *not* a symmetry; the generator budgets 7, 5 and 3 together with the failing boundary counts 7, 5 and 3 left points; that collinear anchors give velocities parallel to the line (symbolic Leibniz rule plus 1,500 exact-rational proposals); the rank-two Cramer determinant's radical coefficients as two-by-two minors and the fourth-radical sign flip; and the common-line Cramer solution, third-radical sign subtraction, and dependent-radical control.\n\nThese are algebraic checks of the displayed reduction. They do not construct the generic grid, verify the source's ultraproduct lemmas, or prove a new incidence bound.\n\n## Original source\n\nOpenAI, [*A power saving for planar unit distances*](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-power-saving-for-planar-unit-distances-September-23-2026), September 23, 2026, at commit [`fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb). The relevant arguments are in the original algebra section: the generic grid, surviving point, private valuations, and final sign change.\n\n[source-manifest.json](source-manifest.json) records the inspected source hash. Optionally retrieve it with `python -B fetch_sources.py --output upstream`; the tests themselves do not need a network connection once dependencies are installed. Credit for the original construction and imported lemmas belongs to OpenAI. This is not an official OpenAI publication.\n"
+      },
+      "assessment": {
+        "inspectedCommit": "62455a6709204f79a3a93c4eace817c3ce0d54ec",
+        "readmeHash": "ce38d5e65cfbfa49f3cce82fb44546c4a444ec8fe5ae633ef5bafe7e3facc704",
+        "label": "Written proof-component refinement",
+        "summary": "The revised proof adds a velocity scaling and reports proof grids with 32 general edges, 24 when one locus is a line, and 12 only in the common-line branch.",
+        "limitations": "The smaller grids retain imported generic-grid and private-valuation lemmas. Algebraic checks do not establish those lemmas, a new unit-distance exponent or an explicit saving.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "proof.tex",
+            "sha256": "89c7ae6754c07a7c71e0eca7b6446f13b27d84ce3adc7ef9aa4eb204e4dc50a0",
+            "observedHash": "89c7ae6754c07a7c71e0eca7b6446f13b27d84ce3adc7ef9aa4eb204e4dc50a0",
+            "url": "https://github.com/rohanarun/unit-distance-grid-refinement/blob/62455a6709204f79a3a93c4eace817c3ce0d54ec/proof.tex",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    },
+    {
+      "id": "matrix-sector-barrier",
+      "repo": "rohanarun/matrix-multiplication-sector-barrier",
+      "branch": "main",
+      "problemId": "107",
+      "name": "Limits of the matrix sector method",
+      "summary": "Explore why a specified set of matrix-multiplication proof constraints cannot force a better exponent.",
+      "approach": "Construct an abstract profile satisfying the retained scalar inequalities and standard matched-sector consequences, including unequal lengths and arbitrary sector counts.",
+      "status": "Author claim · unreviewed",
+      "contribution": {
+        "label": "Method limitation",
+        "impact": "No exponent improvement",
+        "explanation": "The reported abstract profile survives the specified sector constraints. It explains a limitation of that method, without changing the released 2.25 exponent or proving that exponent optimal."
+      },
+      "url": "https://github.com/rohanarun/matrix-multiplication-sector-barrier",
+      "readmeUrl": "https://github.com/rohanarun/matrix-multiplication-sector-barrier/blob/f9c93d8d50ff7c6ddaa5c43aaeecd03bb5835a1a/README.md",
+      "updatedAt": "2026-10-10T12:41:46Z",
+      "stars": 1,
+      "forks": 0,
+      "openIssues": 1,
+      "sourceHash": "038f83774bcd355f2f72abca9708203d15d17f94305c053f57a610e6debe402d",
+      "checkedAt": "2026-10-10T14:19:24.995Z",
+      "claimFresh": false,
+      "activityFresh": false,
+      "provenance": {
+        "repo": "rohanarun/matrix-multiplication-sector-barrier",
+        "defaultBranch": "main",
+        "commit": "f9c93d8d50ff7c6ddaa5c43aaeecd03bb5835a1a",
+        "readmeHash": "038f83774bcd355f2f72abca9708203d15d17f94305c053f57a610e6debe402d"
+      },
+      "claim": {
+        "scope": "An abstract obstruction for the listed scalar and symmetrized matched-sector inequalities, now with a least admissible profile and sharp diagonal constant within those constraints. The profile need not be a realizable tensor character. This is not a new multiplication algorithm, a lower bound on the actual exponent or proof that 9/4 is optimal. Finite rational checks supplement the written all-parameter argument. Independent mathematical review and formal verification are not claimed.",
+        "source": "https://github.com/rohanarun/matrix-multiplication-sector-barrier/blob/f9c93d8d50ff7c6ddaa5c43aaeecd03bb5835a1a/README.md",
+        "observedAt": "2026-10-10T14:19:24.995Z",
+        "authority": "unreviewed",
+        "independentlyVerified": false,
+        "value": null,
+        "display": "Sector-method barrier",
+        "kind": "method-limit",
+        "evidence": "# Matrix multiplication: a barrier for symmetrized sector inequalities\n\nAn independent, AI-generated research draft prepared with Codex. We construct an explicit abstract profile satisfying the retained scalar constraints from OpenAI's matrix-multiplication manuscript, then show that it also survives arbitrary numbers of standard matched sectors with unequal lengths.\n\n**This is a limitation of a specified proof method, not a new matrix-multiplication algorithm, a lower bound on the actual exponent, or a proof that 9/4 is optimal.** The profile is not claimed to be realizable by a tensor character. Mathematical priority, independent review, and formal verification are not claimed.\n\n## Explicit profile\n\nFor $a,b\\ge1$, put $u=\\min(a,b)$ and $v=\\max(a,b)$. Define\n\n```math\nP_*(a,b)=\\left(\\frac{3u-1}{2}\\right)^{1/3}\\left(v+\\frac{u-1}{2}\\right).\n```\n\nThe proof shows positivity, symmetry, monotonicity, separate concavity, the boundary value $P_*(1,b)=b$, shifted tripling, and the rank envelope at $t=3/4$:\n\n```math\nP_*(a,3h+a-1)\\ge3P_*(a,h),\\qquad P_*(a,b)\\le(a+b-1)^{4/3}.\n```\n\nYet its diagonal grows only as\n\n```math\nP_*(a,a)=\\left(\\frac{3a-1}{2}\\right)^{4/3}=\\Theta(a^{4/3}).\n```\n\nThus those abstract constraints alone cannot exclude $t=3/4$ or force a larger diagonal power.\n\n## Why unequal and additional standard sectors do not remove this obstruction\n\nSuppose $C(a,B)$ degenerates to $s$ standard polynomial-multiplication blocks $C(a,h_i)$ sharing the first leg, with independent second and third legs. Allow an exchange of those two legs in each block, but no auxiliary output factors. Counting the two spaces forces\n\n```math\nB\\ge\\sum_i h_i+\\lfloor s/2\\rfloor(a-1).\n```\n\nUsing a common probability vector across the six permuted characters, the source's entropy inequality yields the symmetrized consequence\n\n```math\nP(a,B)\\ge\\sum_iP(a,h_i).\n```\n\nThe profile above satisfies every such consequence. Indeed, writing $d=(a-1)/2$ and $L=((3a-1)/2)^{1/3}$ gives $P_*(a,h)\\le L(h+d)$, with equality for $h\\ge a$. The needed dominance reduces, after cubing positive quantities, to\n\n```math\nA(A+2H)^3-H(2A+H)^3=(A-H)^3(A+H)\\ge0\\qquad(A\\ge H).\n```\n\nThe dimension bound then implies the desired sum inequality. See [proof.tex](proof.tex) for both complete analytic arguments.\n\nThe obstruction leaves open new block types, auxiliary factors, stronger tensor identities, and information retained before symmetrization. It does not rule out improving the actual matrix-multiplication exponent.\n\n## Exact equality cases and parity slack\n\nThe profile's sector gap has a complete decomposition. Let `d=(a−1)/2`, `L=((3a−1)/2)^(1/3)`, and `B_min=sum(h_i)+2 floor(s/2)d`. For `s≥2` and `B≥B_min`,\n\n```math\n\\begin{aligned}\nP_*(a,B)-\\sum_iP_*(a,h_i)\n&=L(B-B_{\\min})\\\\\n&\\quad+L(2\\lfloor s/2\\rfloor-s+1)d\\\\\n&\\quad+\\sum_i[L(h_i+d)-P_*(a,h_i)].\n\\end{aligned}\n```\n\nEvery term is nonnegative. For `a>1`, odd sector counts attain equality exactly at the minimum dimension with every length at least `a`. Even sector counts have gap at least `Ld`, attained under the same conditions. A shorter sector adds a strictly positive deficit. For `a=1`, both parities give equality exactly when `B=sum(h_i)`.\n\nThe added proof and exact rational tests classify saturation within the abstract constraints. Dimension feasibility alone does not construct a tensor degeneration.\n\n## The least admissible profile\n\nPointwise infima of profiles satisfying the retained constraints (symmetry, $P(1,b)=b$, discrete concavity, shifted tripling) again satisfy them, so there is a unique **least** admissible profile. It has a closed form. With $u=\\min(a,b)$, $v=\\max(a,b)$ and\n\n```math\nH_u=\\prod_{m=1}^{u-1}\\left(1+\\frac{1}{3m}\\right)=\\frac{\\Gamma(u+\\tfrac13)}{\\Gamma(u)\\,\\Gamma(\\tfrac43)},\n\\qquad\nP_{\\min}(a,b)=H_u\\left(v+\\frac{u-1}{2}\\right),\n```\n\nthe proof shows that $P_{\\min}$ is admissible and that every admissible profile satisfies $P\\ge P_{\\min}$ pointwise. The one nontrivial inequality, $H_a(a+2h-1)\\ge H_h(2a+h-1)$ for $h\\le a$, has a two-line induction whose step reduces to $2(a-h)(a-h+1)\\ge0$.\n\nConsequences:\n\n- **OpenAI's diagonal-growth lemma is sharp at every $a$.** The minimum possible diagonal value is exactly $\\min P(a,a)=\\tfrac{3a-1}{2}\\prod_{m<a}(1+\\tfrac1{3m})$, which the source's proof already derives as an intermediate bound before relaxing it to $a^{4/3}$. The best constant in $P(a,a)\\ge c\\,a^{4/3}$ is $c=3/(2\\Gamma(4/3))\\approx1.67977$, attained in the limit by $P_{\\min}$.\n- **$P_*$ is not least.** It exceeds $P_{\\min}$ by the factor $((3u-1)/2)^{1/3}/H_u$, which increases strictly from $1$ to $(3/2)^{1/3}\\Gamma(4/3)\\approx1.02221$. Both profiles satisfy the rank envelope at $t=3/4$, so the barrier is unchanged; $P_{\\min}$ is now the canonical first test for any proposed additional inequality.\n- **Sectors.** $P_{\\min}$ satisfies every symmetrized matched-sector consequence under the packing bound, with equality for odd $s$ exactly when $B=B_{\\min}$ and every $h_i\\ge a-1$ (one unit weaker than the $h_i\\ge a$ needed by $P_*$), and even-$s$ slack $H_ad$ instead of $Ld$.\n\nAs before, these are identities of abstract profiles. They do not claim realizability by tensor characters and do not change the exponent bound.\n\n## Progress chart and summary\n\n[progress/omega_progress.png](progress/omega_progress.png) plots the history of upper bounds on the matrix-multiplication exponent, with OpenAI's $9/4$ preprint and the barrier line of this repository, beside the bracket on the least diagonal constant that this update closes. Regenerate it with `python -B progress/plot_progress.py` (needs matplotlib). A plain-language summary is in [progress/tweet.md](progress/tweet.md).\n\n## Reproduce\n\nUse Python 3.11 or 3.12:\n\n```sh\npython3 -m venv .venv\n. .venv/bin/activate\npython -m pip install -r requirements.txt\npython -B run_checks.py\n```\n\nGitHub Actions runs the same command on pushes and pull requests. Do not enable Python optimization (`-O` or `PYTHONOPTIMIZE`); certificate assertions must remain active. The runner rejects optimized execution.\n\nThe full argument is in [proof.tex](proof.tex), which has been compiled successfully with the Codex document editor. No compiled PDF is bundled. The tests supplement the mathematical argument; they are not a formal proof of the original papers or an independent review.\n\n## What the tests establish\n\nSeven tests check the symbolic derivatives and their matching at the diagonal, 10,000 exact rational cube comparisons for tripling and the rank envelope, the dominance identity, finite sector-dimension cases and unequal-length tuples, and a counterexample to incorrectly omitting the additive shift in tripling.\n\nThe new cases check exact odd-sector saturation, even-sector slack, and the strict deficit for short sectors. No floating-point cube roots are used.\n\nSeven further tests cover the least profile: the product $H_u$ agrees with the Gamma-function quotient (sympy, exact), $P_{\\min}$ satisfies concavity, tripling and the envelope on an 80-by-80 window with the tripling equality cases exactly $h\\ge a-1$, the ratio lemma and its three induction identities, $P_{\\min}\\le P_*$ with a strictly increasing cubed ratio below $1.0223^3$, the minimality chain evaluated on $P_*$ and the growth recursion, the limit constant $3/(2\\Gamma(4/3))$, and the sector saturation classification for the least profile. All comparisons are between rational numbers. Finite tests supplement the all-parameter analytic proofs; they are not an asymptotic extrapolation or a test of tensor realizability.\n\n## Original source\n\nOpenAI, [*An Upper Bound of 9/4 for the Matrix Multiplication Exponent*](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026), October 2, 2026, at commit [`fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`](https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb). Credit for the tensor constructions, character framework, entropy inequality, and original exponent claim belongs to OpenAI.\n\n[source-manifest.json](source-manifest.json) records the inspected manuscript's hash. Optionally retrieve it with `python -B fetch_sources.py --output upstream`; the tests themselves do not need a network connection once dependencies are installed. This is not an official OpenAI publication.\n"
+      },
+      "assessment": {
+        "inspectedCommit": "f9c93d8d50ff7c6ddaa5c43aaeecd03bb5835a1a",
+        "readmeHash": "038f83774bcd355f2f72abca9708203d15d17f94305c053f57a610e6debe402d",
+        "label": "Written limitation of a method",
+        "summary": "The revised note identifies a least admissible abstract profile and a sharp diagonal constant within the retained constraint system; the existing sector-method barrier is unchanged.",
+        "limitations": "Abstract admissibility does not establish tensor realizability, a better multiplication algorithm or a lower bound on the actual exponent. No new headline exponent is supplied.",
+        "state": "matched",
+        "sources": [
+          {
+            "path": "proof.tex",
+            "sha256": "cc6b918836a6a91d4199e5bb03ad12462f037f3f3b71352efc88ea7d7b535d42",
+            "observedHash": "cc6b918836a6a91d4199e5bb03ad12462f037f3f3b71352efc88ea7d7b535d42",
+            "url": "https://github.com/rohanarun/matrix-multiplication-sector-barrier/blob/f9c93d8d50ff7c6ddaa5c43aaeecd03bb5835a1a/proof.tex",
+            "state": "matched"
+          }
+        ]
+      },
+      "stale": true
+    }
+  ],
+  "discoveries": [
+    {
+      "repo": "xangma/exact-fourier-circuits",
+      "url": "https://github.com/xangma/exact-fourier-circuits",
+      "description": "Lean formalization of exact Fourier circuit savings and reproducible CUDA precision diagnostics",
+      "updatedAt": "2026-10-09T10:53:03Z",
+      "problemIds": [
+        "130"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "dysfunctor/network-coding-counterexample",
+      "url": "https://github.com/dysfunctor/network-coding-counterexample",
+      "description": "A counterexample to the network coding conjecture, based on a sub-nlogn integer multiplication algorithm. ",
+      "updatedAt": "2026-10-08T17:24:35Z",
+      "problemIds": [
+        "109"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "acprk/openai-math-followups",
+      "url": "https://github.com/acprk/openai-math-followups",
+      "description": "Follow-up results on OpenAI math manuscripts (matrix multiplication 9/4 barrier, Borsuk, sensitivity)",
+      "updatedAt": "2026-10-10T02:07:30Z",
+      "problemIds": [
+        "107"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "mrubinst/L-function_zero_free_strips",
+      "url": "https://github.com/mrubinst/L-function_zero_free_strips",
+      "description": "Working notes on OpenAI's quasi-Riemann hypothesis papers: the 11/12 and 7/8 zero-free half-planes",
+      "updatedAt": "2026-10-09T23:55:01Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "DrMurphyIsIn/qrh-debruijn-newman",
+      "url": "https://github.com/DrMurphyIsIn/qrh-debruijn-newman",
+      "description": "A kernel-checked bound Lambda <= 9/32 for the de Bruijn-Newman constant from OpenAI's quasi-Riemann hypothesis (Lean 4, Comparator-judged). Not RH.",
+      "updatedAt": "2026-10-09T23:03:27Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "jacobalansussman/wht-power-saving-lean",
+      "url": "https://github.com/jacobalansussman/wht-power-saving-lean",
+      "description": "Lean 4 proofs: discrete Fourier transform of every length and Walsh-Hadamard transform in O(n (log n)^z), z = 1 - 7.47e-4, in the RAM model of OpenAI's family 130",
+      "updatedAt": "2026-10-09T19:24:13Z",
+      "problemIds": [
+        "130"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "vinicius-pi/independent-quasi-rh-checks",
+      "url": "https://github.com/vinicius-pi/independent-quasi-rh-checks",
+      "description": "Independent finite checks of arithmetic identities in OpenAI's October 2026 quasi-RH preprint",
+      "updatedAt": "2026-10-07T22:54:29Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "erayyap/integer-multiplication-kappa",
+      "url": "https://github.com/erayyap/integer-multiplication-kappa",
+      "description": "Improving κ from 2^-182 to 2^-59.335 in OpenAI's 'Integer multiplication below n log n' — computer-assisted, with exact verifiers",
+      "updatedAt": "2026-10-07T22:04:52Z",
+      "problemIds": [
+        "109"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "tomoto0/quasi-riemann-hypothesis-7-8-verification",
+      "url": "https://github.com/tomoto0/quasi-riemann-hypothesis-7-8-verification",
+      "description": "Independent verification of OpenAI's preprint 'The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s > 7/8' (openai/math)",
+      "updatedAt": "2026-10-07T20:34:00Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "Klakocik/below-nlogn",
+      "url": "https://github.com/Klakocik/below-nlogn",
+      "description": "Experimental Rust toolbox for the OpenAI preprint Integer multiplication below n log n - plus an exact multiplier that makes no impossible promises.",
+      "updatedAt": "2026-10-07T20:25:59Z",
+      "problemIds": [
+        "109"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "thomasahle/matrix-multiplication",
+      "url": "https://github.com/thomasahle/matrix-multiplication",
+      "description": "Lean 4 formalization of matrix-multiplication exponent bounds: Strassen to Coppersmith–Winograd to Duan–Wu–Zhou's ω < 2.374631, plus rank lower bounds and the Alman–Vassilevska Williams barriers",
+      "updatedAt": "2026-10-07T15:52:46Z",
+      "problemIds": [
+        "107"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "erenciracioglu-dotcom/openai-math-9-4-lean-check",
+      "url": "https://github.com/erenciracioglu-dotcom/openai-math-9-4-lean-check",
+      "description": "Independent Lean check (on Windows) of OpenAI's omega <= 9/4 matrix multiplication result from openai/math",
+      "updatedAt": "2026-10-07T11:58:39Z",
+      "problemIds": [
+        "107"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "Zhang-Liao/quasi-riemann",
+      "url": "https://github.com/Zhang-Liao/quasi-riemann",
+      "description": "Standalone Lean 4 formalization of zeta and Dirichlet L-function nonvanishing for Re(s) > 7/8, extracted from OpenAI math.",
+      "updatedAt": "2026-10-07T11:26:52Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "tomoto0/quasi-rh-audit-public",
+      "url": "https://github.com/tomoto0/quasi-rh-audit-public",
+      "description": "Independent Technical Audit of “The Quasi-Riemann Hypothesis” by OpenAI",
+      "updatedAt": "2026-10-07T10:02:10Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "jzuiddam/omega-nine-quarters-all-fields",
+      "url": "https://github.com/jzuiddam/omega-nine-quarters-all-fields",
+      "description": "Lean proof that the matrix multiplication exponent is at most 9/4 over every field (generalizing openai/math family 107)",
+      "updatedAt": "2026-10-07T07:42:18Z",
+      "problemIds": [
+        "107"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    },
+    {
+      "repo": "CoolRmal/quasi-riemann-seven-eighths",
+      "url": "https://github.com/CoolRmal/quasi-riemann-seven-eighths",
+      "description": "Standalone Lean formalization of the 7/8 quasi-Riemann hypothesis with Linux Comparator verification",
+      "updatedAt": "2026-10-07T00:32:11Z",
+      "problemIds": [
+        "003"
+      ],
+      "reason": "Matched repository name or description in public GitHub search. Its claims have not been reviewed for this catalogue."
+    }
+  ],
+  "catalogue": {
+    "families": 372,
+    "manuscripts": 719,
+    "source": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+    "checkedAt": "2026-10-10T14:19:24.995Z",
+    "sha256": "cc7c0b8a1cdedd845a777e77cf682657308503daf8346c1349e06e9259d063c2"
+  },
+  "warnings": [
+    "Discovery is a saved list updated only by the project owner through a manual scan. Automatic source refreshes do not search for new repositories. It is not an exhaustive index of community work.",
+    "CrocSwap/integer-mult-bounds: the current PR head or bound differs from the reviewed receipt. Review applies only to its recorded head."
+  ]
+}

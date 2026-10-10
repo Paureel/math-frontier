@@ -1,0 +1,80 @@
+{
+  "state": "owner-approved for maintainer-reviewed conditional display",
+  "repo": "CrocSwap/integer-mult-bounds",
+  "commit": "12a4934d15006e8c10f9b2264f13f8f341be802b",
+  "checkedAt": "2026-10-10T14:19:24.995Z",
+  "value": "90446448750933/125000000000000000",
+  "display": "0.000723571590007464",
+  "scope": "Conditional on retained all-size compiler, weighted/common-ancestor chart, restored rows, selectors/routing, prime supply, precision/recovery, complex symbolic correctness and analytic transfer; finite replay and written review, not a full formal multiplication theorem.",
+  "sourcePR": 279,
+  "reviewedHead": "4d8c31eec7ae618645cb058101cb4e72a97268d3",
+  "laterPRHead": "913ccc48a0bc1173709ea92280b96252256b7754",
+  "limitation": "Codex-assisted maintainer review of the pinned conditional construction and finite compatibility audit. The upstream receipt reports nine-stage replay and producer regeneration, independently written retiming and scalar checks, and a reused complex scalar receipt whose source hashes were rechecked; that reused receipt was not freshly executed. This dashboard has not rerun the proof. All-size transfer remains conditional; this is not independent human peer review, a full formal multiplication theorem, or a practical runtime benchmark. Later PR 279 revisions are outside this review.",
+  "sources": [
+    {
+      "path": "README.md",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/README.md",
+      "sha256": "b81f8035b859007add6693c6d860371c9100a6766e494045495a28a457a5fcb9"
+    },
+    {
+      "path": "certificates/selected-result.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/certificates/selected-result.json",
+      "sha256": "df836c6d34509e980d067bd5678489c968bc6e329af9dd82c6207abf6443da89"
+    },
+    {
+      "path": "docs/research/community-pr279-review.md",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/docs/research/community-pr279-review.md",
+      "sha256": "2dffff824e2124baa5c6ece5d0d9c9ea93faeca4a2903a61f706085590f26915"
+    },
+    {
+      "path": "docs/research/community-pr279-integration.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/docs/research/community-pr279-integration.json",
+      "sha256": "e790e42bbd0e57e3be92191309d3489ec91b738239622e69759604212b2d0f29"
+    },
+    {
+      "path": "research/community-pr279-audit/certificate.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/certificate.json",
+      "sha256": "6a457a34b4db57417e5b253cf1c169da2bd6aff4c21363a31fd85dc931d49589"
+    },
+    {
+      "path": "research/five-stage-gen4-banks/PROOF.md",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/five-stage-gen4-banks/PROOF.md",
+      "sha256": "75cd7e51722ebcf826070aca4b289a72526d50264688d8c6bb298bf8a7dfef37"
+    },
+    {
+      "path": "research/five-stage-gen4-banks/BANK-PROOF.md",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/five-stage-gen4-banks/BANK-PROOF.md",
+      "sha256": "bbc328e05848a211c981288514380a4ba12fddaed16c9d23328b5764502be411"
+    },
+    {
+      "path": "research/five-stage-gen4-banks/MANIFEST.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/five-stage-gen4-banks/MANIFEST.json",
+      "sha256": "99e202d9ffe5baf89e02796edbfc7095b2b227622eccf7b61afa01fd61aeb385"
+    },
+    {
+      "path": "research/community-pr279-audit/verification.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/verification.json",
+      "sha256": "d63a463096febb74fc70a19db52ed489e66514413142ffd5d08e3bb6266fde66"
+    },
+    {
+      "path": "research/community-pr279-audit/independent-retiming.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/independent-retiming.json",
+      "sha256": "9abbc8d2630a4565c59117b73df4fa0f08f93d655a7780e5ccefc29cda701b31"
+    },
+    {
+      "path": "research/community-pr279-audit/independent-word.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/independent-word.json",
+      "sha256": "749d93632987346d62d7d68c5a05f07526eb9f40627bfc1feb4f4cbee15df206"
+    },
+    {
+      "path": "research/community-pr279-audit/pr210-complex-scalar.json",
+      "url": "https://github.com/CrocSwap/integer-mult-bounds/blob/12a4934d15006e8c10f9b2264f13f8f341be802b/research/community-pr279-audit/pr210-complex-scalar.json",
+      "sha256": "96eefe380f0ecc884f92b1796573e1f4d81c4dc8b0d400de2268ceb0640ff2d5"
+    }
+  ],
+  "ownerApproval": {
+    "date": "2026-10-10",
+    "instruction": "approve the new CrocSwap receipt as maintainer-reviewed and conditional, and keep the assumptions and caveats clearly visible",
+    "independentlyVerified": false
+  }
+}

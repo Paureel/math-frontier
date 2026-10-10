@@ -1,0 +1,331 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\title{An obstruction for symmetrized matrix multiplication sectors}
+\author{AI-generated research draft prepared with Codex}
+\date{October 10, 2026}
+\begin{document}
+\maketitle
+\paragraph{Scope and attribution.}
+This is an independent follow-up to
+\href{https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026}{OpenAI's original manuscript},
+pinned at commit \texttt{fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb}.
+It is not an official OpenAI publication. Mathematical priority and
+independent formal verification are not claimed. Exact checks supplement
+the proofs below and do not verify the imported source lemmas.
+\section{An obstruction for the matrix profile inequalities}
+The matrix paper defines a symmetric positive profile $P(a,b)$ with
+$P(1,b)=b$, separate discrete concavity, and shifted tripling
+$P(a,3h+a-1)\ge3P(a,h)$. Its rank envelope is
+$P(a,b)\le(a+b-1)^{1/t}$. We exhibit an abstract profile compatible with
+these conditions at $t=3/4$.
+
+\begin{theorem}\label{thm:barrier}
+For real $a,b\ge1$, set $u=\min(a,b)$, $v=\max(a,b)$ and
+\[
+ P_*(a,b)=\left(\frac{3u-1}{2}\right)^{1/3}
+                      \left(v+\frac{u-1}{2}\right).
+\]
+Then $P_*$ is positive, symmetric, nondecreasing and separately concave,
+$P_*(1,b)=b$, and it satisfies shifted tripling on positive integers.
+Moreover
+\[
+ P_*(a,b)\le(a+b-1)^{4/3},\qquad
+ P_*(a,a)=\left(\frac{3a-1}{2}\right)^{4/3}=\Theta(a^{4/3}).
+\]
+Thus these abstract constraints alone cannot force a larger diagonal
+growth exponent, or exclude $t=3/4$.
+\end{theorem}
+\begin{proof}
+Fix $a$. On $b\ge a$ the function is linear with positive slope.
+On $1\le b\le a$, put $x=3b-1$, $A=3a-1$; it is
+$(x/2)^{1/3}(2A+x)/6$. Its derivative in $b$ is positive and its
+second derivative is
+\[
+ \frac{2^{2/3}(x-A)}{3x^{5/3}}\le0.
+\]
+The one-sided first derivatives match at $b=a$, both equal to
+$((3a-1)/2)^{1/3}$. Concavity follows globally, and implies the required
+discrete inequalities. Symmetry supplies the other coordinate.
+
+If $h\ge a$, substitution gives
+$P_*(a,3h+a-1)=3P_*(a,h)$ exactly. If $h<a$, put
+$A=3a-1$, $B=3h-1$, and $z=(A/B)^{1/3}>1$.
+After multiplication by a positive factor, shifted tripling becomes
+\[
+ z^4-2z^3+2z-1=(z-1)^3(z+1)\ge0.
+\]
+The boundary value and diagonal formula are direct substitutions.
+Finally both $(3u-1)/2$ and $v+(u-1)/2$ are at most $a+b-1$,
+proving the rank-envelope inequality.
+\end{proof}
+This is not a construction of a tensor character. It is an obstruction
+to a proof using only the listed inequalities. New valid tensor
+constraints, or a different construction, could still improve $9/4$.
+The symbolic identity and exact rational cube comparisons were checked
+by \texttt{tests/test\_profile.py}; these supplement the displayed proof.
+
+\section{Matrix multiplication: a barrier for arbitrary matched sectors}
+\label{sec:sector-barrier}
+The earlier profile obstruction extends beyond three equal branches.
+Consider a degeneration of $C(a,B)$ into matched blocks sharing the
+first leg, each individually equivalent to $C(a,h_i)$, allowing an
+exchange of its second and third legs. No auxiliary tensor factors
+are allowed in the output in this statement. Suppose there are $s$
+blocks, of which $r$ have exchanged legs. Their second and third spaces
+are respectively disjoint. Counting their dimensions forces
+\[
+ B\ge\sum_i h_i+r(a-1),\qquad
+ B+a-1\ge\sum_i h_i+(s-r)(a-1),
+\]
+and hence
+\begin{equation}\label{eq:packing-bound}
+ B\ge\sum_i h_i+\lfloor s/2\rfloor(a-1).
+\end{equation}
+Indeed $\min_{0\le r\le s}\max(r,s-r-1)=\lfloor s/2\rfloor$.
+This constraint holds regardless of which substitutions produce the
+matched blocks.
+
+Applying the source's shared-leg entropy inequality with the same
+probability vector to all six permuted characters, then optimizing it,
+gives the symmetrized consequence
+\[
+ P(a,B)\ge\sum_{i=1}^sP(a,h_i).
+\]
+Each block's possible leg exchange merely permutes the six factors.
+
+\begin{proposition}
+The abstract profile $P_*$ of Theorem~\ref{thm:barrier} satisfies every
+such consequence whenever the dimension bound~\eqref{eq:packing-bound}
+holds. Thus allowing unequal lengths and arbitrarily many standard
+matched sectors does not exclude this profile at $t=3/4$.
+\end{proposition}
+\begin{proof}
+Put $d=(a-1)/2$ and $L=((3a-1)/2)^{1/3}$. We claim
+$P_*(a,h)\le L(h+d)$ for every $h\ge1$, with equality for $h\ge a$.
+For $h<a$, set $A=3a-1$, $H=3h-1$. Cubing both positive sides reduces
+the claim to
+\[
+ A(A+2H)^3-H(2A+H)^3=(A-H)^3(A+H)\ge0.
+\]
+For $s\ge2$, the dimension bound gives $B\ge a$ and
+\[
+ P_*(a,B)=L(B+d)
+ \ge L\left(\sum_i h_i+(2\lfloor s/2\rfloor+1)d\right)
+ \ge\sum_iL(h_i+d)\ge\sum_iP_*(a,h_i).
+\]
+For $s=1$ use monotonicity. This proves the assertion.
+\end{proof}
+This rules out improving the exponent using just these symmetrized
+matched-sector inequalities together with the earlier scalar constraints.
+It leaves open more general output blocks, auxiliary factors, additional
+tensor identities, and stronger information retained before symmetrization.
+No improved matrix-multiplication exponent is claimed.
+
+
+\section{Exact saturation and parity slack}
+The sector barrier also has an explicit equality classification.
+Let $s\ge2$, $a\ge1$, $d=(a-1)/2$, $L=((3a-1)/2)^{1/3}$ and
+$B_{\min}=\sum_i h_i+2\lfloor s/2\rfloor d$. For $B\ge B_{\min}$,
+we have $B\ge a$, hence
+\begin{align*}
+ P_*(a,B)-\sum_i P_*(a,h_i)
+ &=L(B-B_{\min})
+   +L(2\lfloor s/2\rfloor-s+1)d\\
+ &\quad+\sum_i\bigl[L(h_i+d)-P_*(a,h_i)\bigr].
+\end{align*}
+All terms on the right are nonnegative. The earlier dominance identity
+shows that each summand in brackets vanishes precisely when $h_i\ge a$:
+it is strictly positive when $h_i<a$. For $a>1$, the middle term is zero
+for odd $s$ and equals $Ld>0$ for even $s$. Thus odd sector counts attain
+equality exactly when $B=B_{\min}$ and every $h_i\ge a$. Even counts
+have gap at least $Ld$, with that lower bound attained under the same
+conditions. If $a=1$, then $d=0$ and $P_*(1,h)=h$, so equality simply
+requires $B=\sum_i h_i$ for either parity.
+
+These are identities of the abstract profile and packing constraints.
+They do not assert that every dimension-feasible packing is realizable
+by a tensor degeneration. They identify equality families that the
+retained inequalities already permit, and quantify the slack in the
+remaining cases.
+
+\section{The least admissible profile}\label{sec:least}
+Call a function $P:\mathbb N_{>0}^2\to\mathbb R$ \emph{admissible} if it is symmetric,
+satisfies $P(1,b)=b$, is discretely concave in each argument, and
+satisfies shifted tripling $P(a,3h+a-1)\ge3P(a,h)$ for all $a,h\ge1$.
+These are exactly the hypotheses of the source's diagonal-growth lemma;
+positivity and the rank envelope are not used in this section.
+Pointwise infima of admissible functions are admissible: concavity and
+the boundary conditions are preserved trivially, and
+$P_n(a,3h+a-1)\ge3P_n(a,h)\ge3\inf_mP_m(a,h)$ passes to the infimum
+on the left. Hence the admissible functions have a least element.
+We identify it in closed form.
+
+For $u\ge1$ put
+\[
+ H_u=\prod_{m=1}^{u-1}\left(1+\frac1{3m}\right)
+    =\frac{\Gamma(u+\tfrac13)}{\Gamma(u)\,\Gamma(\tfrac43)},
+ \qquad
+ P_{\min}(a,b)=H_u\left(v+\frac{u-1}{2}\right),
+\]
+with $u=\min(a,b)$, $v=\max(a,b)$ as before. Thus $P_{\min}$ has the
+shape of $P_*$ with the cube root $((3u-1)/2)^{1/3}$ replaced by the
+rational number $H_u$; the sequence $H_u$ is the product appearing in
+the source's normalized-growth bound.
+
+\begin{lemma}\label{lem:ratio}
+For integers $1\le h\le a$,
+\[
+ H_a\,(a+2h-1)\ \ge\ H_h\,(2a+h-1),
+\]
+with equality if and only if $a\le h+1$.
+\end{lemma}
+\begin{proof}
+Fix $h$ and set $g(a)=H_a(a+2h-1)-H_h(2a+h-1)$. Then $g(h)=0$, and
+$g(h+1)=H_h\frac{3h+1}{3h}\cdot3h-H_h(3h+1)=0$. For $a\ge h+1$, using
+$H_{a+1}=H_a\frac{3a+1}{3a}$,
+\[
+ g(a+1)-g(a)=H_a\Bigl(\tfrac{3a+1}{3a}(a+2h)-(a+2h-1)\Bigr)-2H_h
+            =H_a\,\frac{4a+2h}{3a}-2H_h.
+\]
+If $g(a)\ge0$, then $H_a\ge H_h\frac{2a+h-1}{a+2h-1}$, and so
+\[
+ g(a+1)-g(a)\ \ge\ H_h\,
+ \frac{(2a+h-1)(4a+2h)-6a(a+2h-1)}{3a(a+2h-1)}
+ =H_h\,\frac{2(a-h)(a-h+1)}{3a(a+2h-1)},
+\]
+which is strictly positive for $a\ge h+1$. By induction $g(a)\ge0$ for
+all $a\ge h$, with $g(a)>0$ as soon as $a\ge h+2$.
+\end{proof}
+
+\begin{theorem}\label{thm:least}
+$P_{\min}$ is admissible, and every admissible $P$ satisfies
+$P\ge P_{\min}$ pointwise. Moreover
+\[
+ P_{\min}(a,a)=\frac{3a-1}{2}\,H_a,\qquad
+ \frac{P_{\min}(a,a)}{a^{4/3}}\longrightarrow\frac{3}{2\,\Gamma(4/3)}
+ \approx1.67977,
+\]
+and $P_{\min}\le P_*\le(a+b-1)^{4/3}$, where the ratio
+$P_*(a,b)/P_{\min}(a,b)=((3u-1)/2)^{1/3}/H_u$ increases strictly with
+$u$ from $1$ to the limit $(3/2)^{1/3}\Gamma(4/3)\approx1.02221$.
+\end{theorem}
+
+\begin{proof}
+\emph{Admissibility.} Symmetry and $P_{\min}(1,b)=b$ are immediate
+($H_1=1$). Fix $a$ and write $\Delta_b=P_{\min}(a,b+1)-P_{\min}(a,b)$.
+For $b\ge a$ the function is linear in $b$, so $\Delta_b=H_a$. For
+$1\le b\le a-1$, symmetry gives $P_{\min}(a,b)=H_b(a+\frac{b-1}2)$, whence
+\[
+ \Delta_b=H_{b+1}(a-b)-H_b(a-b-1).
+\]
+At $b=a-1$ this is $H_a$, matching the linear part. For $b\le a-2$,
+substituting $H_{b+1}=H_b\frac{3b+1}{3b}$ and
+$H_{b+2}=H_{b+1}\frac{3b+4}{3b+3}$ gives
+\[
+ \Delta_b-\Delta_{b+1}=(a-b-1)\bigl(2H_{b+1}-H_b-H_{b+2}\bigr)
+ =\frac{2(a-b-1)\,H_b}{9b(b+1)}\ \ge0 .
+\]
+So the increments are nonincreasing in $b$: $P_{\min}$ is discretely
+concave in each argument.
+
+For tripling, note $3h+a-1\ge a$, so
+$P_{\min}(a,3h+a-1)=\tfrac32H_a(a+2h-1)$. If $h\ge a$ then
+$3P_{\min}(a,h)=\tfrac32H_a(a+2h-1)$ and tripling holds with equality.
+If $h<a$ then $3P_{\min}(a,h)=\tfrac32H_h(2a+h-1)$, and tripling is
+exactly Lemma~\ref{lem:ratio}, with equality precisely when $h=a-1$.
+
+\emph{Minimality.} Let $P$ be admissible, fix $a$, and write
+$\Delta_{a,h}=P(a,h+1)-P(a,h)$; by concavity these are nonincreasing in
+$h$. We first show
+\begin{equation}\label{eq:slope}
+ \Delta_{a,h}\ \ge\ \frac{2P(a,a)}{3a-1}\qquad(h\ge a).
+\end{equation}
+Indeed, tripling and monotonicity of the increments give
+\[
+ 3P(a,h)\le P(a,3h+a-1)=P(a,h)+\sum_{j=h}^{3h+a-2}\Delta_{a,j}
+ \le P(a,h)+(2h+a-1)\Delta_{a,h},
+\]
+while $P(a,h)=P(a,a)+\sum_{j=a}^{h-1}\Delta_{a,j}\ge P(a,a)+(h-a)\Delta_{a,h}$.
+Combining, $2P(a,a)+2(h-a)\Delta_{a,h}\le(2h+a-1)\Delta_{a,h}$, which
+is~\eqref{eq:slope}.
+
+Put $H^P_a=2P(a,a)/(3a-1)$, so $H^P_1=1$. For $a\ge2$, symmetry,
+\eqref{eq:slope} applied at $(a-1,a-1)$, and concavity give
+\[
+ P(a,a)-P(a-1,a-1)=\Delta_{a-1,a-1}+\Delta_{a,a-1}
+ \ge H^P_{a-1}+\Delta_{a,a}\ge H^P_{a-1}+H^P_a .
+\]
+Substituting $P(a,a)=\frac{3a-1}2H^P_a$ and rearranging yields
+$H^P_a\ge\bigl(1+\frac1{3(a-1)}\bigr)H^P_{a-1}$, hence $H^P_a\ge H_a$
+for all $a$; this is the source's normalized-growth bound. Finally,
+for $b\ge a$, \eqref{eq:slope} gives
+\[
+ P(a,b)\ \ge\ P(a,a)\Bigl(1+\frac{2(b-a)}{3a-1}\Bigr)
+ =H^P_a\Bigl(b+\frac{a-1}2\Bigr)\ \ge\ H_a\Bigl(b+\frac{a-1}2\Bigr)
+ =P_{\min}(a,b),
+\]
+and symmetry covers $b<a$.
+
+\emph{Comparison with $P_*$.} For $m\ge1$,
+$(3m+2)\cdot27m^3-(3m+1)^3(3m-1)=6m+1>0$, so
+$(1+\frac1{3m})^3<\frac{3m+2}{3m-1}$. Multiplying over $m<u$ and
+telescoping, $H_u^3<\frac{3u-1}2$ for $u\ge2$, and the quotient
+$\frac{3u-1}{2}/H_u^3$ is a product of factors exceeding $1$, hence
+strictly increasing in $u$. Its limit follows from
+$\Gamma(u+\tfrac13)/\Gamma(u)\sim u^{1/3}$, which also gives the
+diagonal asymptotics. The envelope bound is inherited from $P_*$.
+\end{proof}
+
+\begin{corollary}\label{cor:sharp}
+Among all profiles satisfying the source's hypotheses (symmetry,
+$P(1,b)=b$, discrete concavity, shifted tripling), the minimum possible
+diagonal value is exactly
+\[
+ \min P(a,a)=\frac{3a-1}{2}\prod_{m=1}^{a-1}\Bigl(1+\frac1{3m}\Bigr)
+ \qquad(a\ge1),
+\]
+attained by $P_{\min}$. Thus the source's diagonal-growth lemma is sharp
+at every $a$, not only in the exponent $4/3$: its intermediate bound
+$H_a\ge\prod_{m<a}(1+1/(3m))$ cannot be improved, and the best constant
+$c$ with $P(a,a)\ge c\,a^{4/3}(1+o(1))$ for all admissible $P$ is
+$c=3/(2\Gamma(4/3))$.
+\end{corollary}
+
+Consequently the barrier is exact in the following sense. Any proof
+that uses only constraints satisfied by $P_{\min}$ cannot show $t<3/4$,
+since $P_{\min}\le(a+b-1)^{4/3}$. Because $P_{\min}$ is the least
+admissible profile, it is the canonical first test for any proposed new
+inequality: if $P_{\min}$ satisfies the inequality, adding it to the
+system leaves the barrier intact. The earlier profile $P_*$ is not
+least; it exceeds $P_{\min}$ by a factor below $1.0223$ everywhere.
+
+\paragraph{Sectors for the least profile.}
+Lemma~\ref{lem:ratio} also reads
+$P_{\min}(a,h)\le H_a(h+d)$ with $d=(a-1)/2$, with equality if and only
+if $h\ge a-1$. Repeating the argument of
+Section~\ref{sec:sector-barrier} verbatim with $L$ replaced by $H_a$,
+the least profile satisfies every symmetrized matched-sector
+consequence $P(a,B)\ge\sum_iP(a,h_i)$ under the packing
+bound~\eqref{eq:packing-bound}, and for $s\ge2$, $B\ge B_{\min}$,
+\[
+ P_{\min}(a,B)-\sum_iP_{\min}(a,h_i)
+ =H_a(B-B_{\min})+H_a(2\lfloor s/2\rfloor-s+1)d
+  +\sum_i\bigl[H_a(h_i+d)-P_{\min}(a,h_i)\bigr].
+\]
+For $a>1$ the equality cases differ from those of $P_*$ by one unit:
+odd $s$ saturates exactly when $B=B_{\min}$ and every $h_i\ge a-1$
+(rather than $h_i\ge a$), and even $s$ has gap at least $H_ad$, which
+is smaller than the slack $Ld$ of $P_*$. For $a=1$ nothing changes.
+As before, these are identities of an abstract profile and say nothing
+about realizability by tensor degenerations.
+
+\paragraph{Reproducibility.}
+The accompanying README documents \texttt{python -B run\_checks.py}.
+The scripts, source manifest, and test expectations are in this repository.
+The LaTeX source was compiled successfully with the Codex document editor.
+\end{document}

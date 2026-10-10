@@ -1,0 +1,10 @@
+{
+  "id": "fourier-eumemic",
+  "repo": "eumemic/exact-dft-bounds",
+  "branch": "main",
+  "problemId": "130",
+  "commit": "6f87d1a0c9ae462cdcb2034a1361c87623221e66",
+  "source": "https://raw.githubusercontent.com/eumemic/exact-dft-bounds/6f87d1a0c9ae462cdcb2034a1361c87623221e66/README.md",
+  "readmeHash": "eb030a25060f0b93abd7b8e301650ef70e428045fc0cfe1afd1ed52fda297acb",
+  "bytes": 8801
+}
